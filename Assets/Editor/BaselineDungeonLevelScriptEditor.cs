@@ -23,8 +23,8 @@ public class BaselineDungeonLevelScriptEditor : Editor
             levelScript.CleanUpFloor();
         }
 
-        if(GUILayout.Button("Clean up all")){
-            levelScript.CleanUp();
-        }
+        // if(GUILayout.Button("Clean up all")){
+        //     levelScript.CleanUp();
+        // }
     }
 }

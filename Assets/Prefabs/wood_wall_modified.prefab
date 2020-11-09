@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8221544377239886491}
   - component: {fileID: 5023502156128408894}
   - component: {fileID: 7085261525805539828}
+  - component: {fileID: 1548908984761182917}
   m_Layer: 0
   m_Name: wood_wall_modified
   m_TagString: Untagged
@@ -59,8 +60,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 3358005850063296056, guid: 1fe7da6131d576443b10fbfcfe6a64b6, type: 3}
-  - {fileID: 6174013330062295849, guid: 1fe7da6131d576443b10fbfcfe6a64b6, type: 3}
-  - {fileID: -3096923569255133051, guid: 1fe7da6131d576443b10fbfcfe6a64b6, type: 3}
+  - {fileID: 2100000, guid: 1fe0bf56d0e15604689d9bae86d0c047, type: 2}
+  - {fileID: 2100000, guid: 13ceee64ceec99b4c83bc82e593822e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1548908984761182917
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8742361682993348641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.611284, y: 10.16, z: 1.1435628}
+  m_Center: {x: -0.03628421, y: 4.7625, z: 0.010445088}

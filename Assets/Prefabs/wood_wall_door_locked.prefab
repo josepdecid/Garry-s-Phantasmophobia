@@ -93,55 +93,6 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!65 &6162463580001444277
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432299325404796587}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.020176137, y: 0.003227463, z: 0.051024407}
-  m_Center: {x: -0.010095751, y: -0.0005923941, z: -0.0000000018626447}
---- !u!95 &6162463580001444276
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432299325404796587}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c6b026d4f73ef19409feed1391f6868c, type: 3}
-  m_Controller: {fileID: 9100000, guid: a6b3a14f5acc5534099b57d1f7737a9a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6162463580001444278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432299325404796587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 062a40d6d663a6843b21b3156672f474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openAnimationName: DoorOpen
-  closeAnimationName: DoorClose
-  timeToShowUI: 1
-  showDoorLockedUI: {fileID: 6162463579408067708}
-  doorUnlocked: 0
 --- !u!1 &6162463580442852489
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,8 +155,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3096923569255133051, guid: fcce61f5ef7b279458223be741bdf42a, type: 3}
-  - {fileID: 6174013330062295849, guid: fcce61f5ef7b279458223be741bdf42a, type: 3}
+  - {fileID: 2100000, guid: 13ceee64ceec99b4c83bc82e593822e9, type: 2}
+  - {fileID: 2100000, guid: 1fe0bf56d0e15604689d9bae86d0c047, type: 2}
   - {fileID: 3358005850063296056, guid: fcce61f5ef7b279458223be741bdf42a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -266,6 +217,55 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.6, y: 1.8, z: 1}
   m_Center: {x: -0.4, y: 8.8, z: 0}
+--- !u!65 &6162463580001444277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432299325404796587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020176137, y: 0.003227463, z: 0.051024407}
+  m_Center: {x: -0.010095751, y: -0.0005923941, z: -0.0000000018626447}
+--- !u!95 &6162463580001444276
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432299325404796587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c6b026d4f73ef19409feed1391f6868c, type: 3}
+  m_Controller: {fileID: 9100000, guid: a6b3a14f5acc5534099b57d1f7737a9a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6162463580001444278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432299325404796587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062a40d6d663a6843b21b3156672f474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openAnimationName: DoorOpen
+  closeAnimationName: DoorClose
+  timeToShowUI: 1
+  showDoorLockedUI: {fileID: 6162463579408067708}
+  doorUnlocked: 0
 --- !u!1001 &6162463580746804218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,6 +343,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 160.06166
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9e8837b08019a5f4d81fdc73cf633e28,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a21eb46837654f4f84d01d31001741d, type: 2}
     - target: {fileID: 919132149155446097, guid: 9e8837b08019a5f4d81fdc73cf633e28,
         type: 3}
       propertyPath: m_Name
