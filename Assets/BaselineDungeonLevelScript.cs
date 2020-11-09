@@ -60,7 +60,7 @@ public class BaselineDungeonLevelScript : MonoBehaviour
     public void BuildDungeonFloor() {
         
         // First cleanup 
-        CleanUpFloor();
+        // CleanUpFloor();
 
         /// Spawn multiple planes in x-z plane
         for(int x = 0; x < sizeX; x++) {
@@ -73,8 +73,8 @@ public class BaselineDungeonLevelScript : MonoBehaviour
 
                 // Set parent, scale and position
                 plane.transform.SetParent(transform);
-                plane.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                plane.transform.position = new Vector3(2.5f + x * 5, 0, 2.5f + z * 5);
+                plane.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+                plane.transform.position = new Vector3(3.0f + x * 6, 0, 3.0f + z * 6);
 
                 // Add to list for tracking
                 planes.Add(label, plane);
