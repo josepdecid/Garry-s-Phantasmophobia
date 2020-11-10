@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractiveObject
   - DoorButton
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -17,24 +18,24 @@ TagManager:
   - 
   - Door
   - Walls
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor_Outside
+  - Floor_Room_Bed
+  - Floor_Room_Bed_2
+  - Floor_Room_Bath
+  - Floor_Room_Bath_2
+  - Floor_Room_Meadow
+  - Floor_Room_Meadow_2
+  - Floor_Room_Meadow_3
+  - Floor_Room_Saloon
+  - Floor_Room_Saloon_2
+  - Floor_Room_Saloon_3
+  - Floor_Room_Saloon_4
+  - Floor_Room_Cabinet
+  - Floor_Room_Cabinet_2
+  - Floor_Room_Cabinet_3
+  - Floor_Room_Kitchen
+  - Floor_Room_Kitchen_2
+  - Floor_Room_Kitchen_3
   - 
   - 
   - 
