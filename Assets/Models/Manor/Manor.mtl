@@ -1,0 +1,47 @@
+newmtl Preview
+Ns 50
+Ka 0 0 0
+Kd 0.83343 0.569872 0.619739
+Ks 0.0668905 0.0341929 0.0996673
+newmtl 05_-_Borders
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.0666667 0.0666667 0.0666667
+map_Kd BordersManor1.jpg
+newmtl 03_-_Floor
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.152941 0.152941 0.152941
+map_Kd FloorManor1.jpg
+newmtl 01_-_Red
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.0862745 0.0862745 0.0862745
+map_Kd WallsManor1.jpg
+newmtl 02_-_Roof
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.0862745 0.0862745 0.0862745
+map_Kd RoofManor1.jpg
+newmtl 04_-_Pillars
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.101961 0.101961 0.101961
+map_Kd PillarsManor1.jpg
+newmtl 01_-_Window
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.0156863 0.0156863 0.0156863
+map_Kd WindowsManor1.jpg
+newmtl 02_-_Window
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.0862745 0.0862745 0.0862745
+map_Kd WindowsManor2.jpg

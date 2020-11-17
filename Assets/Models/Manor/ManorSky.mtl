@@ -1,0 +1,17 @@
+newmtl Preview
+Ns 50
+Ka 0 0 0
+Kd 0.615314 0.594256 0.946013
+Ks 0.12559 0.0123051 0.14995
+newmtl 15_-_Sky
+Ns 10
+Ka 0.32549 0.32549 0.32549
+Kd 0.8 0.8 0.8
+Ks 0.0196078 0.0196078 0.0196078
+map_Kd Snowz001.jpg
+newmtl Ground
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.0862745 0.0862745 0.0862745
+map_Kd Snow0AE1.jpg

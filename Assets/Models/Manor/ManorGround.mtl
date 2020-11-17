@@ -1,0 +1,29 @@
+newmtl Preview
+Ns 50
+Ka 0 0 0
+Kd 0.437208 0.460982 0.479781
+Ks 0.146135 0.16469 0.041493
+newmtl 10_-_Tree
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.203922 0.203922 0.203922
+map_Kd Tree1.jpg
+newmtl 08_-_RustyFence
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.137255 0.137255 0.137255
+map_Kd RustyFence1.jpg
+newmtl 09_-_Stone
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.360784 0.360784 0.360784
+map_Kd Stone1.jpg
+newmtl 07_-_Ground
+Ns 10
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.137255 0.137255 0.137255
+map_Kd ManorGround1.jpg
