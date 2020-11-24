@@ -6,20 +6,20 @@ using UnityEngine;
 public class Generator : MonoBehaviour
 {
     [SerializeField]
-    private int temptativeSize = 3;
+    private int temptativeSize = 10;
     [SerializeField]
-    private int doorStubbornness = 3;
+    private int doorStubbornness = 10;
     [SerializeField]
-    private int roomStubbornness = 3;
+    private int roomStubbornness = 10;
 
     [SerializeField]
     private int tileSize = 6;
     [SerializeField]
     private int heightSize = 4;
     [SerializeField]
-    private int maxX = 5;
+    private int maxX = 40;
     [SerializeField]
-    private int maxY = 5;
+    private int maxY = 40;
 
     void Start()
     {
@@ -41,7 +41,8 @@ public class Generator : MonoBehaviour
         while (numRoomsSpawned <= temptativeSize)
         {
             numRoomsSpawned += 1;
-            Door doorToSpawnFrom = openDoors[2]; //TODO: CHOOSE RANDOM DOOR
+            int randOpen = UnityEngine.Random.Range(0, openDoors.Count);
+            Door doorToSpawnFrom = openDoors[randOpen];
             
             int attemptsToSpawnFromDoor = 0;
             bool validSpawn = false;
@@ -55,7 +56,9 @@ public class Generator : MonoBehaviour
                 while (!validSpawn && attemptsToSpawnRoom < roomStubbornness)
                 {
                     attemptsToSpawnRoom += 1;
-                    Door targetJoinDoor = targetRoomDoors[1]; //TODO: CHOOSE RANDOM DOOR
+
+                    int randTarget = UnityEngine.Random.Range(0, targetRoomDoors.Count);
+                    Door targetJoinDoor = targetRoomDoors[randTarget];
 
                     Vector2Int roomCoordinatesOriginPos;
                     Tuple<Vector2Int, Vector2Int> roomBoundaries;
@@ -67,6 +70,7 @@ public class Generator : MonoBehaviour
                     {
                         // TODO: SPAWN KEYS, FIX DOORS MATCHING
                         grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors);
+                        openDoors.AddRange(doors);
                     }
                 }
             }

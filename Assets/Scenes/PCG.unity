@@ -247,13 +247,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5340660083043cf40be9b78abacf46e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temptativeSize: 3
-  doorStubbornness: 3
-  roomStubbornness: 3
+  temptativeSize: 10
+  doorStubbornness: 10
+  roomStubbornness: 10
   tileSize: 6
   heightSize: 4
-  maxX: 5
-  maxY: 5
+  maxX: 40
+  maxY: 40
 --- !u!1 &1718248774
 GameObject:
   m_ObjectHideFlags: 0
