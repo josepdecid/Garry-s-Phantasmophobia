@@ -2,33 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class State : MonoBehaviour
+abstract public class State
 {
-    protected Animator animator;
-    public State(Animator animator)
+    protected GameObject _ghost;
+    protected Animator _animator;
+    
+    public State(GameObject ghost, Animator animator)
     {
-        this.animator = animator;
+        this._ghost = ghost;
+        this._animator = animator;
     }
 
     public virtual void Enter()
     {
-        
-        Debug.Log("State type: " + this.GetType());
-    }
-
-    public virtual void HandleInput()
-    {
-
-    }
-
-    public virtual void StateUpdate()
-    {
-
+        Debug.Log($"Entering {this.GetType()} state.");
     }
 
     public virtual void Exit()
     {
-
+        Debug.Log($"Exiting {this.GetType()} state.");
     }
 
+    public abstract void StateUpdate();
+
+    public virtual void StateCollisionEnter(Collision collision) {
+        Debug.Log(collision);
+    }
 }
