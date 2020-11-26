@@ -19,6 +19,9 @@ public class FiniteStateMachine : MonoBehaviour
     [SerializeField]
     private float searchTimeout = 10.0f;
 
+    [SerializeField]
+    private bool modeDebug = false;
+
     private State __currentState;
     private AnimatorClipInfo[] __currentClipInfo;
     private string __clipName;
@@ -60,16 +63,40 @@ public class FiniteStateMachine : MonoBehaviour
     }
 
     private State GetStateClass(string stateName) {
+        if (modeDebug)
+        {
+            Color debugColor = GetStateColor(stateName);
+            ghost.GetComponent<MeshRenderer>().material.color = debugColor;
+        }
+
         switch (stateName)
         {
             case "Patrol":
                 return new PatrolState(ghost, animator, patrolSpeed); 
             case "Flee":
                 return new FleeState(ghost, animator); 
+            case "Search":
+                return new SearchState(ghost, animator, searchTimeout);
             case "Hide":
                 return new HideState(ghost, animator, hideTimeout);
             default:
                 return null;
+        }
+    }
+
+    private Color GetStateColor(string stateName) {
+        switch (stateName)
+        {
+            case "Patrol":
+                return Color.blue; 
+            case "Flee":
+                return Color.red; 
+            case "Search":
+                return Color.yellow;
+            case "Hide":
+                return Color.green;
+            default:
+                return Color.black;
         }
     }
 }

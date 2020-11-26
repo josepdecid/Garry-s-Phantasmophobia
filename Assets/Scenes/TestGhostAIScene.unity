@@ -470,6 +470,7 @@ MonoBehaviour:
   fleeSpeed: 1
   hideTimeout: 10
   searchTimeout: 10
+  modeDebug: 1
 --- !u!4 &568820649
 Transform:
   m_ObjectHideFlags: 0

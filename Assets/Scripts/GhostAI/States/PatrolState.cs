@@ -25,6 +25,10 @@ public class PatrolState : State
 
     public override void StateUpdate()
     {
+        // Go to Flee state if ghost is inside player's FoV
+        bool insideFov = Utils.IsTargetVisible(Camera.main, _ghost);
+        _animator.SetBool("insideFoV", insideFov);
+
         __rb.AddForce(Vector3.forward * __speed);
     }
 

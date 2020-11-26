@@ -13,9 +13,14 @@ public class SearchState : State
 
     public override void StateUpdate()
     {
-        // Check if enters inside player's FoV
+        // Go to Flee state if ghost is inside player's FoV
+        bool insideFov = Utils.IsTargetVisible(Camera.main, _ghost);
+        _animator.SetBool("insideFoV", insideFov);
 
-        __timeout += Time.deltaTime;
+        // TODO: Go to Hide state if a spot is found
+
+        // Go to patrol state after a timeout if no spot is found
+        __timeout -= Time.deltaTime;
         _animator.SetFloat("searchTimeout", __timeout);
     }
 }
