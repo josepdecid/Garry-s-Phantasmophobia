@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 
@@ -8,7 +7,10 @@ public class Grid : MonoBehaviour
     private int tileSize;
     private int heightSize;
     private Vector2Int maxSize;
+
+    //TODO: Change this for a Matrix of rooms (Grid)
     private List<Room> rooms;
+
     private int floor;
 
     public Grid(int tileSize, int heightSize, Vector2Int maxSize, int floor)
@@ -18,18 +20,18 @@ public class Grid : MonoBehaviour
         this.maxSize = maxSize;
         this.rooms = new List<Room>();
         this.floor = floor;
-       
     }
 
     public void SpawnRoom(GameObject roomPrefab, Room room, Vector2Int roomPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors)
     {
-        room.UpdateRoom(roomPos, roomBoundaries, rotation, doors);
-        this.rooms.Add(room);
         Vector3 origin = new Vector3((-tileSize / 2), 0, (-tileSize / 2));
         Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
         Vector3 finalPos = rotMatrix * origin;
-        finalPos = finalPos - origin + new Vector3(+room.GetRoomPos().x * tileSize, floor * heightSize, (-tileSize / 2) + room.GetRoomPos().y * tileSize);
-        Instantiate(roomPrefab, finalPos, rotMatrix);
+        finalPos = finalPos - origin + new Vector3(roomPos.x * tileSize, floor * heightSize, roomPos.y * tileSize);
+
+        room = Instantiate(roomPrefab, finalPos, rotMatrix).GetComponent<Room>();
+        room.UpdateRoom(roomPos, roomBoundaries, rotation, doors);
+        this.rooms.Add(room);
     }
 
     public (bool, Vector2Int, Tuple<Vector2Int, Vector2Int>, float, List<Door>) CheckRoomSpawnValidity(Room targetRoom, Door doorToSpawnFrom, Door targetJoinDoor)
@@ -144,6 +146,7 @@ public class Grid : MonoBehaviour
 
     private bool OutOfBounds(Tuple<Vector2Int, Vector2Int> coordinates)
     {
+        //TODO: Implement Out of Bounds (once the grid is a matrix instead of a list of rooms)
         return false;
     }
 }

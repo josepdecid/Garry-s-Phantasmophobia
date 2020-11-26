@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
-public class Door
+public class Door : MonoBehaviour
 {
+    [SerializeField]
     private Vector2Int innerPos;
+    [SerializeField]
     private Vector2Int outerPos;
+
+    //TODO: Add logic for the key and unlocking/locking management
 
     public Door(Vector2Int innerPos, Vector2Int outerPos)
     {

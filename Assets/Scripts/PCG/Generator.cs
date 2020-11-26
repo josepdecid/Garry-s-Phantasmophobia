@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,8 +34,6 @@ public class Generator : MonoBehaviour
         grid.SpawnRoom(iniRoomPrefab, iniRoom, iniPos, iniRoom.GetRoomBoundaries(), iniOrientation, iniRoom.GetDoors());
         openDoors.AddRange(iniRoom.GetDoors());
 
-        //return;
-
         int numRoomsSpawned = 1;
         while (numRoomsSpawned <= temptativeSize)
         {
@@ -65,7 +62,6 @@ public class Generator : MonoBehaviour
                     float rotation;
                     List<Door> doors;
                     (validSpawn, roomCoordinatesOriginPos, roomBoundaries, rotation, doors) = grid.CheckRoomSpawnValidity(targetRoom, doorToSpawnFrom, targetJoinDoor);
-
                     if (validSpawn)
                     {
                         // TODO: SPAWN KEYS, FIX DOORS MATCHING
@@ -83,8 +79,9 @@ public class Generator : MonoBehaviour
 
     private (GameObject, Room) randomChooseRoom()
     {
-        GameObject roomPrefab = (GameObject)Resources.Load("Prefabs/Room_Example", typeof(GameObject));
-        return (roomPrefab, new Room());
+        string randRoom = UnityEngine.Random.Range(1, 4).ToString();
+        GameObject roomPrefab = (GameObject)Resources.Load("Prefabs/Room_Example"+randRoom, typeof(GameObject));
+        return (roomPrefab, roomPrefab.GetComponent<Room>());
     }
 }
 
