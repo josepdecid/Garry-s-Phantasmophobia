@@ -5,22 +5,21 @@ using UnityEngine;
 public class PatrolState : State
 {
     private float __speed;
-    private Vector3 __offset;
-    private Rigidbody __rb;
+    private Vector3 __goalPosition;
+    private UnityEngine.AI.NavMeshAgent __agent;
 
     public PatrolState(GameObject player, GameObject ghost, Animator animator, float speed) : base(player, ghost, animator)
     {
         __speed = speed;
+        __agent = _ghost.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        __rb = _ghost.GetComponent<Rigidbody>();
-
-        Vector2 direction = new Vector2(Random.value, Random.value);
-        __offset = new Vector3(direction.x, 0, direction.y);
+        __agent.autoBraking = false;
+        __goalPosition = GenerateRandomPoint(5);
     }
 
     public override void StateUpdate()
@@ -29,12 +28,17 @@ public class PatrolState : State
         bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
         _animator.SetBool("insideFoV", insideFov);
 
-        __rb.AddForce(Vector3.forward * __speed);
+        if (!__agent.pathPending && __agent.remainingDistance < 0.5f)
+        {
+            __goalPosition = GenerateRandomPoint(5);
+            __agent.destination = __goalPosition;
+        }
     }
 
-    public override void StateCollisionEnter(Collision collision)
+    private Vector3 GenerateRandomPoint(float radius)
     {
-        Vector2 direction = new Vector2(Random.value, Random.value);
-        __offset = new Vector3(direction.x, 0, direction.y);
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += _ghost.transform.position;
+        return randomDirection;
     }
 }
