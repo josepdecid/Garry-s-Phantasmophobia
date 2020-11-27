@@ -13,21 +13,21 @@ class Utils
         if (Math.Abs(angle) <= fieldOfView)
         {
             RaycastHit hit;
+
             if (Physics.Raycast(sourcePosition, direction, out hit, distance))
             {
                 Debug.DrawRay(sourcePosition, direction * hit.distance, Color.yellow);
-                Debug.Log($"Did Hit '{hit.collider.gameObject.name}'");
-
-                if (hit.collider.gameObject.name == target.name) return true;
+            
+                if (hit.collider.gameObject.name == target.name)
+                {
+                    Debug.Log($"Did Hit '{target.name}'");
+                    return true;
+                }
+                else
+                {
+                    Debug.Log($"Dit hit another object");
+                }
             }
-            else 
-            {
-                Debug.Log("Did not hit");
-            }
-        }
-        else 
-        {
-            Debug.Log("Outside FoV");
         }
 
         return false;

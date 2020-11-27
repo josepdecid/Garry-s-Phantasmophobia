@@ -37,7 +37,7 @@ public class FiniteStateMachine : MonoBehaviour
         __currentState.Enter();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         __currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
         string currentClipName = __currentClipInfo[0].clip.name; 

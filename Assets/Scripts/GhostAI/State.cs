@@ -19,13 +19,16 @@ abstract public class State
 
         this._ghost = ghost;
         this._agent = ghost.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        
+
         this._animator = animator;
     }
 
     public virtual void Enter()
     {
         Debug.Log($"Entering {this.GetType()} state.");
+
+        _agent.isStopped = true;
+        _agent.ResetPath();
     }
 
     public virtual void Exit()

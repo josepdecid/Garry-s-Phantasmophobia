@@ -18,7 +18,7 @@ public class SearchState : State
         _animator.SetBool("insideFoV", insideFov);
 
         // Go to Hide state if a spot is found
-        bool nearSpot = _agent.remainingDistance < 1.0f;
+        bool nearSpot = _agent.remainingDistance < 2.0f;
         _animator.SetBool("spotFound", nearSpot);
 
         // Go to patrol state after a timeout if no spot is found
