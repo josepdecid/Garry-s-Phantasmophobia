@@ -6,7 +6,10 @@ abstract public class State
 {
     protected GameObject _player;
     protected Camera _camera;
+    
     protected GameObject _ghost;
+    protected UnityEngine.AI.NavMeshAgent _agent;
+
     protected Animator _animator;
     
     public State(GameObject player, GameObject ghost, Animator animator)
@@ -15,6 +18,8 @@ abstract public class State
         this._camera = player.GetComponentInChildren<Camera>();
 
         this._ghost = ghost;
+        this._agent = ghost.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        
         this._animator = animator;
     }
 

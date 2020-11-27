@@ -11,14 +11,13 @@ public class PatrolState : State
     public PatrolState(GameObject player, GameObject ghost, Animator animator, float speed) : base(player, ghost, animator)
     {
         __speed = speed;
-        __agent = _ghost.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        __agent.autoBraking = false;
+        _agent.autoBraking = false;
         __goalPosition = GenerateRandomPoint(5);
     }
 
@@ -28,10 +27,10 @@ public class PatrolState : State
         bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
         _animator.SetBool("insideFoV", insideFov);
 
-        if (!__agent.pathPending && __agent.remainingDistance < 0.5f)
+        if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
         {
             __goalPosition = GenerateRandomPoint(5);
-            __agent.destination = __goalPosition;
+            _agent.destination = __goalPosition;
         }
     }
 
