@@ -6,6 +6,8 @@ using UnityEngine;
 public class FiniteStateMachine : MonoBehaviour
 {
     [SerializeField]
+    private GameObject player;
+    [SerializeField]
     private GameObject ghost;
     [SerializeField]
     private Animator animator;
@@ -31,7 +33,7 @@ public class FiniteStateMachine : MonoBehaviour
         animator.SetFloat("hideTimeout", hideTimeout);
         animator.SetFloat("searchTimeout", searchTimeout);
 
-        __currentState = new PatrolState(ghost, animator, patrolSpeed);
+        __currentState = new PatrolState(player, ghost, animator, patrolSpeed);
         __currentState.Enter();
     }
 
@@ -72,13 +74,13 @@ public class FiniteStateMachine : MonoBehaviour
         switch (stateName)
         {
             case "Patrol":
-                return new PatrolState(ghost, animator, patrolSpeed); 
+                return new PatrolState(player, ghost, animator, patrolSpeed); 
             case "Flee":
-                return new FleeState(ghost, animator); 
+                return new FleeState(player, ghost, animator); 
             case "Search":
-                return new SearchState(ghost, animator, searchTimeout);
+                return new SearchState(player, ghost, animator, searchTimeout);
             case "Hide":
-                return new HideState(ghost, animator, hideTimeout);
+                return new HideState(player, ghost, animator, hideTimeout);
             default:
                 return null;
         }

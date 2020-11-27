@@ -4,11 +4,16 @@ using UnityEngine;
 
 abstract public class State
 {
+    protected GameObject _player;
+    protected Camera _camera;
     protected GameObject _ghost;
     protected Animator _animator;
     
-    public State(GameObject ghost, Animator animator)
+    public State(GameObject player, GameObject ghost, Animator animator)
     {
+        this._player = player;
+        this._camera = player.GetComponentInChildren<Camera>();
+
         this._ghost = ghost;
         this._animator = animator;
     }

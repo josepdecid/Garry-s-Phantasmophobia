@@ -6,7 +6,7 @@ public class SearchState : State
 {
     private float __timeout;
 
-    public SearchState(GameObject ghost, Animator animator, float timeout):base(ghost, animator)
+    public SearchState(GameObject player, GameObject ghost, Animator animator, float timeout) : base(player, ghost, animator)
     {
         __timeout = timeout;
     }
@@ -14,7 +14,7 @@ public class SearchState : State
     public override void StateUpdate()
     {
         // Go to Flee state if ghost is inside player's FoV
-        bool insideFov = Utils.IsTargetVisible(Camera.main, _ghost);
+        bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
         _animator.SetBool("insideFoV", insideFov);
 
         // TODO: Go to Hide state if a spot is found

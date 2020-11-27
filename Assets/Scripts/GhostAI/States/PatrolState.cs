@@ -8,7 +8,7 @@ public class PatrolState : State
     private Vector3 __offset;
     private Rigidbody __rb;
 
-    public PatrolState(GameObject ghost, Animator animator, float speed) : base(ghost, animator)
+    public PatrolState(GameObject player, GameObject ghost, Animator animator, float speed) : base(player, ghost, animator)
     {
         __speed = speed;
     }
@@ -26,7 +26,7 @@ public class PatrolState : State
     public override void StateUpdate()
     {
         // Go to Flee state if ghost is inside player's FoV
-        bool insideFov = Utils.IsTargetVisible(Camera.main, _ghost);
+        bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
         _animator.SetBool("insideFoV", insideFov);
 
         __rb.AddForce(Vector3.forward * __speed);
