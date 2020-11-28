@@ -68,7 +68,7 @@ public class FiniteStateMachine : MonoBehaviour
         if (modeDebug)
         {
             Color debugColor = GetStateColor(stateName);
-            ghost.GetComponent<MeshRenderer>().material.color = debugColor;
+            ghost.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
         }
 
         switch (stateName)

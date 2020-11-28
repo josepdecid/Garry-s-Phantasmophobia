@@ -22,6 +22,8 @@ public class FleeState : State
         }
     }
 
+    // TODO: Strange behavior when trapped in a corner
+    // Instead of going always towards the opposite direction, use an "heuristic" to go to more "covered" places.
     private void Flee()
     {
         Vector3 ghostPosition = _ghost.transform.position;
