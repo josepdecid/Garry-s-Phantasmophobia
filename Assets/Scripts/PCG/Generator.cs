@@ -28,7 +28,7 @@ public class Generator : MonoBehaviour
     private void Generate(Vector2Int iniPos, int iniOrientation)
     {
         List<Door> openDoors = new List<Door>();
-        Grid grid = new Grid(tileSize, heightSize, new Vector2Int(maxX, maxY), 0);
+        Floor grid = new Floor(tileSize, heightSize, new Vector2Int(maxX, maxY), 0);
 
         (GameObject iniRoomPrefab, Room iniRoom) = randomChooseRoom();
         grid.SpawnRoom(iniRoomPrefab, iniRoom, iniPos, iniRoom.GetRoomBoundaries(), iniOrientation, iniRoom.GetDoors());
@@ -79,7 +79,7 @@ public class Generator : MonoBehaviour
 
     private (GameObject, Room) randomChooseRoom()
     {
-        string randRoom = UnityEngine.Random.Range(1, 4).ToString();
+        string randRoom = UnityEngine.Random.Range(1, 13).ToString();
         GameObject roomPrefab = (GameObject)Resources.Load("Prefabs/Room_Example"+randRoom, typeof(GameObject));
         return (roomPrefab, roomPrefab.GetComponent<Room>());
     }

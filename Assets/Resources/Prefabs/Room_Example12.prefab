@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 3560946113959643483}
   - component: {fileID: 148063782228397791}
   m_Layer: 0
-  m_Name: Room_Saloon_3
+  m_Name: Room_Example12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPos: {x: 0, y: 0}
   roomBottomLeft: {x: 0, y: 0}
-  roomTopRight: {x: 0, y: 0}
+  roomTopRight: {x: 1, y: 1}
   rotation: 0
   doors:
   - {fileID: 8478600474450459312}
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   innerPos: {x: 1, y: 0}
-  outerPos: {x: 1, y: -1}
+  outerPos: {x: 2, y: 0}
 --- !u!1001 &29645120743809457
 PrefabInstance:
   m_ObjectHideFlags: 0

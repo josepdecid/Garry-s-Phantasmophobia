@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867740be108a4624598f7fb496f2dcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  innerPos: {x: 0, y: 1}
-  outerPos: {x: 0, y: 2}
+  innerPos: {x: 1, y: 1}
+  outerPos: {x: 2, y: 1}
 --- !u!1 &7418477346876903950
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +285,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7418477347157574438}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -297,7 +297,7 @@ Transform:
   - {fileID: 3790840039930438284}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4696942415899034984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPos: {x: 0, y: 0}
   roomBottomLeft: {x: 0, y: 0}
-  roomTopRight: {x: 0, y: 0}
+  roomTopRight: {x: 1, y: 1}
   rotation: 0
   doors:
   - {fileID: 8440380424353308596}
@@ -681,8 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867740be108a4624598f7fb496f2dcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  innerPos: {x: 0, y: 0}
-  outerPos: {x: -1, y: 0}
+  innerPos: {x: 0, y: 1}
+  outerPos: {x: 0, y: 2}
 --- !u!1001 &5380976545129507626
 PrefabInstance:
   m_ObjectHideFlags: 0

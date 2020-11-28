@@ -21,7 +21,14 @@ public class Room : MonoBehaviour
         this.roomBottomLeft = roomBoundaries.Item1;
         this.roomTopRight = roomBoundaries.Item2;
         this.rotation = rotation;
-        this.doors = doors;
+
+        //TODO: CHECK IF SIZE OF BOTH LISTS ARE EQUAL
+        //TODO: CHECKING THAT WE ARE WORKING WITH SPAWNED DOORS
+        Debug.Log(this.doors[0].GetInstanceID());
+        for (int i=0; i<this.doors.Count; ++i) {
+            this.doors[i].SetInnerPos(doors[i].GetInnerPos());
+            this.doors[i].SetOuterPos(doors[i].GetOuterPos());
+        }
     }
 
     public Vector2Int GetRoomPos()

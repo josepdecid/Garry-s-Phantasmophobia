@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Grid : MonoBehaviour
+public class Floor : MonoBehaviour
 {
     private int tileSize;
     private int heightSize;
@@ -13,7 +13,7 @@ public class Grid : MonoBehaviour
 
     private int floor;
 
-    public Grid(int tileSize, int heightSize, Vector2Int maxSize, int floor)
+    public Floor(int tileSize, int heightSize, Vector2Int maxSize, int floor)
     {
         this.tileSize = tileSize;
         this.heightSize = heightSize;

@@ -24,4 +24,14 @@ public class Door : MonoBehaviour
     {
         return outerPos;
     }
+
+    public void SetInnerPos(Vector2Int innerPos)
+    {
+        this.innerPos = innerPos;
+    }
+
+    public void SetOuterPos(Vector2Int outerPos)
+    {
+        this.outerPos = outerPos;
+    }
 }

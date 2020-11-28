@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867740be108a4624598f7fb496f2dcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  innerPos: {x: 0, y: 0}
+  innerPos: {x: 1, y: 0}
   outerPos: {x: 1, y: 1}
 --- !u!1 &6715169667924486201
 GameObject:

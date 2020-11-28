@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPos: {x: 0, y: 0}
   roomBottomLeft: {x: 0, y: 0}
-  roomTopRight: {x: 0, y: 0}
+  roomTopRight: {x: 1, y: 0}
   rotation: 0
   doors:
   - {fileID: 7953815353594031135}
