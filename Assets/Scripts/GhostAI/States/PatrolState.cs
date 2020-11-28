@@ -8,10 +8,8 @@ public class PatrolState : State
     private Vector3 __goalPosition;
     private UnityEngine.AI.NavMeshAgent __agent;
 
-    public PatrolState(GameObject player, GameObject ghost, Animator animator, float speed) : base(player, ghost, animator)
-    {
-        __speed = speed;
-    }
+    public PatrolState(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
+        : base(player, ghost, animator, parameters) { }
 
     public override void Enter()
     {

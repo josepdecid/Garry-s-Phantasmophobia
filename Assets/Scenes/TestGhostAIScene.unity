@@ -504,11 +504,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2080726647}
   ghost: {fileID: 1485915508}
-  animator: {fileID: 1485915514}
   patrolSpeed: 0.5
-  fleeSpeed: 1
-  hideTimeout: 10
+  fleeSpeed: 2
+  numSamples: 50
+  samplingRadius: 20
+  maxSamplingDistance: 2
   searchTimeout: 10
+  hideTimeout: 10
   modeDebug: 1
 --- !u!4 &568820649
 Transform:
@@ -2538,6 +2540,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3238705681424260525, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_MouseLook.lockCursor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
       propertyPath: m_Name
