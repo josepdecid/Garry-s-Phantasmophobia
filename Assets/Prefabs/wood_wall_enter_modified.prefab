@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 977017956209792516}
   - component: {fileID: 2974084830475184883}
   - component: {fileID: 7049534495094086396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wood_wall_enter_modified
   m_TagString: Untagged
   m_Icon: {fileID: 0}

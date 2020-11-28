@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4563238969686043166}
   - component: {fileID: 8927542026374307011}
   - component: {fileID: 4718229570383758318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wood_wall_window_modified
   m_TagString: Untagged
   m_Icon: {fileID: 0}
