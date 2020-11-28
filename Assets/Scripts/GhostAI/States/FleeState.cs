@@ -18,23 +18,50 @@ public class FleeState : State
         float distance = Vector3.Distance(_ghost.transform.position, _player.transform.position);
         if (distance < 5.0f || (!_agent.pathPending && _agent.remainingDistance < 0.5f))
         {
-            Flee();
+            Vector3 destination = GetFleePoint(10, 10);
+            _agent.destination = destination;
         }
     }
 
-    // TODO: Strange behavior when trapped in a corner
-    // Instead of going always towards the opposite direction, use an "heuristic" to go to more "covered" places.
-    private void Flee()
+    private Vector3 GetFleePoint(int numSamples, int radius)
     {
         Vector3 ghostPosition = _ghost.transform.position;
         Vector3 playerPosition = _player.transform.position;
         _ghost.transform.rotation = Quaternion.LookRotation(ghostPosition - playerPosition);
- 
-        Vector3 runTo = ghostPosition + _ghost.transform.forward * 2;
-        
+
+        float bestGoodness = -Mathf.Infinity;
+        Vector3 bestDestination = _ghost.transform.position;
         NavMeshHit hit;
-        NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetAreaFromName("Walkable"));
+
+        for (int i = 0; i < numSamples; ++i) 
+        {
+            Vector3 randomPos = Random.insideUnitSphere * radius + ghostPosition;
+
+            NavMesh.SamplePosition(randomPos, out hit, radius, 1 << NavMesh.GetAreaFromName("Walkable"));
+            float goodness = CalculateDestinationGoodness(hit.position);
+            if (goodness > bestGoodness)
+            {
+                bestGoodness = goodness;
+                bestDestination = hit.position;
+            }
+        }
         
-        _agent.destination = hit.position;
+        return bestDestination;
+    }
+
+    private float CalculateDestinationGoodness(Vector3 destination)
+    {
+        // Maximize distance from player
+        float distance = Vector3.Distance(_player.transform.position, destination);
+        float goodness = distance;
+        Debug.Log(destination);
+
+        // 
+        if (Utils.IsDestinationHidden(_player, destination, _ghost.name, 60, distance))
+        {
+            goodness += 100;
+        }
+
+        return goodness;
     }
 }

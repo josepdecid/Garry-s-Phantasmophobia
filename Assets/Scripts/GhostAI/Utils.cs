@@ -13,10 +13,11 @@ class Utils
         if (Math.Abs(angle) <= fieldOfView)
         {
             RaycastHit hit;
-            if (Physics.Raycast(sourcePosition, direction, out hit, distance))
-            {
-                Debug.DrawRay(sourcePosition, direction * hit.distance, Color.yellow);
+            bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
             
+            if (isHitting)
+            {
+                Debug.DrawRay(sourcePosition, direction * hit.distance, Color.yellow);      
                 if (hit.collider.gameObject.name == target.name)
                 {
                     Debug.Log($"Did Hit {target.tag}{target.name}");
@@ -26,5 +27,23 @@ class Utils
         }
 
         return false;
+    }
+
+    public static bool IsDestinationHidden(GameObject player, Vector3 destination, string targetName, float fieldOfView, float distance)
+    {
+        Vector3 sourcePosition = player.transform.position;
+        Vector3 direction = destination - sourcePosition;
+        float angle = Vector3.Angle(direction, player.transform.forward);
+
+        if (Math.Abs(angle) <= fieldOfView)
+        {
+            RaycastHit hit;
+            bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
+            Debug.DrawRay(sourcePosition, direction * distance, Color.red); 
+
+            return !isHitting || (isHitting && hit.collider.gameObject.name != targetName);
+        }
+
+        return true;
     }
 }

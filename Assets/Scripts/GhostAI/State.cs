@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 abstract public class State
@@ -18,7 +19,7 @@ abstract public class State
         this._camera = player.GetComponentInChildren<Camera>();
 
         this._ghost = ghost;
-        this._agent = ghost.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        this._agent = ghost.GetComponent<NavMeshAgent>();
 
         this._animator = animator;
     }
