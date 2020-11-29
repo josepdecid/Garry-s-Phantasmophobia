@@ -22,7 +22,7 @@ public class Generator : MonoBehaviour
 
     void Start()
     {
-        Generate(new Vector2Int(0,0), 0);
+        Generate(new Vector2Int(0+(maxX/2),0), 0);
     }
 
     private void Generate(Vector2Int iniPos, int iniOrientation)
@@ -31,12 +31,15 @@ public class Generator : MonoBehaviour
         Floor grid = new Floor(tileSize, heightSize, new Vector2Int(maxX, maxY), 0);
 
         (GameObject iniRoomPrefab, Room iniRoom) = randomChooseRoom();
-        grid.SpawnRoom(iniRoomPrefab, iniRoom, iniPos, iniRoom.GetRoomBoundaries(), iniOrientation, iniRoom.GetDoors());
+
+        (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
+        iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors);
         openDoors.AddRange(iniRoom.GetDoors());
 
         int numRoomsSpawned = 1;
         while (numRoomsSpawned <= temptativeSize)
         {
+            Debug.Log("length open doors: "+ openDoors.Count.ToString());
             numRoomsSpawned += 1;
             int randOpen = UnityEngine.Random.Range(0, openDoors.Count);
             Door doorToSpawnFrom = openDoors[randOpen];
@@ -65,8 +68,9 @@ public class Generator : MonoBehaviour
                     if (validSpawn)
                     {
                         // TODO: SPAWN KEYS, FIX DOORS MATCHING
-                        grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors);
-                        openDoors.AddRange(doors);
+                        Room room = grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors);
+                        openDoors.Remove(doorToSpawnFrom);
+                        openDoors.AddRange(room.GetDoors());
                     }
                 }
             }
