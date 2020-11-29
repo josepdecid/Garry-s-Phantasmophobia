@@ -30,7 +30,7 @@ public class Generator : MonoBehaviour
         List<Door> openDoors = new List<Door>();
         Floor grid = new Floor(tileSize, heightSize, new Vector2Int(maxX, maxY), 0);
 
-        (GameObject iniRoomPrefab, Room iniRoom) = randomChooseRoom();
+        (GameObject iniRoomPrefab, Room iniRoom) = getPrefabRoom("0");
 
         (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
         iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors);
