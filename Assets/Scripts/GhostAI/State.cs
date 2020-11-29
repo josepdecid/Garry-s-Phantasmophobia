@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 abstract public class State
@@ -8,19 +9,23 @@ abstract public class State
     protected Camera _camera;
     
     protected GameObject _ghost;
-    protected UnityEngine.AI.NavMeshAgent _agent;
+    protected NavMeshAgent _agent;
 
     protected Animator _animator;
     
-    public State(GameObject player, GameObject ghost, Animator animator)
+    protected StateParams _parameters = null;
+    
+    public State(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
     {
         this._player = player;
         this._camera = player.GetComponentInChildren<Camera>();
 
         this._ghost = ghost;
-        this._agent = ghost.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        this._agent = ghost.GetComponent<NavMeshAgent>();
 
         this._animator = animator;
+
+        this._parameters = parameters;
     }
 
     public virtual void Enter()
@@ -29,16 +34,20 @@ abstract public class State
 
         _agent.isStopped = true;
         _agent.ResetPath();
+
+        if (_parameters.isDebug) DrawDebugInfo();
     }
 
     public virtual void Exit()
     {
         Debug.Log($"Exiting {this.GetType()} state.");
+
+        if (_parameters.isDebug) DestroyDebugInfo();
     }
 
     public abstract void StateUpdate();
 
-    public virtual void StateCollisionEnter(Collision collision) {
-        Debug.Log(collision);
-    }
+    protected virtual void DrawDebugInfo() {}
+
+    protected virtual void DestroyDebugInfo() {}
 }

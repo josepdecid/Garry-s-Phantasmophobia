@@ -84,7 +84,12 @@ public class Generator : MonoBehaviour
     private (GameObject, Room) randomChooseRoom()
     {
         string randRoom = UnityEngine.Random.Range(1, 13).ToString();
-        GameObject roomPrefab = (GameObject)Resources.Load("Prefabs/Room_Example"+randRoom, typeof(GameObject));
+        return getPrefabRoom(randRoom);
+    }
+
+    private (GameObject, Room) getPrefabRoom(string r)
+    {
+        GameObject roomPrefab = (GameObject)Resources.Load("Prefabs/Room_Example"+r, typeof(GameObject));
         return (roomPrefab, roomPrefab.GetComponent<Room>());
     }
 }

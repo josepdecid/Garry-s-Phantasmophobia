@@ -4,42 +4,65 @@ using UnityEditor.Animations;
 using UnityEngine;
 
 public class FiniteStateMachine : MonoBehaviour
-{
+{   
+    [Header("Agents")]
     [SerializeField]
-    private GameObject player;
+    private GameObject player = null;
     [SerializeField]
-    private GameObject ghost;
-    [SerializeField]
-    private Animator animator;
+    private GameObject ghost = null;
 
+    [Header("Patrol Parameters")]
     [SerializeField]
     private float patrolSpeed = 1.0f;
+
+    [Header("Flee Parameters")]
     [SerializeField]
     private float fleeSpeed = 1.0f;
     [SerializeField]
-    private float hideTimeout = 10.0f;
+    private int numSamples = 10;
+    [SerializeField]
+    private float samplingRadius = 5.0f;
+    [SerializeField]
+    private float maxSamplingDistance = 2.0f;
+
+    [Header("Search Parameters")]
     [SerializeField]
     private float searchTimeout = 10.0f;
 
+    [Header("Hide Parameters")]
+    [SerializeField]
+    private float hideTimeout = 10.0f;
+
+    [Header("MISC")]
     [SerializeField]
     private bool modeDebug = false;
 
+    private Animator __animator;
     private State __currentState;
     private AnimatorClipInfo[] __currentClipInfo;
     private string __clipName;
+    private StateParams __params;
 
     void Start()
-    {
-        animator.SetFloat("hideTimeout", hideTimeout);
-        animator.SetFloat("searchTimeout", searchTimeout);
+    {   
+        __animator = ghost.GetComponent<Animator>();
 
-        __currentState = new PatrolState(player, ghost, animator, patrolSpeed);
+        __animator.SetFloat("hideTimeout", hideTimeout);
+        __animator.SetFloat("searchTimeout", searchTimeout);
+
+        __params = new StateParams(
+            patrolSpeed, hideTimeout, searchTimeout,
+            fleeSpeed, numSamples, samplingRadius, maxSamplingDistance,
+            modeDebug
+        );
+
+        __currentState = new PatrolState(player, ghost, __animator, __params);
         __currentState.Enter();
     }
 
     void FixedUpdate()
     {
-        __currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        __currentClipInfo = __animator.GetCurrentAnimatorClipInfo(0);
         string currentClipName = __currentClipInfo[0].clip.name; 
    
         if(__clipName != currentClipName) {
@@ -50,11 +73,6 @@ public class FiniteStateMachine : MonoBehaviour
         }
 
         __currentState.StateUpdate();
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        __currentState.StateCollisionEnter(collision);
     }
 
     public void ChangeState(State newState)
@@ -68,19 +86,19 @@ public class FiniteStateMachine : MonoBehaviour
         if (modeDebug)
         {
             Color debugColor = GetStateColor(stateName);
-            ghost.GetComponent<MeshRenderer>().material.color = debugColor;
+            ghost.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
         }
 
         switch (stateName)
         {
             case "Patrol":
-                return new PatrolState(player, ghost, animator, patrolSpeed); 
+                return new PatrolState(player, ghost, __animator, __params); 
             case "Flee":
-                return new FleeState(player, ghost, animator); 
+                return new FleeState(player, ghost, __animator, __params); 
             case "Search":
-                return new SearchState(player, ghost, animator, searchTimeout);
+                return new SearchState(player, ghost, __animator, __params);
             case "Hide":
-                return new HideState(player, ghost, animator, hideTimeout);
+                return new HideState(player, ghost, __animator, __params);
             default:
                 return null;
         }

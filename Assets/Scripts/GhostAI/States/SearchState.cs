@@ -6,10 +6,8 @@ public class SearchState : State
 {
     private float __timeout;
 
-    public SearchState(GameObject player, GameObject ghost, Animator animator, float timeout) : base(player, ghost, animator)
-    {
-        __timeout = timeout;
-    }
+    public SearchState(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
+        : base(player, ghost, animator, parameters) { }
 
     public override void StateUpdate()
     {
@@ -23,7 +21,7 @@ public class SearchState : State
 
         // Go to patrol state after a timeout if no spot is found
         __timeout -= Time.deltaTime;
-        _animator.SetFloat("searchTimeout", __timeout);
+        _animator.SetFloat("searchTimeout", _parameters.searchTimeout);
 
 
         GameObject spot = GetNearestSpot();
