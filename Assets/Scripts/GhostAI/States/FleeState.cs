@@ -21,6 +21,7 @@ public class FleeState : State
         // Go to Search state if ghost is outside player's FoV
         bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
         _animator.SetBool("insideFoV", insideFov);
+        _animator.SetBool("pathPending", _agent.pathPending);
 
         float distance = Vector3.Distance(_ghost.transform.position, _player.transform.position);
         if (distance < 5.0f || (!_agent.pathPending && _agent.remainingDistance < 0.5f))
