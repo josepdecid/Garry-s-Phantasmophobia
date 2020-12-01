@@ -9,6 +9,9 @@ public class FleeState : State
     
     private GameObject __fleeArea;
     private GameObject[] __fleeCandidates;
+    private Gradient __candidatesColor;
+    private GradientColorKey[] __colorKey;
+    private GradientAlphaKey[] __alphaKey;
 
     public FleeState(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
         : base(player, ghost, animator, parameters) { }
@@ -47,15 +50,18 @@ public class FleeState : State
             // TODO: Infinity
             NavMesh.SamplePosition(randomPosOffset, out hit, _parameters.maxSamplingDistance, 1 << NavMesh.GetAreaFromName("Walkable"));
             Vector3 candidate = hit.position;
-
-            float goodness = CalculateDestinationGoodness(candidate);
-            if (goodness > bestGoodness)
+            
+            if (candidate.x != Mathf.Infinity)
             {
-                bestGoodness = goodness;
-                bestDestination = hit.position;
-            }
+                float goodness = CalculateDestinationGoodness(candidate);
+                if (goodness > bestGoodness)
+                {
+                    bestGoodness = goodness;
+                    bestDestination = hit.position;
+                }
 
-            if (_parameters.isDebug) UpdateCandidateInfo(i, candidate);
+                if (_parameters.isDebug) UpdateCandidateInfo(i, candidate, goodness);
+            }
         }
         
         return bestDestination;
@@ -69,10 +75,9 @@ public class FleeState : State
         float distance = Vector3.Distance(_player.transform.position, destination);
         float goodness = distance;
 
-        // 
         if (Utils.IsDestinationHidden(_player, destination, _ghost.name, _camera.fieldOfView, distance))
         {
-            goodness *= 100;
+            goodness *= 10;
         }
 
         return goodness;
@@ -81,17 +86,16 @@ public class FleeState : State
     protected override void DrawDebugInfo()
     {
         __fleeArea = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        __fleeArea.transform.localScale = new Vector3(_parameters.samplingRadius, 0.01f, _parameters.samplingRadius);
+        __fleeArea.transform.localScale = new Vector3(2 * _parameters.samplingRadius, 0.01f, 2 * _parameters.samplingRadius);
         __fleeArea.GetComponent<SphereCollider>().enabled = false;
-        __fleeArea.GetComponent<MeshRenderer>().material.color = Color.magenta;
+        __fleeArea.GetComponent<MeshRenderer>().material.color = Color.grey;
 
         __fleeCandidates = new GameObject[_parameters.numSamples];
         for (int i = 0; i < _parameters.numSamples; ++i)
         {
             __fleeCandidates[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            __fleeCandidates[i].transform.localScale = new Vector3(0.1f, 0.01f, 0.1f);
+            __fleeCandidates[i].transform.localScale = new Vector3(0.25f, 0.01f, 0.25f);
             __fleeCandidates[i].GetComponent<SphereCollider>().enabled = false;
-            __fleeCandidates[i].GetComponent<MeshRenderer>().material.color = Color.cyan;
         }
     }
 
@@ -107,8 +111,9 @@ public class FleeState : State
         __fleeArea.transform.position = new Vector3(ghostPos.x, 0.01f, ghostPos.z);
     }
 
-    private void UpdateCandidateInfo(int index, Vector3 position)
+    private void UpdateCandidateInfo(int index, Vector3 position, float goodness)
     {
         __fleeCandidates[index].transform.position = position;
+        __fleeCandidates[index].GetComponent<MeshRenderer>().material.color = _parameters.candidateGradient.Evaluate(goodness / 200);
     }
 }

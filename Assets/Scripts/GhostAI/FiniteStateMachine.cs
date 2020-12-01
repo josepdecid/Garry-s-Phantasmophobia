@@ -36,6 +36,8 @@ public class FiniteStateMachine : MonoBehaviour
     [Header("MISC")]
     [SerializeField]
     private bool modeDebug = false;
+    [SerializeField]
+    private Gradient candidateGradient = null;
 
     private Animator __animator;
     private State __currentState;
@@ -53,7 +55,7 @@ public class FiniteStateMachine : MonoBehaviour
         __params = new StateParams(
             patrolSpeed, hideTimeout, searchTimeout,
             fleeSpeed, numSamples, samplingRadius, maxSamplingDistance,
-            modeDebug
+            modeDebug, candidateGradient
         );
 
         __currentState = new PatrolState(player, ghost, __animator, __params);

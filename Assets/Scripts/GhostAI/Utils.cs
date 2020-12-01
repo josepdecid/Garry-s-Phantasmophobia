@@ -39,11 +39,11 @@ class Utils
         {
             RaycastHit hit;
             bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
-            // Debug.DrawRay(sourcePosition, direction * distance, Color.red); 
 
-            return !isHitting || (isHitting && hit.collider.gameObject.name != targetName);
+            // It collides with an object that is not the NPC
+            if (isHitting && hit.collider.gameObject.name != targetName) return true;
         }
 
-        return true;
+        return false;
     }
 }

@@ -14,11 +14,12 @@ public class StateParams
     public float maxSamplingDistance { get; }
 
     public bool isDebug { get; }
+    public Gradient candidateGradient { get; }
 
     public StateParams(
         float patrolSpeed, float hideTimeout, float searchTimeout,
         float fleeSpeed, int numSamples, float samplingRadius, float maxSamplingDistance,
-        bool isDebug)
+        bool isDebug, Gradient candidateGradient)
     {
         this.patrolSpeed = patrolSpeed;
         this.hideTimeout = hideTimeout;
@@ -30,5 +31,6 @@ public class StateParams
         this.maxSamplingDistance = maxSamplingDistance;
 
         this.isDebug = isDebug;
+        this.candidateGradient = candidateGradient;
     }
 }
