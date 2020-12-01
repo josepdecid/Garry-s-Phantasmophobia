@@ -8,8 +8,6 @@ public class FiniteStateMachine : MonoBehaviour
     [Header("Agents")]
     [SerializeField]
     private GameObject player = null;
-    [SerializeField]
-    private GameObject ghost = null;
 
     [Header("Patrol Parameters")]
     [SerializeField]
@@ -39,6 +37,7 @@ public class FiniteStateMachine : MonoBehaviour
     [SerializeField]
     private Gradient candidateGradient = null;
 
+    private GameObject __ghost;
     private Animator __animator;
     private State __currentState;
     private AnimatorClipInfo[] __currentClipInfo;
@@ -47,7 +46,8 @@ public class FiniteStateMachine : MonoBehaviour
 
     void Start()
     {   
-        __animator = ghost.GetComponent<Animator>();
+        __ghost = gameObject;
+        __animator = __ghost.GetComponent<Animator>();
 
         __animator.SetFloat("hideTimeout", hideTimeout);
         __animator.SetFloat("searchTimeout", searchTimeout);
@@ -58,7 +58,7 @@ public class FiniteStateMachine : MonoBehaviour
             modeDebug, candidateGradient
         );
 
-        __currentState = new PatrolState(player, ghost, __animator, __params);
+        __currentState = new PatrolState(player, __ghost, __animator, __params);
         __currentState.Enter();
     }
 
@@ -88,19 +88,19 @@ public class FiniteStateMachine : MonoBehaviour
         if (modeDebug)
         {
             Color debugColor = GetStateColor(stateName);
-            ghost.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
+            __ghost.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
         }
 
         switch (stateName)
         {
             case "Patrol":
-                return new PatrolState(player, ghost, __animator, __params); 
+                return new PatrolState(player, __ghost, __animator, __params); 
             case "Flee":
-                return new FleeState(player, ghost, __animator, __params); 
+                return new FleeState(player, __ghost, __animator, __params); 
             case "Search":
-                return new SearchState(player, ghost, __animator, __params);
+                return new SearchState(player, __ghost, __animator, __params);
             case "Hide":
-                return new HideState(player, ghost, __animator, __params);
+                return new HideState(player, __ghost, __animator, __params);
             default:
                 return null;
         }

@@ -35,6 +35,7 @@ abstract public class State
         _agent.isStopped = true;
         _agent.ResetPath();
 
+        UpdateAgentProperties();
         if (_parameters.isDebug) DrawDebugInfo();
     }
 
@@ -46,6 +47,8 @@ abstract public class State
     }
 
     public abstract void StateUpdate();
+
+    protected virtual void UpdateAgentProperties() {}
 
     protected virtual void DrawDebugInfo() {}
 
