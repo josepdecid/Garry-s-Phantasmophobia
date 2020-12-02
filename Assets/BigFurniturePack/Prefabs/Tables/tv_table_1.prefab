@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3093484725049825640}
   m_Layer: 0
   m_Name: plate
-  m_TagString: Untagged
+  m_TagString: LightweightObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 3554181597524959222}
   m_Layer: 0
   m_Name: vase_4
-  m_TagString: Untagged
+  m_TagString: LightweightObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 400010}
   m_Layer: 0
   m_Name: tv_table_1
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 7500008617770926204}
   m_Layer: 0
   m_Name: vase_5
-  m_TagString: Untagged
+  m_TagString: LightweightObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

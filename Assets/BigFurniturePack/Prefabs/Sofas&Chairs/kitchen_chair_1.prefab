@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 5412756136538618866}
   m_Layer: 0
   m_Name: kitchen_chair_1
-  m_TagString: Untagged
+  m_TagString: LightweightObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

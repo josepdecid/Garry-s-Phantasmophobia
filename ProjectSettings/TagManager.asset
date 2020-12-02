@@ -9,6 +9,7 @@ TagManager:
   - Key
   - Wall
   - Prop
+  - LightweightObjects
   layers:
   - Default
   - TransparentFX

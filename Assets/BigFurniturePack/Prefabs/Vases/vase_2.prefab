@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7496928314939476425}
   m_Layer: 0
   m_Name: vase_2
-  m_TagString: Untagged
+  m_TagString: LightweightObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
