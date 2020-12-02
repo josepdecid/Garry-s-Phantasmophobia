@@ -3,6 +3,20 @@ using UnityEngine;
 
 class Utils
 {
+    public static bool IsTargetFocused(GameObject playerCamera, string targetName, float distance)
+    {
+        Vector3 sourcePosition = playerCamera.transform.position;
+        Vector3 direction = playerCamera.transform.forward;
+
+        RaycastHit hit;
+        bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
+
+        Debug.DrawRay(sourcePosition, direction * hit.distance, Color.red);     
+
+        if (isHitting && hit.collider.gameObject.name == targetName) return true;
+        else return false;
+    }
+
     public static bool IsTargetVisible(GameObject player, GameObject target, float fieldOfView, float distance)
     {
         Vector3 sourcePosition = player.transform.position;

@@ -30,8 +30,7 @@ abstract public class State
 
     public virtual void Enter()
     {
-        Debug.Log($"Entering {this.GetType()} state.");
-
+        // Debug.Log($"Entering {this.GetType()} state.");
         _agent.isStopped = true;
         _agent.ResetPath();
 
@@ -41,8 +40,7 @@ abstract public class State
 
     public virtual void Exit()
     {
-        Debug.Log($"Exiting {this.GetType()} state.");
-
+        // Debug.Log($"Exiting {this.GetType()} state.");
         if (_parameters.isDebug) DestroyDebugInfo();
     }
 

@@ -15,7 +15,7 @@ public class HideState : State
         __timeout -= Time.deltaTime;
         _animator.SetFloat("hideTimeout", _parameters.hideTimeout);
 
-        // Go to Flee state if inside FoV
+        // Go to Flee state if player interacts with hiding spot
         bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
         _animator.SetBool("insideFoV", insideFov);
     }
