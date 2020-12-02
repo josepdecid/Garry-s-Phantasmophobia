@@ -16,7 +16,18 @@ public class HideState : State
         _animator.SetFloat("hideTimeout", _parameters.hideTimeout);
 
         // Go to Flee state if player interacts with hiding spot
-        bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
-        _animator.SetBool("insideFoV", insideFov);
+        // bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
+        bool isInteracting = PlayerIsInteracting();
+        _animator.SetBool("insideFoV", isInteracting);
+
+        if (__timeout <= 0) _ghostSpotMapping.UpdateSpot(_ghost.name, null);
+    }
+
+    private bool PlayerIsInteracting()
+    {   
+        string interactedSpot = _ghostSpotMapping.GetInteractedSpot();
+        string ghostSpot = _ghostSpotMapping.GetSpot(_ghost.name);
+        Debug.Log($"{ghostSpot} - {interactedSpot}");
+        return interactedSpot == ghostSpot;
     }
 }

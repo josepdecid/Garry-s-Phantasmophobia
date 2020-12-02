@@ -12,6 +12,7 @@ abstract public class State
     protected NavMeshAgent _agent;
 
     protected Animator _animator;
+    protected GhostSpotMapping _ghostSpotMapping;
     
     protected StateParams _parameters = null;
     
@@ -24,6 +25,7 @@ abstract public class State
         this._agent = ghost.GetComponent<NavMeshAgent>();
 
         this._animator = animator;
+        this._ghostSpotMapping = GhostSpotMapping.Instance;
 
         this._parameters = parameters;
     }

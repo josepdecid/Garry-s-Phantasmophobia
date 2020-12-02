@@ -24,6 +24,7 @@ public class Outline : MonoBehaviour {
 	private static HashSet<Mesh> registeredMeshes = new HashSet<Mesh>();
 	private Renderer[] renderers;
 	private Camera __playerCamera;
+	private GhostSpotMapping __ghostSpotMapping;
 	private bool __needsUpdate;
 	private bool __canInteract;
 
@@ -34,6 +35,8 @@ public class Outline : MonoBehaviour {
 		LoadSmoothNormals();
 
 		__playerCamera = player.GetComponentInChildren<Camera>();
+		__ghostSpotMapping = GhostSpotMapping.Instance;
+
 		__needsUpdate = true;
 		__canInteract = true;
 	}
@@ -69,13 +72,17 @@ public class Outline : MonoBehaviour {
 		}
 
 		bool canInteract = Utils.IsTargetFocused(__playerCamera.gameObject, gameObject.name, interactionDistance);
-		// Debug.Log(canInteract);
+		
 		if (canInteract != __canInteract)
 		{
 			__canInteract = canInteract;
-
 			if (__canInteract) OnEnable();
 			else OnDisable();
+		}
+
+		if (canInteract && Input.GetKeyDown(KeyCode.E))
+		{
+			__ghostSpotMapping.UpdateInteracted(gameObject.name);
 		}
 
 	}
