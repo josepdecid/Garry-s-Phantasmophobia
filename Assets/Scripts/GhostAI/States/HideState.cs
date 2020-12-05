@@ -18,7 +18,7 @@ public class HideState : State
         // Go to Flee state if player interacts with hiding spot
         // bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
         bool isInteracting = PlayerIsInteracting();
-        _animator.SetBool("insideFoV", isInteracting);
+        _animator.SetBool("playerInteraction", isInteracting);
 
         if (__timeout <= 0) _ghostSpotMapping.UpdateSpot(_ghost.name, null);
     }
