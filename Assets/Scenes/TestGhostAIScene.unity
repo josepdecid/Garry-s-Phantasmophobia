@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 398978398}
   - component: {fileID: 398978402}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: Cube (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 417864837}
   - component: {fileID: 417864841}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: Cube (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 590470119}
   - component: {fileID: 590470123}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: Cube (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -779,6 +779,7 @@ GameObject:
   - component: {fileID: 734015702}
   - component: {fileID: 734015701}
   - component: {fileID: 734015700}
+  - component: {fileID: 734015703}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Prop
@@ -860,6 +861,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734015698}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &734015703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734015698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &769748042
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +891,7 @@ GameObject:
   - component: {fileID: 769748046}
   - component: {fileID: 769748045}
   - component: {fileID: 769748044}
+  - component: {fileID: 769748047}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Prop
@@ -953,6 +973,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769748042}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &769748047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769748042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &802984180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1191,7 @@ GameObject:
   - component: {fileID: 901747815}
   - component: {fileID: 901747814}
   - component: {fileID: 901747813}
+  - component: {fileID: 901747816}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Prop
@@ -1234,6 +1273,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901747811}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &901747816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901747811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &937618541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,7 +1305,7 @@ GameObject:
   - component: {fileID: 937618542}
   - component: {fileID: 937618546}
   m_Layer: 0
-  m_Name: Cube (9)
+  m_Name: Cube (91)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -1621,7 +1678,7 @@ GameObject:
   - component: {fileID: 1063431464}
   - component: {fileID: 1063431468}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Cube (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -1839,6 +1896,7 @@ GameObject:
   - component: {fileID: 1115970334}
   - component: {fileID: 1115970333}
   - component: {fileID: 1115970332}
+  - component: {fileID: 1115970335}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Prop
@@ -1920,6 +1978,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115970330}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1115970335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115970330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &1150796858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,6 +2008,7 @@ GameObject:
   - component: {fileID: 1150796862}
   - component: {fileID: 1150796861}
   - component: {fileID: 1150796860}
+  - component: {fileID: 1150796863}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Prop
@@ -2013,6 +2090,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150796858}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1150796863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150796858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &1183170600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +2122,7 @@ GameObject:
   - component: {fileID: 1183170601}
   - component: {fileID: 1183170605}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Cube (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -2135,6 +2230,7 @@ GameObject:
   - component: {fileID: 1201185154}
   - component: {fileID: 1201185153}
   - component: {fileID: 1201185152}
+  - component: {fileID: 1201185155}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Prop
@@ -2216,6 +2312,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201185150}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1201185155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201185150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &1211380084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2228,6 +2342,7 @@ GameObject:
   - component: {fileID: 1211380088}
   - component: {fileID: 1211380087}
   - component: {fileID: 1211380086}
+  - component: {fileID: 1211380089}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Prop
@@ -2309,6 +2424,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211380084}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1211380089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211380084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &1355700026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2456,7 @@ GameObject:
   - component: {fileID: 1355700027}
   - component: {fileID: 1355700031}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube (01)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -2429,7 +2562,7 @@ PrefabInstance:
     - target: {fileID: 3238705681424260525, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
       propertyPath: m_MouseLook.lockCursor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
@@ -2679,7 +2812,7 @@ GameObject:
   - component: {fileID: 1934226756}
   - component: {fileID: 1934226760}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Cube (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -2789,7 +2922,7 @@ GameObject:
   - component: {fileID: 1994732695}
   - component: {fileID: 1994732699}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Cube (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -3007,6 +3140,7 @@ GameObject:
   - component: {fileID: 2036037640}
   - component: {fileID: 2036037639}
   - component: {fileID: 2036037638}
+  - component: {fileID: 2036037641}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Prop
@@ -3088,6 +3222,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036037636}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2036037641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036037636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2080726647}
+  outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineColor: {r: 0, g: 1, b: 0.022295237, a: 1}
+  outlineWidth: 20
+  interactionDistance: 5
 --- !u!1 &2080726647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
@@ -3114,7 +3266,7 @@ PrefabInstance:
     - target: {fileID: 7692504472720282426, guid: 0328723b0e7f47b8a9881aaa95577c13,
         type: 3}
       propertyPath: hideTimeout
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7692504472720282430, guid: 0328723b0e7f47b8a9881aaa95577c13,
         type: 3}

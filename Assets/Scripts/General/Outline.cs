@@ -84,6 +84,10 @@ public class Outline : MonoBehaviour {
 		{
 			__ghostSpotMapping.UpdateInteracted(gameObject.name);
 		}
+		else if (Input.GetKeyUp(KeyCode.E) && __ghostSpotMapping.GetInteractedSpot() == gameObject.name)
+		{
+			__ghostSpotMapping.UpdateInteracted(null);
+		}
 
 	}
 

@@ -26,6 +26,13 @@ public class HideState : State
         _animator.SetBool("playerInteraction", isInteracting);
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        __timeout = _parameters.hideTimeout;
+        _animator.SetBool("playerInteraction", false);
+    }
+
     private bool PlayerIsInteracting()
     {   
         string interactedSpot = _ghostSpotMapping.GetInteractedSpot();

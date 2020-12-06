@@ -44,6 +44,11 @@ public class FiniteStateMachine : MonoBehaviour
     private string __clipName;
     private StateParams __params;
 
+    private State patrolState;
+    private State hideState;
+    private State searchState;
+    private State fleeState;
+
     void Start()
     {   
         __ghost = gameObject;
@@ -60,6 +65,11 @@ public class FiniteStateMachine : MonoBehaviour
 
         __currentState = new PatrolState(player, __ghost, __animator, __params);
         __currentState.Enter();
+
+        patrolState = new PatrolState(player, __ghost, __animator, __params);
+        hideState = new HideState(player, __ghost, __animator, __params);
+        searchState = new SearchState(player, __ghost, __animator, __params);
+        fleeState = new FleeState(player, __ghost, __animator, __params);
     }
 
     void FixedUpdate()
@@ -69,6 +79,7 @@ public class FiniteStateMachine : MonoBehaviour
    
         if(__clipName != currentClipName) {
             __clipName = currentClipName;
+            __animator.SetBool("playerInteraction", false);
             
             State newState = GetStateClass(__clipName);
             ChangeState(newState);
@@ -94,13 +105,13 @@ public class FiniteStateMachine : MonoBehaviour
         switch (stateName)
         {
             case "Patrol":
-                return new PatrolState(player, __ghost, __animator, __params); 
+                return patrolState; 
             case "Flee":
-                return new FleeState(player, __ghost, __animator, __params); 
+                return fleeState; 
             case "Search":
-                return new SearchState(player, __ghost, __animator, __params);
+                return searchState;
             case "Hide":
-                return new HideState(player, __ghost, __animator, __params);
+                return hideState;
             default:
                 return null;
         }

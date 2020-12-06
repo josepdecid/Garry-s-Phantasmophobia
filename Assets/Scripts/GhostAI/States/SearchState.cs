@@ -33,6 +33,12 @@ public class SearchState : State
         _animator.SetFloat("searchTimeout", __timeout);
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        __timeout = _parameters.searchTimeout;
+    }
+
     private GameObject GetNearestAvailableSpot()
     {
         // TODO: Filter out already occupied spots
