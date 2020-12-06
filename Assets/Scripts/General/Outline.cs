@@ -4,22 +4,12 @@ using System.Linq;
 using UnityEngine;
 
 public class Outline : MonoBehaviour {
-	[SerializeField]
-	private GameObject player = null;
-	
-	[Header("Materials")]
-	[SerializeField]
-	private Material outlineMaskMaterial = null;
-	[SerializeField]
-	private Material outlineFillMaterial = null;
-
-	[Header("Visualization Parameters")]
-	[SerializeField]
-	private Color outlineColor = Color.white;
-	[SerializeField, Range(0f, 20f)]
-	private float outlineWidth = 1.0f;
-	[SerializeField]
-	private float interactionDistance = 1.0f;
+	public GameObject player;
+	public Material outlineMaskMaterial;
+	public Material outlineFillMaterial;
+	public Color outlineColor;
+	public float outlineWidth;
+	public float interactionDistance;
 
 	private static HashSet<Mesh> registeredMeshes = new HashSet<Mesh>();
 	private Renderer[] renderers;
