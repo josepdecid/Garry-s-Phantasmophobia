@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class FiniteStateMachine : MonoBehaviour
 {   
-    [Header("Agents")]
-    [SerializeField]
-    private GameObject player = null;
-
     [Header("Patrol Parameters")]
     [SerializeField]
     private float patrolSpeed = 1.0f;
@@ -37,6 +33,7 @@ public class FiniteStateMachine : MonoBehaviour
     [SerializeField]
     private Gradient candidateGradient = null;
 
+    private GameObject __player;
     private GameObject __ghost;
     private Animator __animator;
     private State __currentState;
@@ -51,6 +48,8 @@ public class FiniteStateMachine : MonoBehaviour
 
     void Start()
     {   
+        __player = GameObject.FindWithTag("Player");
+        
         __ghost = gameObject;
         __animator = __ghost.GetComponent<Animator>();
 
@@ -63,13 +62,13 @@ public class FiniteStateMachine : MonoBehaviour
             modeDebug, candidateGradient
         );
 
-        __currentState = new PatrolState(player, __ghost, __animator, __params);
+        __currentState = new PatrolState(__player, __ghost, __animator, __params);
         __currentState.Enter();
 
-        patrolState = new PatrolState(player, __ghost, __animator, __params);
-        hideState = new HideState(player, __ghost, __animator, __params);
-        searchState = new SearchState(player, __ghost, __animator, __params);
-        fleeState = new FleeState(player, __ghost, __animator, __params);
+        patrolState = new PatrolState(__player, __ghost, __animator, __params);
+        hideState = new HideState(__player, __ghost, __animator, __params);
+        searchState = new SearchState(__player, __ghost, __animator, __params);
+        fleeState = new FleeState(__player, __ghost, __animator, __params);
     }
 
     void FixedUpdate()
@@ -79,7 +78,7 @@ public class FiniteStateMachine : MonoBehaviour
    
         if(__clipName != currentClipName) {
             __clipName = currentClipName;
-            __animator.SetBool("playerInteraction", false);
+            __animator.SetBool("__playerInteraction", false);
             
             State newState = GetStateClass(__clipName);
             ChangeState(newState);
