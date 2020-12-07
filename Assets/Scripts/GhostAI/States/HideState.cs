@@ -6,31 +6,40 @@ public class HideState : State
 {
     private float __timeout;
 
-    public HideState(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
-        : base(player, ghost, animator, parameters)
+    public HideState(GameObject player, GameObject ghost, StateParams parameters)
+        : base(player, ghost, parameters)
         { 
             __timeout = parameters.hideTimeout;
         }
 
-    public override void StateUpdate()
+    public override StateType StateUpdate()
     {
-        if (__timeout <= 0) _ghostSpotMapping.UpdateSpot(_ghost.name, null);
+        if (__timeout < 0f)
+            _ghostSpotMapping.UpdateSpot(_ghost.name, null);
 
-        // Go to Patrol state after a timeout
         __timeout -= Time.deltaTime;
-        _animator.SetFloat("hideTimeout", __timeout);
+
+        return NextState();
+    }
+
+    protected override StateType NextState()
+    {
+        // Go to Roam state after a timeout
+        if (__timeout < 0f)
+            return StateType.Roam;
 
         // Go to Flee state if player interacts with hiding spot
-        // bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
-        bool isInteracting = PlayerIsInteracting();
-        _animator.SetBool("playerInteraction", isInteracting);
+        if (PlayerIsInteracting())
+            return StateType.Flee;
+
+        // Keep the same state
+        return StateType.Hide;
     }
 
     public override void Exit()
     {
         base.Exit();
         __timeout = _parameters.hideTimeout;
-        _animator.SetBool("playerInteraction", false);
     }
 
     private bool PlayerIsInteracting()

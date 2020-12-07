@@ -5,32 +5,47 @@ using UnityEngine;
 public class SearchState : State
 {
     private float __timeout;
-    private GameObject __spot;
+    private bool __isNearSpot;
 
-    public SearchState(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
-        : base(player, ghost, animator, parameters)
+    public SearchState(GameObject player, GameObject ghost, StateParams parameters)
+        : base(player, ghost, parameters)
         {
             __timeout = parameters.searchTimeout;
+            __isNearSpot = false;
         }
 
-    public override void StateUpdate()
+    public override StateType StateUpdate()
     {
-        __spot = GetNearestAvailableSpot();
-        _agent.destination = __spot.transform.position;
+        GameObject spot = GetNearestAvailableSpot();
+        _agent.destination = spot.transform.position;
 
-        bool nearSpot = _agent.remainingDistance < 2.0f;
-        if (nearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, __spot.name);
+        __isNearSpot = !_agent.pathPending && _agent.remainingDistance < 2.0f;
 
+        // __isNearSpot = Vector3.Distance(_ghost.transform.position, spot.transform.position) < 2.0f;
+        if (__isNearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, spot.name);
+
+        __timeout -= Time.deltaTime;
+
+        return NextState();
+    }
+
+    protected override StateType NextState()
+    {
         // Go to Flee state if ghost is inside player's FoV
         bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
-        _animator.SetBool("insideFoV", insideFov);
+        if (insideFov)
+            return StateType.Flee;
 
         // Go to Hide state if a spot is found
-        _animator.SetBool("spotFound", nearSpot);
+        if (__isNearSpot)
+            return StateType.Hide;
 
-        // Go to patrol state after a timeout if no spot is found
-        __timeout -= Time.deltaTime;
-        _animator.SetFloat("searchTimeout", __timeout);
+        // Go to Roam state after a timeout if no spot is found
+        if (__timeout < 0f)
+            return StateType.Roam;
+
+        // Keep the same state
+        return StateType.Search;
     }
 
     public override void Exit()

@@ -11,12 +11,11 @@ abstract public class State
     protected GameObject _ghost;
     protected NavMeshAgent _agent;
 
-    protected Animator _animator;
     protected GhostSpotMapping _ghostSpotMapping;
     
     protected StateParams _parameters = null;
     
-    public State(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
+    public State(GameObject player, GameObject ghost, StateParams parameters)
     {
         this._player = player;
         this._camera = player.GetComponentInChildren<Camera>();
@@ -24,7 +23,6 @@ abstract public class State
         this._ghost = ghost;
         this._agent = ghost.GetComponent<NavMeshAgent>();
 
-        this._animator = animator;
         this._ghostSpotMapping = GhostSpotMapping.Instance;
 
         this._parameters = parameters;
@@ -46,7 +44,9 @@ abstract public class State
         if (_parameters.isDebug) DestroyDebugInfo();
     }
 
-    public abstract void StateUpdate();
+    public abstract StateType StateUpdate();
+
+    protected abstract StateType NextState();
 
     protected virtual void UpdateAgentProperties() {}
 

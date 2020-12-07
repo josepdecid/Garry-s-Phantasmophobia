@@ -13,16 +13,11 @@ public class FleeState : State
     private GradientColorKey[] __colorKey;
     private GradientAlphaKey[] __alphaKey;
 
-    public FleeState(GameObject player, GameObject ghost, Animator animator, StateParams parameters)
-        : base(player, ghost, animator, parameters) { }
+    public FleeState(GameObject player, GameObject ghost, StateParams parameters)
+        : base(player, ghost, parameters) { }
 
-    public override void StateUpdate()
+    public override StateType StateUpdate()
     {
-        // Go to Search state if ghost is outside player's FoV
-        bool insideFov = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
-        _animator.SetBool("insideFoV", insideFov);
-        _animator.SetBool("pathPending", _agent.pathPending);
-
         float distance = Vector3.Distance(_ghost.transform.position, _player.transform.position);
         if (distance < 5.0f || (!_agent.pathPending && _agent.remainingDistance < 0.5f))
         {
@@ -31,6 +26,19 @@ public class FleeState : State
         }
 
         if (_parameters.isDebug) UpdateAreaInfo();
+
+        return NextState();
+    }
+
+    protected override StateType NextState()
+    {
+        // Go to Search state if ghost is outside player's FoV
+        bool insideFoV = Utils.IsTargetVisible(_player, _ghost, _camera.fieldOfView, Mathf.Infinity);
+        if (!insideFoV && !_agent.pathPending)
+            return StateType.Search;
+
+        // Keep the same state
+        return StateType.Flee;
     }
 
     private Vector3 GetFleePoint()
@@ -48,7 +56,6 @@ public class FleeState : State
             Vector2 randomPos = Random.insideUnitCircle * _parameters.samplingRadius;
             Vector3 randomPosOffset = new Vector3(randomPos.x, 0, randomPos.y) + ghostPosition;
 
-            // TODO: Infinity
             NavMesh.SamplePosition(randomPosOffset, out hit, _parameters.maxSamplingDistance, 1 << NavMesh.GetAreaFromName("Walkable"));
             Vector3 candidate = hit.position;
             

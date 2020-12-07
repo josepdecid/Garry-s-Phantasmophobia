@@ -31,13 +31,14 @@ public class Setup : MonoBehaviour
 
     void Awake()
     {
-        SetupNavmesh();
+        SetupNavMeshSurfaces();
+        SetupNavMeshLinks();
         SetupPlayer();
         SetupProps();
         SetupNPCs();
     }
 
-    private void SetupNavmesh()
+    private void SetupNavMeshSurfaces()
     {
         GameObject[] walkable = GameObject.FindGameObjectsWithTag("Floor");
         Debug.Log(walkable);
@@ -49,8 +50,15 @@ public class Setup : MonoBehaviour
         foreach (GameObject floor in walkable)
         {
             NavMeshSurface surface = floor.AddComponent<NavMeshSurface>();
+            // We need this for NavMeshLink to work
+            surface.tileSize = 64;
             surface.BuildNavMesh();
         }
+    }
+
+    private void SetupNavMeshLinks()
+    {
+        // TODO: Implement joining doors.
     }
 
     private void SetupPlayer()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
+public enum StateType { Roam, Flee, Search, Hide };
+
 public class FiniteStateMachine : MonoBehaviour
 {   
     [Header("Patrol Parameters")]
@@ -35,98 +37,105 @@ public class FiniteStateMachine : MonoBehaviour
 
     private GameObject __player;
     private GameObject __ghost;
-    private Animator __animator;
+    
     private State __currentState;
+    private StateType __currentStateType;
+    
     private AnimatorClipInfo[] __currentClipInfo;
     private string __clipName;
     private StateParams __params;
 
-    private State patrolState;
+    private State roamState;
     private State hideState;
     private State searchState;
     private State fleeState;
 
-    void Start()
-    {   
+    void Awake()
+    {
         __player = GameObject.FindWithTag("Player");
         
         __ghost = gameObject;
-        __animator = __ghost.GetComponent<Animator>();
-
-        __animator.SetFloat("hideTimeout", hideTimeout);
-        __animator.SetFloat("searchTimeout", searchTimeout);
 
         __params = new StateParams(
             patrolSpeed, hideTimeout, searchTimeout,
             fleeSpeed, numSamples, samplingRadius, maxSamplingDistance,
             modeDebug, candidateGradient
         );
-
-        __currentState = new PatrolState(__player, __ghost, __animator, __params);
-        __currentState.Enter();
-
-        patrolState = new PatrolState(__player, __ghost, __animator, __params);
-        hideState = new HideState(__player, __ghost, __animator, __params);
-        searchState = new SearchState(__player, __ghost, __animator, __params);
-        fleeState = new FleeState(__player, __ghost, __animator, __params);
     }
 
-    void FixedUpdate()
+    void Start()
+    {   
+        roamState = new RoamState(__player, __ghost, __params);
+        fleeState = new FleeState(__player, __ghost, __params);
+        searchState = new SearchState(__player, __ghost, __params);
+        hideState = new HideState(__player, __ghost, __params);
+
+        __currentStateType = StateType.Roam;
+        __currentState = GetStateInstance();
+        __currentState.Enter();
+    }
+
+    void Update()
     {
-        __currentClipInfo = __animator.GetCurrentAnimatorClipInfo(0);
-        string currentClipName = __currentClipInfo[0].clip.name; 
-   
-        if(__clipName != currentClipName) {
-            __clipName = currentClipName;
-            __animator.SetBool("__playerInteraction", false);
-            
-            State newState = GetStateClass(__clipName);
+        StateType nextStateType = __currentState.StateUpdate();
+
+        if (nextStateType != __currentStateType)
+        {
+            __currentStateType = nextStateType;
+            State newState = GetStateInstance();
             ChangeState(newState);
         }
-
-        __currentState.StateUpdate();
     }
 
     public void ChangeState(State newState)
     {
         __currentState.Exit();
+
         __currentState = newState;
         __currentState.Enter();
     }
 
-    private State GetStateClass(string stateName) {
+    private State GetStateInstance() {
         if (modeDebug)
         {
-            Color debugColor = GetStateColor(stateName);
+            Color debugColor = GetStateColor();
             __ghost.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
         }
 
-        switch (stateName)
+        switch (__currentStateType)
         {
-            case "Patrol":
-                return patrolState; 
-            case "Flee":
+            case StateType.Roam:
+                return roamState; 
+
+            case StateType.Flee:
                 return fleeState; 
-            case "Search":
+
+            case StateType.Search:
                 return searchState;
-            case "Hide":
+
+            case StateType.Hide:
                 return hideState;
+                
             default:
                 return null;
         }
     }
 
-    private Color GetStateColor(string stateName) {
-        switch (stateName)
+    private Color GetStateColor() {
+        switch (__currentStateType)
         {
-            case "Patrol":
+            case StateType.Roam:
                 return Color.blue; 
-            case "Flee":
+
+            case StateType.Flee:
                 return Color.red; 
-            case "Search":
+
+            case StateType.Search:
                 return Color.yellow;
-            case "Hide":
+
+            case StateType.Hide:
                 return Color.green;
+
             default:
                 return Color.black;
         }
