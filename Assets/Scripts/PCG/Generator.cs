@@ -27,50 +27,46 @@ public class Generator : MonoBehaviour
 
     private void Generate(Vector2Int iniPos, int iniOrientation)
     {
-        List<Door> openDoors = new List<Door>();
+        HashSet<Door> openDoors = new HashSet<Door>(new DoorEqualsComparer());
         Floor grid = new Floor(tileSize, heightSize, new Vector2Int(maxX, maxY), 0);
 
-        (GameObject iniRoomPrefab, Room iniRoom) = getPrefabRoom("0");
+        (GameObject iniRoomPrefab, Room iniRoom) = GetPrefabRoom("0");
 
-        (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
+        (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, HashSet<Door> iniRoomDoors) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
         iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors);
-        openDoors.AddRange(iniRoom.GetDoors());
+        openDoors.UnionWith(iniRoom.GetDoors());
 
         int numRoomsSpawned = 1;
         while (numRoomsSpawned <= temptativeSize)
         {
             Debug.Log("length open doors: "+ openDoors.Count.ToString());
             numRoomsSpawned += 1;
-            int randOpen = UnityEngine.Random.Range(0, openDoors.Count);
-            Door doorToSpawnFrom = openDoors[randOpen];
+            Door doorToSpawnFrom = RandomChooseDoor(openDoors);
             
             int attemptsToSpawnFromDoor = 0;
             bool validSpawn = false;
             while (!validSpawn && attemptsToSpawnFromDoor < doorStubbornness)
             {
                 attemptsToSpawnFromDoor += 1;
-                (GameObject targetRoomPrefab, Room targetRoom) = randomChooseRoom();
-                List<Door> targetRoomDoors = targetRoom.GetDoors();
+                (GameObject targetRoomPrefab, Room targetRoom) = RandomChooseRoom();
+                HashSet<Door> targetRoomDoors = targetRoom.GetDoors();
 
                 int attemptsToSpawnRoom = 0;
                 while (!validSpawn && attemptsToSpawnRoom < roomStubbornness)
                 {
                     attemptsToSpawnRoom += 1;
-
-                    int randTarget = UnityEngine.Random.Range(0, targetRoomDoors.Count);
-                    Door targetJoinDoor = targetRoomDoors[randTarget];
+                    Door targetJoinDoor = RandomChooseDoor(targetRoomDoors);
 
                     Vector2Int roomCoordinatesOriginPos;
                     Tuple<Vector2Int, Vector2Int> roomBoundaries;
                     float rotation;
-                    List<Door> doors;
+                    HashSet<Door> doors;
                     (validSpawn, roomCoordinatesOriginPos, roomBoundaries, rotation, doors) = grid.CheckRoomSpawnValidity(targetRoom, doorToSpawnFrom, targetJoinDoor);
                     if (validSpawn)
                     {
                         // TODO: SPAWN KEYS, FIX DOORS MATCHING
                         Room room = grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors);
-                        openDoors.Remove(doorToSpawnFrom);
-                        openDoors.AddRange(room.GetDoors());
+                        grid.FixDoorMatching(room, openDoors);
                     }
                 }
             }
@@ -81,16 +77,29 @@ public class Generator : MonoBehaviour
         }
     }
 
-    private (GameObject, Room) randomChooseRoom()
+    private (GameObject, Room) RandomChooseRoom()
     {
         string randRoom = UnityEngine.Random.Range(1, 13).ToString();
-        return getPrefabRoom(randRoom);
+        return GetPrefabRoom(randRoom);
     }
 
-    private (GameObject, Room) getPrefabRoom(string r)
+    private (GameObject, Room) GetPrefabRoom(string r)
     {
         GameObject roomPrefab = (GameObject)Resources.Load("Prefabs/Room_Example"+r, typeof(GameObject));
         return (roomPrefab, roomPrefab.GetComponent<Room>());
+    }
+
+    private Door RandomChooseDoor(HashSet<Door> doors)
+    {
+        int randIdx = UnityEngine.Random.Range(0, doors.Count);
+        int currentIdx = 0;
+        foreach(Door d in doors) {
+            if (currentIdx == randIdx){
+                return d;
+            }
+            ++currentIdx;
+        }
+        return null;
     }
 }
 

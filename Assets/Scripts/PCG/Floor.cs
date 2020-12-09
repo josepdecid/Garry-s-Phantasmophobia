@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Floor : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Floor : MonoBehaviour
         this.floor = floor;
     }
 
-    public Room SpawnRoom(GameObject roomPrefab, Room room, Vector2Int roomPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors)
+    public Room SpawnRoom(GameObject roomPrefab, Room room, Vector2Int roomPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, HashSet<Door> doors)
     {
         Vector3 origin = new Vector3((-tileSize / 2), 0, (-tileSize / 2));
         Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
@@ -36,21 +37,21 @@ public class Floor : MonoBehaviour
         return room;
     }
 
-    public (bool, Vector2Int, Tuple<Vector2Int, Vector2Int>, float, List<Door>) CheckRoomSpawnValidity(Room targetRoom, Door doorToSpawnFrom, Door targetJoinDoor)
+    public (bool, Vector2Int, Tuple<Vector2Int, Vector2Int>, float, HashSet<Door>) CheckRoomSpawnValidity(Room targetRoom, Door doorToSpawnFrom, Door targetJoinDoor)
     {
         float rotation = ComputeNewOrientation(doorToSpawnFrom, targetJoinDoor);
         Tuple<Vector2Int, Vector2Int> newRoomBoundaries = ComputeNewBoundaries(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
         Vector2Int newPos = ComputeNewRoomPos(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
-        List<Door> newDoors = ComputeNewDoorsPos(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
+        HashSet<Door> newDoors = ComputeNewDoorsPos(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
         bool isValid = CheckValidity(newRoomBoundaries);
         return (isValid, newPos, newRoomBoundaries, rotation, newDoors);
 
     }
 
-    public (Vector2Int, Tuple<Vector2Int, Vector2Int>, List<Door>) GetIniRoomProperties(Room room, Vector2Int roomPos, float rotation){
+    public (Vector2Int, Tuple<Vector2Int, Vector2Int>, HashSet<Door>) GetIniRoomProperties(Room room, Vector2Int roomPos, float rotation){
         Tuple<Vector2Int, Vector2Int> newRoomBoundaries = ComputeNewBoundaries(room, roomPos, new Vector2Int(0,0), rotation);
         Vector2Int newPos = ComputeNewRoomPos(room, roomPos, new Vector2Int(0,0), rotation);
-        List<Door> newDoors = ComputeNewDoorsPos(room, roomPos, new Vector2Int(0,0), rotation);
+        HashSet<Door> newDoors = ComputeNewDoorsPos(room, roomPos, new Vector2Int(0,0), rotation);
         return (newPos, newRoomBoundaries, newDoors);
     }
 
@@ -67,7 +68,12 @@ public class Floor : MonoBehaviour
     }
 
     public Room GetGridRoom(int x, int y) {
-        return grid[this.maxSize.y-y-1, x];
+        if (x >= 0 && x < this.maxSize.x && y >= 0 && y < this.maxSize.y) {
+            return grid[this.maxSize.y-y-1, x];
+        }
+        else {
+            return null;
+        }
     }
 
     private float ComputeNewOrientation(Door doorToSpawnFrom, Door targetJoinDoor)
@@ -111,14 +117,14 @@ public class Floor : MonoBehaviour
         return GetAbsPosition((targetRoom.GetRoomPos()), posToSpawnFrom, posTargetJoinDoor, rotation);
     }
     
-    private List<Door> ComputeNewDoorsPos(Room targetRoom, Vector2Int posToSpawnFrom, Vector2Int posTargetJoinDoor, float rotation)
+    private HashSet<Door> ComputeNewDoorsPos(Room targetRoom, Vector2Int posToSpawnFrom, Vector2Int posTargetJoinDoor, float rotation)
     {
-        List<Door> newDoors = new List<Door>();
+        HashSet<Door> newDoors = new HashSet<Door>(new DoorEqualsComparer());
         foreach (Door d in targetRoom.GetDoors())
         {
             Vector2Int innerPos = GetAbsPosition(d.GetInnerPos(), posToSpawnFrom, posTargetJoinDoor, rotation);
             Vector2Int outerPos = GetAbsPosition(d.GetOuterPos(), posToSpawnFrom, posTargetJoinDoor, rotation);
-            newDoors.Add(new Door(innerPos, outerPos));
+            bool added = newDoors.Add(new Door(innerPos, outerPos));
         }
 
         return newDoors;
@@ -170,8 +176,6 @@ public class Floor : MonoBehaviour
 
     private bool OutOfBounds(Tuple<Vector2Int, Vector2Int> boundaries)
     {
-        Debug.Log(boundaries);
-        Debug.Log(maxSize);
         if (boundaries.Item1.x < 0 || boundaries.Item1.x >= maxSize.x) {
             return true;
         }
@@ -192,28 +196,97 @@ public class Floor : MonoBehaviour
         return false;
     }
 
-/*     public void FixDoorMatching(Room newRoom, List<Door> openDoors) {
-        List<Door> potentiallyNewOpenDoors = newRoom.GetDoors();
-        List<Door> collidingRoomDoors = new List<Door>();
-        List<Room> neighbors = GetNeighbors(newRoom);
-        foreach(Room n in neighbors) {
-            collidingRoomDoors.AddRange(n.GetDoors());
+    public void FixDoorMatching(Room newRoom, HashSet<Door> openDoors) {
+        HashSet<Door> potentiallyNewOpenDoors = new HashSet<Door> (newRoom.GetDoors(), new DoorEqualsComparer());
+        HashSet<Door> collidingNewRoomDoors = FilterGivesIntoSomething(potentiallyNewOpenDoors);
+        potentiallyNewOpenDoors.ExceptWith(collidingNewRoomDoors);
+
+        List<Room> neighbours = GetNeighbours(newRoom);
+        HashSet<Door> collidingRoomDoors = new HashSet<Door>(new DoorEqualsComparer());
+        foreach(Room n in neighbours) {
+            foreach (Door d in n.GetDoors()) {
+                collidingRoomDoors.Add(d);
+            }
+        }
+        collidingRoomDoors = FilterGivesIntoSomething(collidingRoomDoors);
+
+        (HashSet<Door> matching, HashSet<Door> unmatching) = DoorIntersect(collidingRoomDoors, collidingNewRoomDoors);
+
+        foreach (Door d in matching) {
+            //CreateDoor(d, lockedRoomKey);
+        } 
+
+        foreach (Door d in unmatching) {
+            //RemoveDoor(d);
         }
 
-        collidingRoomDoors = FilterGivesIntoSomething(collidingRoomDoors);
-        List<Door> collidingNewRoomDoors = FilterGivesIntoSomething(potentiallyNewOpenDoors); //Que no te chafe la lista, porque viene de newRoom.GetDoors(), que sea una nueva
+        openDoors.UnionWith(potentiallyNewOpenDoors);
+        openDoors.ExceptWith(matching);
+        openDoors.ExceptWith(unmatching);
+        openDoors.ExceptWith(collidingNewRoomDoors);
 
-        potentiallyNewOpenDoors = potentiallyNewOpenDoors.
+    }
 
+    private HashSet<Door> FilterGivesIntoSomething(HashSet<Door> doors) {
+        HashSet<Door> givesIntoSomething = new HashSet<Door>(doors.Where(GivesIntoSomething), new DoorEqualsComparer());
+        return givesIntoSomething;
+    }
 
-        for door in matching_doors:
-		    create_door(door, locked_room_key); // Suponemos que está creada asi que solo añadir aqui la logica de bloquear la puerta
+    private bool GivesIntoSomething(Door door) {
+        if (door.GetOuterPos().x > maxSize.x || door.GetOuterPos().x < 0 || 
+            door.GetOuterPos().y > maxSize.y || door.GetOuterPos().y < 0) {
+            return true;
+        }
+        else {
+            return (GetGridRoom(door.GetOuterPos().x, door.GetOuterPos().y) != null);
+        }
+    }
 
-	    for door in unmatching_doors:
-		    remove_door(door); // De momento no hacer nada
+    private List<Room> GetNeighbours(Room room) {
+        int minX = room.GetRoomBoundaries().Item1.x;
+        int maxX = room.GetRoomBoundaries().Item2.x;
+        int minY = room.GetRoomBoundaries().Item1.y;
+        int maxY = room.GetRoomBoundaries().Item2.y;
 
+        List<Room> neighbours = new List<Room>();
+        // Iterate over first and last rows
+        for (int i = minX; i <= maxX; ++i) {
+            if (GetGridRoom(i, maxY+1) != null) {
+                neighbours.Add(GetGridRoom(i, maxY+1));
+            }
+            if (GetGridRoom(i, minY-1) != null) {
+                neighbours.Add(GetGridRoom(i, minY-1));
+            }
+        }
 
-        // Añadir a openDoors el potentiallyNewOpenDoors y quitar el collidingRoomDoors
-    
-    } */
+        // Iterate edge columns
+        for (int j = minY; j <= maxY; ++j) {
+            if (GetGridRoom(maxX+1, j) != null) {
+                neighbours.Add(GetGridRoom(maxX+1, j));
+            }
+            if (GetGridRoom(minX-1, j) != null) {
+                neighbours.Add(GetGridRoom(minX-1, j));
+            }
+        }
+        return neighbours;
+    }
+
+    private (HashSet<Door>, HashSet<Door>) DoorIntersect (HashSet<Door> doors1, HashSet<Door> doors2) {
+
+        // Intersect
+        HashSet<Door> matching = new HashSet<Door>(doors1.Where(d1 => doors2.Count(d2 => DoorsMatch(d1, d2)) == 1), new DoorEqualsComparer());
+        // Except
+        HashSet<Door> unmatching = new HashSet<Door>(doors1.Where(d1 => doors2.Count(d2 => DoorsMatch(d1, d2)) == 0), new DoorEqualsComparer());
+
+        return (matching, unmatching);
+    }
+
+    private bool DoorsMatch(Door d1, Door d2) {
+        if (d1.GetOuterPos() == d2.GetInnerPos() && d1.GetInnerPos() == d2.GetOuterPos()) { 
+            return true; 
+        }
+        else {
+            return false;
+        }
+    }
 }
