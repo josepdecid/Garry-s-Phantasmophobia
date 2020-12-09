@@ -8,6 +8,7 @@ public class Outline : MonoBehaviour {
 	public Material outlineMaskMaterial;
 	public Material outlineFillMaterial;
 	public Color outlineColor;
+	public Color debugOutlineColor;
 	public float outlineWidth;
 	public float interactionDistance;
 

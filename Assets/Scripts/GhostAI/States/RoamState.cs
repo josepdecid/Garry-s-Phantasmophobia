@@ -24,7 +24,7 @@ public class RoamState : State
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
         {
             __goalPosition = GenerateRandomPoint(5);
-            _agent.destination = __goalPosition;
+            _agent.SetDestination(__goalPosition);
         }
 
         return NextState();

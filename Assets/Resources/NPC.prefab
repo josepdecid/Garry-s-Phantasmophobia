@@ -114,7 +114,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 2, z: 1.2}
+  m_Size: {x: 1.1, y: 2, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7692504472720282429
 Rigidbody:
@@ -141,7 +141,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7692504472720282418}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.75
+  m_Radius: 0.6
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a4ee03067bc2a48a8e51d0ccb297ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   patrolSpeed: 0.5
   fleeSpeed: 2
   numSamples: 50

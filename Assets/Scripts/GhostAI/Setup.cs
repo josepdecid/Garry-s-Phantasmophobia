@@ -12,6 +12,8 @@ public class Setup : MonoBehaviour
 	private GameObject ghostPrefab = null;
     [SerializeField]
     private int numberOfGhosts = 1;
+    [SerializeField]
+    private GameObject floor = null;
 	
 	[Header("Outline Materials")]
 	[SerializeField]
@@ -32,7 +34,6 @@ public class Setup : MonoBehaviour
     void Awake()
     {
         SetupNavMeshSurfaces();
-        SetupNavMeshLinks();
         SetupPlayer();
         SetupProps();
         SetupNPCs();
@@ -40,25 +41,35 @@ public class Setup : MonoBehaviour
 
     private void SetupNavMeshSurfaces()
     {
-        GameObject[] walkable = GameObject.FindGameObjectsWithTag("Floor");
-        Debug.Log(walkable);
+        GameObject[] walkableSurfaces = GameObject.FindGameObjectsWithTag("Floor");
+        CombineInstance[] objectsToCombine = new CombineInstance[walkableSurfaces.Length];
 
-        GameObject[] props = GameObject.FindGameObjectsWithTag("Prop");
-        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
-        GameObject[] nonWalkable = props.Concat(walls).ToArray();
-
-        foreach (GameObject floor in walkable)
+        for (int i = 0; i < walkableSurfaces.Length; ++i)
         {
-            NavMeshSurface surface = floor.AddComponent<NavMeshSurface>();
-            // We need this for NavMeshLink to work
-            surface.tileSize = 64;
-            surface.BuildNavMesh();
-        }
-    }
+            MeshFilter meshFilter = walkableSurfaces[i].GetComponent<MeshFilter>();
 
-    private void SetupNavMeshLinks()
-    {
-        // TODO: Implement joining doors.
+            // Extract mesh from each walkable surface (floor)
+            objectsToCombine[i].mesh = meshFilter.sharedMesh;
+            objectsToCombine[i].transform = meshFilter.transform.localToWorldMatrix;
+            
+            // Disable original single component
+            walkableSurfaces[i].gameObject.SetActive(false);
+        }
+
+        // New GameObject to merge the floors
+        GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
+
+        // Combine all meshes and set as the new mesh filter
+        floor.GetComponent<MeshFilter>().mesh = new Mesh();
+        floor.GetComponent<MeshFilter>().mesh.CombineMeshes(objectsToCombine);
+
+        // Update collider to fit all sub-components
+        MeshCollider meshCollider = floor.GetComponent<MeshCollider>();
+        meshCollider.sharedMesh = floor.GetComponent<MeshFilter>().mesh;
+        
+        // Build dynamic NavMesh
+        NavMeshSurface surface = floor.AddComponent<NavMeshSurface>();
+        surface.BuildNavMesh();
     }
 
     private void SetupPlayer()

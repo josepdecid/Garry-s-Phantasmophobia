@@ -22,7 +22,7 @@ public class FleeState : State
         if (distance < 5.0f || (!_agent.pathPending && _agent.remainingDistance < 0.5f))
         {
             Vector3 destination = GetFleePoint();
-            _agent.destination = destination;
+            _agent.SetDestination(destination);
         }
 
         if (_parameters.isDebug) UpdateAreaInfo();

@@ -17,7 +17,7 @@ public class SearchState : State
     public override StateType StateUpdate()
     {
         GameObject spot = GetNearestAvailableSpot();
-        _agent.destination = spot.transform.position;
+        _agent.SetDestination(spot.transform.position);
 
         __isNearSpot = !_agent.pathPending && _agent.remainingDistance < 2.0f;
 
@@ -75,5 +75,17 @@ public class SearchState : State
         }
 
         return spots[minIdx];
+    }
+
+    protected override void DrawDebugInfo()
+    {
+        // __targetArea = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        // __targetArea.transform.localScale = new Vector3(2 * _parameters.samplingRadius, 0.01f, 2 * _parameters.samplingRadius);
+        // __targetArea.GetComponent<SphereCollider>().enabled = false;
+        // __targetArea.GetComponent<MeshRenderer>().material.color = Color.grey;
+    }
+
+    private void UpdateTargetInfo()
+    {
     }
 }
