@@ -74,4 +74,8 @@ public class KeyDoorController : MonoBehaviour
         yield return new WaitForSeconds(timeToShowUI);
         showDoorLockedUI.SetActive(false);
     }
+
+    public void SetUnlocked(bool unlocked) {
+        this.doorUnlocked = unlocked;
+    }
 }

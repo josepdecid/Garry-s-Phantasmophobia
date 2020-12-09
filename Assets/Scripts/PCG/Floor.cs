@@ -221,10 +221,11 @@ public class Floor : MonoBehaviour
         int unm = unmatching.Count;
 
         foreach (Door d in matching) {
-            //SpawnDoor(d, lockedRoomKey);
+            SpawnDoor(d);
         }
 
         foreach (Door d in unmatching) {
+            //TODO: Instead of removing, hide them
             d.RemoveWall();
         }
 
@@ -295,5 +296,30 @@ public class Floor : MonoBehaviour
 
     private bool DoorsMatch(Door d1, Door d2) {
         return (d1.GetOuterPos() == d2.GetInnerPos() && d1.GetInnerPos() == d2.GetOuterPos()); 
+    }
+
+    private void SpawnDoor(Door door) {
+        //TODO: Spawn Keys and lock doors
+        bool unlocked = true;
+        GameObject doorPrefab = GetPrefabDoor();
+
+        Vector2Int currentOrientation = new Vector2Int(0, 1);
+        Vector2Int goalOrientation = door.GetInnerPos() - door.GetOuterPos();
+        float rotation = Mathf.Atan2(currentOrientation.y, currentOrientation.x) - Mathf.Atan2(goalOrientation.y, goalOrientation.x);
+        rotation = rotation * Mathf.Rad2Deg;
+
+        Vector3 origin = new Vector3((-tileSize / 2), 0, (-tileSize / 2));
+        Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
+        Vector3 finalPos = rotMatrix * origin - origin + rotMatrix * new Vector3((tileSize/2), 0, 0)
+                        + new Vector3(door.GetInnerPos().x * tileSize, floor * heightSize, door.GetInnerPos().y * tileSize);
+
+        GameObject prefabInstance = Instantiate(doorPrefab, finalPos, rotMatrix);
+        KeyDoorController keyDoor = prefabInstance.GetComponentInChildren<KeyDoorController>();
+        keyDoor.SetUnlocked(unlocked);
+    }
+
+    private GameObject GetPrefabDoor(){
+        GameObject doorPrefab = (GameObject)Resources.Load("Walls/door_wrapper", typeof(GameObject));
+        return doorPrefab;
     }
 }
