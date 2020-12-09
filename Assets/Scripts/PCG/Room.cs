@@ -16,14 +16,17 @@ public class Room : MonoBehaviour
     [SerializeField]
     private List<Door> doors = new List<Door>();
 
-    public void UpdateRoom(Vector2Int roomCoordinatesOriginPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, HashSet<Door> doors)
+    public void UpdateRoom(Vector2Int roomCoordinatesOriginPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors)
     {
         this.roomPos = roomCoordinatesOriginPos;
         this.roomBottomLeft = roomBoundaries.Item1;
         this.roomTopRight = roomBoundaries.Item2;
         this.rotation = rotation;
-        this.doors = new List<Door>(doors.ToList<Door>());
-        
+
+        for (int i = 0; i < doors.Count; ++i) {
+            this.doors[i].SetInnerPos(doors[i].GetInnerPos());
+            this.doors[i].SetOuterPos(doors[i].GetOuterPos());
+        }
     }
 
     public Vector2Int GetRoomPos()
@@ -41,8 +44,8 @@ public class Room : MonoBehaviour
         return rotation;
     }
 
-    public HashSet<Door> GetDoors()
+    public List<Door> GetDoors()
     {
-        return new HashSet<Door>(doors, new DoorEqualsComparer());
+        return doors;
     }
 }

@@ -32,9 +32,9 @@ public class Generator : MonoBehaviour
 
         (GameObject iniRoomPrefab, Room iniRoom) = GetPrefabRoom("0");
 
-        (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, HashSet<Door> iniRoomDoors) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
+        (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
         iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors);
-        openDoors.UnionWith(iniRoom.GetDoors());
+        openDoors.UnionWith(new HashSet<Door>(iniRoom.GetDoors(), new DoorEqualsComparer()));
 
         int numRoomsSpawned = 1;
         while (numRoomsSpawned <= temptativeSize)
@@ -49,7 +49,7 @@ public class Generator : MonoBehaviour
             {
                 attemptsToSpawnFromDoor += 1;
                 (GameObject targetRoomPrefab, Room targetRoom) = RandomChooseRoom();
-                HashSet<Door> targetRoomDoors = targetRoom.GetDoors();
+                List<Door> targetRoomDoors = targetRoom.GetDoors();
 
                 int attemptsToSpawnRoom = 0;
                 while (!validSpawn && attemptsToSpawnRoom < roomStubbornness)
@@ -60,11 +60,10 @@ public class Generator : MonoBehaviour
                     Vector2Int roomCoordinatesOriginPos;
                     Tuple<Vector2Int, Vector2Int> roomBoundaries;
                     float rotation;
-                    HashSet<Door> doors;
+                    List<Door> doors;
                     (validSpawn, roomCoordinatesOriginPos, roomBoundaries, rotation, doors) = grid.CheckRoomSpawnValidity(targetRoom, doorToSpawnFrom, targetJoinDoor);
                     if (validSpawn)
                     {
-                        // TODO: SPAWN KEYS, FIX DOORS MATCHING
                         Room room = grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors);
                         grid.FixDoorMatching(room, openDoors);
                     }
@@ -79,7 +78,7 @@ public class Generator : MonoBehaviour
 
     private (GameObject, Room) RandomChooseRoom()
     {
-        string randRoom = UnityEngine.Random.Range(1, 13).ToString();
+        string randRoom = UnityEngine.Random.Range(1, 15).ToString();
         return GetPrefabRoom(randRoom);
     }
 
@@ -100,6 +99,12 @@ public class Generator : MonoBehaviour
             ++currentIdx;
         }
         return null;
+    }
+
+    private Door RandomChooseDoor(List<Door> doors)
+    {
+        int randIdx = UnityEngine.Random.Range(0, doors.Count);
+        return doors[randIdx];
     }
 }
 

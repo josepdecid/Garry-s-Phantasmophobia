@@ -9,7 +9,6 @@ public class Door : MonoBehaviour
     private Vector2Int outerPos;
 
     //TODO: Add logic for the key and unlocking/locking management
-
     public Door(Vector2Int innerPos, Vector2Int outerPos)
     {
         this.innerPos = innerPos;
@@ -34,6 +33,12 @@ public class Door : MonoBehaviour
     public void SetOuterPos(Vector2Int outerPos)
     {
         this.outerPos = outerPos;
+    }
+
+    public void RemoveWall() {
+        foreach(Transform child in this.transform) {
+            DestroyImmediate(child.gameObject, true);
+        }
     }
 }
 
