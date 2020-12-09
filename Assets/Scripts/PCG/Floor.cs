@@ -225,8 +225,7 @@ public class Floor : MonoBehaviour
         }
 
         foreach (Door d in unmatching) {
-            //TODO: Instead of removing, hide them
-            d.RemoveWall();
+            HideDoor(d);
         }
 
         openDoors.ExceptWith(matching);
@@ -303,6 +302,30 @@ public class Floor : MonoBehaviour
         bool unlocked = true;
         GameObject doorPrefab = GetPrefabDoor();
 
+        (Vector3 pos, Quaternion rot) = GetDoorExactPosition(door);
+
+        GameObject prefabInstance = Instantiate(doorPrefab, pos, rot);
+        KeyDoorController keyDoor = prefabInstance.GetComponentInChildren<KeyDoorController>();
+        keyDoor.SetUnlocked(unlocked);
+    }
+
+    public void HideDoor(Door door) {
+        GameObject hidePrefab = GetPrefabHide();
+        (Vector3 pos, Quaternion rot) = GetDoorExactPosition(door);
+        GameObject prefabInstance = Instantiate(hidePrefab, pos, rot);
+    }
+
+    private GameObject GetPrefabDoor(){
+        GameObject doorPrefab = (GameObject)Resources.Load("Walls/door_wrapper", typeof(GameObject));
+        return doorPrefab;
+    }
+
+    private GameObject GetPrefabHide(){
+        GameObject prefab = (GameObject)Resources.Load("Furniture/cabinet_wrapper", typeof(GameObject));
+        return prefab;
+    }
+
+    private (Vector3, Quaternion) GetDoorExactPosition(Door door) {
         Vector2Int currentOrientation = new Vector2Int(0, 1);
         Vector2Int goalOrientation = door.GetInnerPos() - door.GetOuterPos();
         float rotation = Mathf.Atan2(currentOrientation.y, currentOrientation.x) - Mathf.Atan2(goalOrientation.y, goalOrientation.x);
@@ -312,14 +335,7 @@ public class Floor : MonoBehaviour
         Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
         Vector3 finalPos = rotMatrix * origin - origin + rotMatrix * new Vector3((tileSize/2), 0, 0)
                         + new Vector3(door.GetInnerPos().x * tileSize, floor * heightSize, door.GetInnerPos().y * tileSize);
-
-        GameObject prefabInstance = Instantiate(doorPrefab, finalPos, rotMatrix);
-        KeyDoorController keyDoor = prefabInstance.GetComponentInChildren<KeyDoorController>();
-        keyDoor.SetUnlocked(unlocked);
-    }
-
-    private GameObject GetPrefabDoor(){
-        GameObject doorPrefab = (GameObject)Resources.Load("Walls/door_wrapper", typeof(GameObject));
-        return doorPrefab;
+        
+        return (finalPos, rotMatrix);
     }
 }

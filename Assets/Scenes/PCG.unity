@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5340660083043cf40be9b78abacf46e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temptativeSize: 10
+  temptativeSize: 30
   doorStubbornness: 30
   roomStubbornness: 30
   tileSize: 6

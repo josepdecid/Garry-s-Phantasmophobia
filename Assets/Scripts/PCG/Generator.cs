@@ -74,6 +74,9 @@ public class Generator : MonoBehaviour
                 //TODO: TREAT INVALID SPAWN
             }
         }
+        foreach (Door d in openDoors){
+            grid.HideDoor(d);
+        }
     }
 
     private (GameObject, Room) RandomChooseRoom()
