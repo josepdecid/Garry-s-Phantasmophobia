@@ -30,6 +30,7 @@ public class Setup : MonoBehaviour
 	private float interactionDistance = 1.0f;
 
     private GameObject __player;
+    private NavMeshSurface __navMeshSurface;
 
     void Awake()
     {
@@ -68,8 +69,8 @@ public class Setup : MonoBehaviour
         meshCollider.sharedMesh = floor.GetComponent<MeshFilter>().mesh;
         
         // Build dynamic NavMesh
-        NavMeshSurface surface = floor.AddComponent<NavMeshSurface>();
-        surface.BuildNavMesh();
+        __navMeshSurface = floor.AddComponent<NavMeshSurface>();
+        __navMeshSurface.BuildNavMesh();
     }
 
     private void SetupPlayer()
@@ -98,10 +99,13 @@ public class Setup : MonoBehaviour
 
     private void SetupNPCs()
     {
+        RandomNavMeshPoint navMeshSampler = gameObject.AddComponent<RandomNavMeshPoint>();
         GameObject[] ghosts = new GameObject[numberOfGhosts];
+        
         for (int i = 0; i < numberOfGhosts; ++i)
         {
-            ghosts[i] = Instantiate(ghostPrefab, new Vector3(10, 2, 10), Quaternion.identity);
+            Vector3 spawnPosition = navMeshSampler.GetRandomPointOnNavMesh();
+            ghosts[i] = Instantiate(ghostPrefab, spawnPosition, Quaternion.identity);
         }
     }
 }
