@@ -24,15 +24,13 @@ public class HideState : State
     public override StateType StateUpdate()
     {
         __timeout -= Time.deltaTime;
-        
-        if (__timeout < 0f)
-        {
-            // _ghostSpotMapping.RemoveSpot(_ghost.name);
-        }
 
         StateType nextState = NextState();
         if (nextState != StateType.Hide)
+        {
+            _ghostSpotMapping.RemoveSpot(_ghost.name);
             SetVisibility(true);
+        }
 
         return nextState;
     }
@@ -61,7 +59,6 @@ public class HideState : State
     {   
         string interactedSpot = _ghostSpotMapping.GetInteractedSpot();
         string ghostSpot = _ghostSpotMapping.GetSpot(_ghost.name);
-        Debug.Log($"{ghostSpot} - {interactedSpot}");
         return interactedSpot == ghostSpot && interactedSpot != null;
     }
 

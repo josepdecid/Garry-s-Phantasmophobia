@@ -20,8 +20,6 @@ public class SearchState : State
         _agent.SetDestination(spot.transform.position);
 
         __isNearSpot = !_agent.pathPending && _agent.remainingDistance < 2.0f;
-
-        // __isNearSpot = Vector3.Distance(_ghost.transform.position, spot.transform.position) < 2.0f;
         if (__isNearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, spot.name);
 
         __timeout -= Time.deltaTime;

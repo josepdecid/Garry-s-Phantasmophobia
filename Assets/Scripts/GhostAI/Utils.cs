@@ -34,7 +34,6 @@ class Utils
                 Debug.DrawRay(sourcePosition, direction * hit.distance, Color.yellow);      
                 if (hit.collider.gameObject.name == target.name)
                 {
-                    Debug.Log($"Did Hit {target.tag}{target.name}");
                     return true;
                 }
             }

@@ -101,11 +101,12 @@ public class Setup : MonoBehaviour
     {
         RandomNavMeshPoint navMeshSampler = gameObject.AddComponent<RandomNavMeshPoint>();
         GameObject[] ghosts = new GameObject[numberOfGhosts];
-        
+
         for (int i = 0; i < numberOfGhosts; ++i)
         {
             Vector3 spawnPosition = navMeshSampler.GetRandomPointOnNavMesh();
             ghosts[i] = Instantiate(ghostPrefab, spawnPosition, Quaternion.identity);
+            ghosts[i].name = $"Ghost {i}";
         }
     }
 }
