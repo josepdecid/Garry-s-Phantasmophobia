@@ -18,6 +18,7 @@ public class HideState : State
 
     public override void Enter()
     {
+        base.Enter();
         SetVisibility(false);
     }
 

@@ -12,8 +12,6 @@ public class Setup : MonoBehaviour
 	private GameObject ghostPrefab = null;
     [SerializeField]
     private int numberOfGhosts = 1;
-    [SerializeField]
-    private GameObject floor = null;
 	
 	[Header("Outline Materials")]
 	[SerializeField]
@@ -68,14 +66,28 @@ public class Setup : MonoBehaviour
         MeshCollider meshCollider = floor.GetComponent<MeshCollider>();
         meshCollider.sharedMesh = floor.GetComponent<MeshFilter>().mesh;
         
+        // Get Ghost AgentType ID to build the NavMesh with that parameters
+        int count = NavMesh.GetSettingsCount();
+        int agentTypeID = -1;
+        for (int i = 0; i < count && agentTypeID == -1; ++i)
+        {
+            int id = NavMesh.GetSettingsByIndex(i).agentTypeID;
+            string name = NavMesh.GetSettingsNameFromID(id);
+            if (name == "Ghost")
+                agentTypeID = id;
+        }
+
         // Build dynamic NavMesh
         __navMeshSurface = floor.AddComponent<NavMeshSurface>();
+        __navMeshSurface.agentTypeID = agentTypeID;
         __navMeshSurface.BuildNavMesh();
     }
 
     private void SetupPlayer()
     {
-        __player = Instantiate(playerPrefab, new Vector3(0, 2, 0), Quaternion.identity);
+        RandomNavMeshPoint navMeshSampler = gameObject.AddComponent<RandomNavMeshPoint>();
+        Vector3 spawnPosition = navMeshSampler.GetRandomPointOnNavMesh();
+        __player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
     }
 
     private void SetupProps()

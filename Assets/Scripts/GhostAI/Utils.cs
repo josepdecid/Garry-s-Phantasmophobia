@@ -19,6 +19,7 @@ class Utils
 
     public static bool IsTargetVisible(GameObject player, GameObject target, float fieldOfView, float distance)
     {
+        // TODO: Fix only raycast to the center, it center is hidden but object can still be seen, returns false.
         Vector3 sourcePosition = player.transform.position;
         Vector3 targetPosition = target.transform.position;
         Vector3 direction = targetPosition - sourcePosition;
