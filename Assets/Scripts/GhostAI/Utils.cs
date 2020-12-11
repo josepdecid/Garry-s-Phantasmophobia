@@ -60,4 +60,18 @@ class Utils
 
         return false;
     }
+
+    public static GameObject GetGhostInFront(GameObject playerCamera, float distance)
+    {
+        Vector3 sourcePosition = playerCamera.transform.position;
+        Vector3 direction = playerCamera.transform.forward;
+
+        RaycastHit hit;
+        bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
+
+        Debug.DrawRay(sourcePosition, direction * hit.distance, Color.green);     
+
+        if (isHitting && hit.collider.gameObject.tag == "NPC") return hit.collider.gameObject;
+        else return null;
+    }
 }

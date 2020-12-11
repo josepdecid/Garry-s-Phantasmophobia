@@ -56,18 +56,18 @@ public class SearchState : State
 
     private GameObject GetNearestAvailableSpot()
     {
-        // TODO: Filter out already occupied spots
-
+        // Get navigation distance instead of euclidean distance
         GameObject[] spots = GameObject.FindGameObjectsWithTag("Prop");
         if (spots.GetLength(0) == 0) Debug.LogWarning("There are no hiding spots!");
         
-        float minDist = Vector3.Distance(spots[0].transform.position, _ghost.transform.position);
-        int minIdx = 0;
+        float minDist = Mathf.Infinity;
+        int minIdx = -1;
 
-        for (int i = 1; i < spots.GetLength(0); ++i)
+        for (int i = 0; i < spots.GetLength(0); ++i)
         {
             float dist = Vector3.Distance(spots[i].transform.position, _ghost.transform.position);
-            if (dist < minDist)
+            bool spotFree = _ghostSpotMapping.GetGhost(spots[i].name) == null;
+            if (dist < minDist && spotFree)
             {
                 minIdx = i;
                 minDist = dist;

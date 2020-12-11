@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 3238705681429859117}
   - component: {fileID: 3238705681427460525}
   - component: {fileID: 7086425658542430412}
+  - component: {fileID: 8216160203888642178}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -399,6 +400,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8216160203888642178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238705681435027533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88010a7a6306f047bcca3603ea8b51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  captureDistance: 5
 --- !u!1 &3238705681435027535
 GameObject:
   m_ObjectHideFlags: 0
