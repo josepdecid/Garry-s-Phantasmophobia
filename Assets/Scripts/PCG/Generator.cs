@@ -75,9 +75,8 @@ public class Generator : MonoBehaviour
                 //TODO: TREAT INVALID SPAWN
             }
         }
-        String r = UnityEngine.Random.Range(1, 6).ToString();
         foreach (Door d in openDoors){
-            grid.HideDoor(d, r);
+            grid.HideDoor(d, d.gameObject.transform.parent.GetComponent<Room>().curtainColorNumber);
         }
 
         grid.HideInsideWindows();

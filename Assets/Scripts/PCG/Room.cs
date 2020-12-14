@@ -18,6 +18,10 @@ public class Room : MonoBehaviour
     [SerializeField]
     private List<Window> windows = new List<Window>();
 
+    // The color of curtains to use inside of one room
+    // See door_curtain_N and window_curtain_N prefabs
+    public String curtainColorNumber = "1";
+
     public void UpdateRoom(Vector2Int roomCoordinatesOriginPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors, List<Window> windows)
     {
         this.roomPos = roomCoordinatesOriginPos;

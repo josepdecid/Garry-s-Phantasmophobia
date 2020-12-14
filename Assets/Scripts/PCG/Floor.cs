@@ -134,8 +134,8 @@ public class Floor : MonoBehaviour
         return newDoors;
     }
     
-    // TODO: Refactor togerther with ComputeNewRoomPos, since it does the same
     // Recompute positions of the windows after rotation
+    // Very similar to ComputeNewDoorsPos, but not mergable together
     private List<Window> ComputeNewWindowsPos(Room targetRoom, Vector2Int posToSpawnFrom, Vector2Int posTargetJoinDoor, float rotation)
     {
         List<Window> newWindows = new List<Window>();
@@ -244,9 +244,9 @@ public class Floor : MonoBehaviour
 
         // Pass a random parameter as indicator for a room
         // to ensure the same type of curtains in one room
-        String r = UnityEngine.Random.Range(1, 6).ToString();
+        newRoom.curtainColorNumber = UnityEngine.Random.Range(1, 6).ToString();
         foreach (Door d in unmatching) {
-            HideDoor(d, r);
+            HideDoor(d, newRoom.curtainColorNumber);
         }
 
         openDoors.ExceptWith(matching);
@@ -257,26 +257,19 @@ public class Floor : MonoBehaviour
 
     // Hide windows, which goes inside the house
     public void HideInsideWindows(){
+
         foreach(Room room in this.rooms){
             List<Room> neighbours = GetNeighbours(room);
+
             // Try to find windows, which do give into another room
             // Then hide them by a curtain
             foreach(Room n in neighbours) {
 
                 foreach (Window w in room.GetWindows()) {
-                
-                    // Debug.Log("******************************************");
-                    // Debug.Log("newRoom: " + room.gameObject.name + ", n:" + n.gameObject.name);
-                    // Debug.Log("newRoom.rot: " + room.transform.rotation.y + ", " + room.transform.rotation);
-                    // Debug.Log("n.Boundaries: " + n.GetRoomBoundaries());
-                    // Debug.Log("w.outerPos: " + w.GetOuterPos());
-                    // Debug.Log("w.name: " + w.name);
-                    // Debug.Log("------------------------------------------");
 
                     // If window gives into this neighbor then hide
                     if(n.CheckPositionWithinRoom(w.GetOuterPos())) {
-                        String r = UnityEngine.Random.Range(1, 6).ToString();
-                        HideWindow(w, r);
+                        HideWindow(w, room.curtainColorNumber);
                     }
                 }
             }
@@ -358,7 +351,7 @@ public class Floor : MonoBehaviour
     }
 
     public void HideDoor(Door door, String r) {
-        GameObject hidePrefab = GetPrefabHide(r);
+        GameObject hidePrefab = GetPrefabHide(r, "door");
         (Vector3 pos, Quaternion rot, Vector2Int orient) = GetDoorExactPosition(door);
 
         // Aff a shift depending on the orientation
@@ -370,8 +363,8 @@ public class Floor : MonoBehaviour
     }
 
     public void HideWindow(Window w, String r) {
-        GameObject hidePrefab = GetPrefabHideWindow(r);
-        (Vector3 pos, Quaternion rot, Vector2Int orient) = GetWindowExactPosition(w);
+        GameObject hidePrefab = GetPrefabHide(r, "window");
+        (Vector3 pos, Quaternion rot, Vector2Int orient) = GetDoorExactPosition(w);
 
         // Aff a shift depending on the orientation
         float shiftX = 0.22f * orient.x - 0.13f * orient.y;
@@ -386,16 +379,13 @@ public class Floor : MonoBehaviour
         return doorPrefab;
     }
 
-    private GameObject GetPrefabHide(String r){
-        GameObject prefab = (GameObject)Resources.Load("Decoration/door_curtain_" + r, typeof(GameObject));
+    private GameObject GetPrefabHide(String r, String curtainType){
+        GameObject prefab = (GameObject)Resources.Load("Decoration/" + curtainType + "_curtain_" + r, typeof(GameObject));
         return prefab;
     }
 
-    private GameObject GetPrefabHideWindow(String r){
-        GameObject prefab = (GameObject)Resources.Load("Decoration/window_curtain_" + r, typeof(GameObject));
-        return prefab;
-    }
 
+    // Extract exact Door or Window
     private (Vector3, Quaternion, Vector2Int) GetDoorExactPosition(Door door) {
         Vector2Int currentOrientation = new Vector2Int(0, 1);
         Vector2Int goalOrientation = door.GetInnerPos() - door.GetOuterPos();
@@ -406,21 +396,6 @@ public class Floor : MonoBehaviour
         Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
         Vector3 finalPos = rotMatrix * origin - origin + rotMatrix * new Vector3((tileSize/2), 0, 0)
                         + new Vector3(door.GetInnerPos().x * tileSize, floor * heightSize, door.GetInnerPos().y * tileSize);
-        
-        return (finalPos, rotMatrix, goalOrientation);
-    }
-
-    // TODO: Refactor together with GetDoorExactPosition, since it does the same
-    private (Vector3, Quaternion, Vector2Int) GetWindowExactPosition(Window w) {
-        Vector2Int currentOrientation = new Vector2Int(0, 1);
-        Vector2Int goalOrientation = w.GetInnerPos() - w.GetOuterPos();
-        float rotation = Mathf.Atan2(currentOrientation.y, currentOrientation.x) - Mathf.Atan2(goalOrientation.y, goalOrientation.x);
-        rotation = rotation * Mathf.Rad2Deg;
-
-        Vector3 origin = new Vector3((-tileSize / 2), 0, (-tileSize / 2));
-        Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
-        Vector3 finalPos = rotMatrix * origin - origin + rotMatrix * new Vector3((tileSize/2), 0, 0)
-                        + new Vector3(w.GetInnerPos().x * tileSize, floor * heightSize, w.GetInnerPos().y * tileSize);
         
         return (finalPos, rotMatrix, goalOrientation);
     }

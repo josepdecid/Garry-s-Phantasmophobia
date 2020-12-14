@@ -4,9 +4,9 @@ using System.Collections.Generic;
 public class Door : MonoBehaviour
 {
     [SerializeField]
-    private Vector2Int innerPos;
+    protected Vector2Int innerPos;
     [SerializeField]
-    private Vector2Int outerPos;
+    protected Vector2Int outerPos;
 
     public Door(Vector2Int innerPos, Vector2Int outerPos)
     {
