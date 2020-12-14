@@ -15,6 +15,8 @@ public class Room : MonoBehaviour
     private float rotation;
     [SerializeField]
     private List<Door> doors = new List<Door>();
+    [SerializeField]
+    private List<Window> windows = new List<Window>();
 
     public void UpdateRoom(Vector2Int roomCoordinatesOriginPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors)
     {
@@ -47,5 +49,10 @@ public class Room : MonoBehaviour
     public List<Door> GetDoors()
     {
         return doors;
+    }
+
+    public List<Window> GetWindows()
+    {
+        return windows;
     }
 }
