@@ -67,8 +67,8 @@ public class Room : MonoBehaviour
     // Return truw if given (tile) position is within room's boundaries
     public Boolean CheckPositionWithinRoom(Vector2Int pos) {
         if(pos.x >= roomBottomLeft.x 
-        && pos.x <= roomBottomLeft.x 
-        && pos.y >= roomTopRight.y 
+        && pos.x <= roomTopRight.x 
+        && pos.y >= roomBottomLeft.y 
         && pos.y <= roomTopRight.y) {
             return true;
         }
