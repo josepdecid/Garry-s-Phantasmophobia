@@ -224,8 +224,9 @@ public class Floor : MonoBehaviour
             SpawnDoor(d);
         }
 
+        String r = UnityEngine.Random.Range(1, 6).ToString();
         foreach (Door d in unmatching) {
-            HideDoor(d);
+            HideDoor(d, r);
         }
 
         openDoors.ExceptWith(matching);
@@ -302,16 +303,22 @@ public class Floor : MonoBehaviour
         bool unlocked = true;
         GameObject doorPrefab = GetPrefabDoor();
 
-        (Vector3 pos, Quaternion rot) = GetDoorExactPosition(door);
+        (Vector3 pos, Quaternion rot, Vector2Int orient) = GetDoorExactPosition(door);
 
         GameObject prefabInstance = Instantiate(doorPrefab, pos, rot);
         KeyDoorController keyDoor = prefabInstance.GetComponentInChildren<KeyDoorController>();
         keyDoor.SetUnlocked(unlocked);
     }
 
-    public void HideDoor(Door door) {
-        GameObject hidePrefab = GetPrefabHide();
-        (Vector3 pos, Quaternion rot) = GetDoorExactPosition(door);
+    public void HideDoor(Door door, String r) {
+        GameObject hidePrefab = GetPrefabHide(r);
+        (Vector3 pos, Quaternion rot, Vector2Int orient) = GetDoorExactPosition(door);
+
+        // Aff a shift depending on the orientation
+        float shiftX = 0.22f * orient.x;
+        float shiftZ = 0.22f * orient.y;
+        pos = new Vector3(pos.x + shiftX, pos.y, pos.z + shiftZ);
+
         GameObject prefabInstance = Instantiate(hidePrefab, pos, rot);
     }
 
@@ -320,12 +327,12 @@ public class Floor : MonoBehaviour
         return doorPrefab;
     }
 
-    private GameObject GetPrefabHide(){
-        GameObject prefab = (GameObject)Resources.Load("Furniture/cabinet_wrapper", typeof(GameObject));
+    private GameObject GetPrefabHide(String r){
+        GameObject prefab = (GameObject)Resources.Load("Decoration/door_curtain_" + r, typeof(GameObject));
         return prefab;
     }
 
-    private (Vector3, Quaternion) GetDoorExactPosition(Door door) {
+    private (Vector3, Quaternion, Vector2Int) GetDoorExactPosition(Door door) {
         Vector2Int currentOrientation = new Vector2Int(0, 1);
         Vector2Int goalOrientation = door.GetInnerPos() - door.GetOuterPos();
         float rotation = Mathf.Atan2(currentOrientation.y, currentOrientation.x) - Mathf.Atan2(goalOrientation.y, goalOrientation.x);
@@ -336,6 +343,6 @@ public class Floor : MonoBehaviour
         Vector3 finalPos = rotMatrix * origin - origin + rotMatrix * new Vector3((tileSize/2), 0, 0)
                         + new Vector3(door.GetInnerPos().x * tileSize, floor * heightSize, door.GetInnerPos().y * tileSize);
         
-        return (finalPos, rotMatrix);
+        return (finalPos, rotMatrix, goalOrientation);
     }
 }

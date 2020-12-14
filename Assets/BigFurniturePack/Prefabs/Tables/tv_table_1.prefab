@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 3300008}
   - component: {fileID: 2300008}
   - component: {fileID: 4678254869021983042}
-  - component: {fileID: 3554181597524959222}
+  - component: {fileID: 2030100469077070281}
   m_Layer: 0
   m_Name: vase_4
   m_TagString: LightweightObjects
@@ -444,8 +444,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &3554181597524959222
-CapsuleCollider:
+--- !u!65 &2030100469077070281
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -454,9 +454,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 4.8677893
-  m_Height: 10.922967
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 9.735579, y: 10.922967, z: 9.735578}
   m_Center: {x: 2.7182047e-20, y: 0.000012874604, z: -0.00000047683767}
 --- !u!1 &100010
 GameObject:

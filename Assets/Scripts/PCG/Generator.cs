@@ -74,8 +74,9 @@ public class Generator : MonoBehaviour
                 //TODO: TREAT INVALID SPAWN
             }
         }
+        String r = UnityEngine.Random.Range(1, 6).ToString();
         foreach (Door d in openDoors){
-            grid.HideDoor(d);
+            grid.HideDoor(d, r);
         }
     }
 
