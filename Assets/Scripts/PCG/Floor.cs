@@ -24,7 +24,7 @@ public class Floor : MonoBehaviour
         this.floor = floor;
     }
 
-    public Room SpawnRoom(GameObject roomPrefab, Room room, Vector2Int roomPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors)
+    public Room SpawnRoom(GameObject roomPrefab, Room room, Vector2Int roomPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors, List<Window> windows)
     {
         Vector3 origin = new Vector3((-tileSize / 2), 0, (-tileSize / 2));
         Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
@@ -33,28 +33,30 @@ public class Floor : MonoBehaviour
 
         GameObject prefabInstance = Instantiate(roomPrefab, finalPos, rotMatrix);
         room = prefabInstance.GetComponent<Room>();
-        room.UpdateRoom(roomPos, roomBoundaries, rotation, doors);
+        room.UpdateRoom(roomPos, roomBoundaries, rotation, doors, windows);
         this.rooms.Add(room);
         AddRoomToGrid(room, roomBoundaries);
         return room;
     }
 
-    public (bool, Vector2Int, Tuple<Vector2Int, Vector2Int>, float, List<Door>) CheckRoomSpawnValidity(Room targetRoom, Door doorToSpawnFrom, Door targetJoinDoor)
+    public (bool, Vector2Int, Tuple<Vector2Int, Vector2Int>, float, List<Door>, List<Window>) CheckRoomSpawnValidity(Room targetRoom, Door doorToSpawnFrom, Door targetJoinDoor)
     {
         float rotation = ComputeNewOrientation(doorToSpawnFrom, targetJoinDoor);
         Tuple<Vector2Int, Vector2Int> newRoomBoundaries = ComputeNewBoundaries(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
         Vector2Int newPos = ComputeNewRoomPos(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
         List<Door> newDoors = ComputeNewDoorsPos(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
+        List<Window> newWindows = ComputeNewWindowsPos(targetRoom, doorToSpawnFrom.GetOuterPos(), targetJoinDoor.GetInnerPos(), rotation);
         bool isValid = CheckValidity(newRoomBoundaries);
-        return (isValid, newPos, newRoomBoundaries, rotation, newDoors);
+        return (isValid, newPos, newRoomBoundaries, rotation, newDoors, newWindows);
 
     }
 
-    public (Vector2Int, Tuple<Vector2Int, Vector2Int>, List<Door>) GetIniRoomProperties(Room room, Vector2Int roomPos, float rotation){
+    public (Vector2Int, Tuple<Vector2Int, Vector2Int>, List<Door>, List<Window>) GetIniRoomProperties(Room room, Vector2Int roomPos, float rotation){
         Tuple<Vector2Int, Vector2Int> newRoomBoundaries = ComputeNewBoundaries(room, roomPos, new Vector2Int(0,0), rotation);
         Vector2Int newPos = ComputeNewRoomPos(room, roomPos, new Vector2Int(0,0), rotation);
         List<Door> newDoors = ComputeNewDoorsPos(room, roomPos, new Vector2Int(0,0), rotation);
-        return (newPos, newRoomBoundaries, newDoors);
+        List<Window> newWindows = ComputeNewWindowsPos(room, roomPos, new Vector2Int(0,0), rotation);
+        return (newPos, newRoomBoundaries, newDoors, newWindows);
     }
 
     public void AddRoomToGrid(Room room, Tuple<Vector2Int, Vector2Int> roomBoundaries) {
@@ -130,6 +132,22 @@ public class Floor : MonoBehaviour
             newDoors.Add(new Door(innerPos, outerPos));
         }
         return newDoors;
+    }
+    
+    // TODO: Refactor togerther with ComputeNewRoomPos, since it does the same
+    // Recompute positions of the windows after rotation
+    private List<Window> ComputeNewWindowsPos(Room targetRoom, Vector2Int posToSpawnFrom, Vector2Int posTargetJoinDoor, float rotation)
+    {
+        List<Window> newWindows = new List<Window>();
+        foreach (Window w in targetRoom.GetWindows())
+        {
+            Vector2Int innerPos = GetAbsPosition(w.GetInnerPos(), posToSpawnFrom, posTargetJoinDoor, rotation);
+            Vector2Int outerPos = GetAbsPosition(w.GetOuterPos(), posToSpawnFrom, posTargetJoinDoor, rotation);
+
+            newWindows.Add(new Window(innerPos, outerPos));
+        }
+
+        return newWindows;
     }
 
     private Vector2Int GetAbsPosition(Vector2Int relPos, Vector2Int doorToSpawnFromAbsPos, Vector2Int targetDoorRelPos, float rotation)
@@ -224,6 +242,8 @@ public class Floor : MonoBehaviour
             SpawnDoor(d);
         }
 
+        // Pass a random parameter as indicator for a room
+        // to ensure the same type of curtains in one room
         String r = UnityEngine.Random.Range(1, 6).ToString();
         foreach (Door d in unmatching) {
             HideDoor(d, r);
@@ -233,7 +253,34 @@ public class Floor : MonoBehaviour
         openDoors.ExceptWith(unmatching);
         openDoors.ExceptWith(collidingNewRoomDoors);
         openDoors.UnionWith(potentiallyNewOpenDoors);
+    }
 
+    // Hide windows, which goes inside the house
+    public void HideInsideWindows(){
+        foreach(Room room in this.rooms){
+            List<Room> neighbours = GetNeighbours(room);
+            // Try to find windows, which do give into another room
+            // Then hide them by a curtain
+            foreach(Room n in neighbours) {
+
+                foreach (Window w in room.GetWindows()) {
+                
+                    // Debug.Log("******************************************");
+                    // Debug.Log("newRoom: " + room.gameObject.name + ", n:" + n.gameObject.name);
+                    // Debug.Log("newRoom.rot: " + room.transform.rotation.y + ", " + room.transform.rotation);
+                    // Debug.Log("n.Boundaries: " + n.GetRoomBoundaries());
+                    // Debug.Log("w.outerPos: " + w.GetOuterPos());
+                    // Debug.Log("w.name: " + w.name);
+                    // Debug.Log("------------------------------------------");
+
+                    // If window gives into this neighbor then hide
+                    if(n.CheckPositionWithinRoom(w.GetOuterPos())) {
+                        String r = UnityEngine.Random.Range(1, 6).ToString();
+                        HideWindow(w, r);
+                    }
+                }
+            }
+        }
     }
 
     private HashSet<Door> FilterGivesIntoSomething(HashSet<Door> doors) {
@@ -322,6 +369,18 @@ public class Floor : MonoBehaviour
         GameObject prefabInstance = Instantiate(hidePrefab, pos, rot);
     }
 
+    public void HideWindow(Window w, String r) {
+        GameObject hidePrefab = GetPrefabHideWindow(r);
+        (Vector3 pos, Quaternion rot, Vector2Int orient) = GetWindowExactPosition(w);
+
+        // Aff a shift depending on the orientation
+        float shiftX = 0.22f * orient.x - 0.13f * orient.y;
+        float shiftZ = 0.22f * orient.y + 0.13f * orient.x;
+        pos = new Vector3(pos.x + shiftX, pos.y + 1.3f, pos.z + shiftZ);
+
+        GameObject prefabInstance = Instantiate(hidePrefab, pos, rot);
+    }
+
     private GameObject GetPrefabDoor(){
         GameObject doorPrefab = (GameObject)Resources.Load("Walls/door_wrapper", typeof(GameObject));
         return doorPrefab;
@@ -329,6 +388,11 @@ public class Floor : MonoBehaviour
 
     private GameObject GetPrefabHide(String r){
         GameObject prefab = (GameObject)Resources.Load("Decoration/door_curtain_" + r, typeof(GameObject));
+        return prefab;
+    }
+
+    private GameObject GetPrefabHideWindow(String r){
+        GameObject prefab = (GameObject)Resources.Load("Decoration/window_curtain_" + r, typeof(GameObject));
         return prefab;
     }
 
@@ -342,6 +406,21 @@ public class Floor : MonoBehaviour
         Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
         Vector3 finalPos = rotMatrix * origin - origin + rotMatrix * new Vector3((tileSize/2), 0, 0)
                         + new Vector3(door.GetInnerPos().x * tileSize, floor * heightSize, door.GetInnerPos().y * tileSize);
+        
+        return (finalPos, rotMatrix, goalOrientation);
+    }
+
+    // TODO: Refactor together with GetDoorExactPosition, since it does the same
+    private (Vector3, Quaternion, Vector2Int) GetWindowExactPosition(Window w) {
+        Vector2Int currentOrientation = new Vector2Int(0, 1);
+        Vector2Int goalOrientation = w.GetInnerPos() - w.GetOuterPos();
+        float rotation = Mathf.Atan2(currentOrientation.y, currentOrientation.x) - Mathf.Atan2(goalOrientation.y, goalOrientation.x);
+        rotation = rotation * Mathf.Rad2Deg;
+
+        Vector3 origin = new Vector3((-tileSize / 2), 0, (-tileSize / 2));
+        Quaternion rotMatrix = Quaternion.Euler(0, rotation, 0);
+        Vector3 finalPos = rotMatrix * origin - origin + rotMatrix * new Vector3((tileSize/2), 0, 0)
+                        + new Vector3(w.GetInnerPos().x * tileSize, floor * heightSize, w.GetInnerPos().y * tileSize);
         
         return (finalPos, rotMatrix, goalOrientation);
     }

@@ -32,14 +32,14 @@ public class Generator : MonoBehaviour
 
         (GameObject iniRoomPrefab, Room iniRoom) = GetPrefabRoom("0");
 
-        (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
-        iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors);
+        (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors, List<Window> iniRoomWindows) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
+        iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors, iniRoomWindows);
         openDoors.UnionWith(new HashSet<Door>(iniRoom.GetDoors(), new DoorEqualsComparer()));
 
         int numRoomsSpawned = 1;
         while (numRoomsSpawned <= temptativeSize)
         {
-            Debug.Log("length open doors: "+ openDoors.Count.ToString());
+            // Debug.Log("length open doors: "+ openDoors.Count.ToString());
             numRoomsSpawned += 1;
             Door doorToSpawnFrom = RandomChooseDoor(openDoors);
             
@@ -61,10 +61,11 @@ public class Generator : MonoBehaviour
                     Tuple<Vector2Int, Vector2Int> roomBoundaries;
                     float rotation;
                     List<Door> doors;
-                    (validSpawn, roomCoordinatesOriginPos, roomBoundaries, rotation, doors) = grid.CheckRoomSpawnValidity(targetRoom, doorToSpawnFrom, targetJoinDoor);
+                    List<Window> windows;
+                    (validSpawn, roomCoordinatesOriginPos, roomBoundaries, rotation, doors, windows) = grid.CheckRoomSpawnValidity(targetRoom, doorToSpawnFrom, targetJoinDoor);
                     if (validSpawn)
                     {
-                        Room room = grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors);
+                        Room room = grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors, windows);
                         grid.FixDoorMatching(room, openDoors);
                     }
                 }
@@ -78,6 +79,8 @@ public class Generator : MonoBehaviour
         foreach (Door d in openDoors){
             grid.HideDoor(d, r);
         }
+
+        grid.HideInsideWindows();
     }
 
     private (GameObject, Room) RandomChooseRoom()

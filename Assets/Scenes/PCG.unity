@@ -153,6 +153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPSController
       objectReference: {fileID: 0}
+    - target: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3238705681435391085, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
       propertyPath: m_LocalPosition.x

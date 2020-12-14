@@ -18,7 +18,7 @@ public class Room : MonoBehaviour
     [SerializeField]
     private List<Window> windows = new List<Window>();
 
-    public void UpdateRoom(Vector2Int roomCoordinatesOriginPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors)
+    public void UpdateRoom(Vector2Int roomCoordinatesOriginPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors, List<Window> windows)
     {
         this.roomPos = roomCoordinatesOriginPos;
         this.roomBottomLeft = roomBoundaries.Item1;
@@ -28,6 +28,10 @@ public class Room : MonoBehaviour
         for (int i = 0; i < doors.Count; ++i) {
             this.doors[i].SetInnerPos(doors[i].GetInnerPos());
             this.doors[i].SetOuterPos(doors[i].GetOuterPos());
+        }
+        for (int i = 0; i < windows.Count; ++i) {
+            this.windows[i].SetInnerPos(windows[i].GetInnerPos());
+            this.windows[i].SetOuterPos(windows[i].GetOuterPos());
         }
     }
 
@@ -54,5 +58,16 @@ public class Room : MonoBehaviour
     public List<Window> GetWindows()
     {
         return windows;
+    }
+
+    // Return truw if given (tile) position is within room's boundaries
+    public Boolean CheckPositionWithinRoom(Vector2Int pos) {
+        if(pos.x >= roomBottomLeft.x 
+        && pos.x <= roomBottomLeft.x 
+        && pos.y >= roomTopRight.y 
+        && pos.y <= roomTopRight.y) {
+            return true;
+        }
+        return false;
     }
 }
