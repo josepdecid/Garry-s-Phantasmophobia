@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8399211607252855791}
   - component: {fileID: 8399211607251528655}
   - component: {fileID: 8399211607250561295}
+  - component: {fileID: 6009218564607347915}
   m_Layer: 8
   m_Name: window_curtain_2
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6009218564607347915
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399211607252760527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1547105, y: 2.4126709, z: 0.113089785}
+  m_Center: {x: -0.011449099, y: 1.209443, z: 0.008311801}

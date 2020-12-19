@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7446100799396349055}
   - component: {fileID: 7446100799399248991}
   - component: {fileID: 7446100799398119071}
+  - component: {fileID: 6007847696688977155}
   m_Layer: 8
   m_Name: door_curtain_5
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6007847696688977155
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446100799396124767}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1547105, y: 2.4126706, z: 0.11308979}
+  m_Center: {x: -0.011449099, y: 1.2094429, z: 0.008311805}
