@@ -22,6 +22,8 @@ public class Room : MonoBehaviour
     // See door_curtain_N and window_curtain_N prefabs
     public String curtainColorNumber = "1";
 
+    public GameObject topRoomPrefab = null;
+
     public void UpdateRoom(Vector2Int roomCoordinatesOriginPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors, List<Window> windows)
     {
         this.roomPos = roomCoordinatesOriginPos;
@@ -73,5 +75,9 @@ public class Room : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public bool IsStair(){
+        return topRoomPrefab != null;
     }
 }
