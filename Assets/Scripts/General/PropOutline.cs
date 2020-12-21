@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Outline : MonoBehaviour {
+public class PropOutline : MonoBehaviour {
 	public GameObject player;
 	public Material outlineMaskMaterial;
 	public Material outlineFillMaterial;

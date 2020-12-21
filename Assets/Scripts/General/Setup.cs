@@ -97,7 +97,7 @@ public class Setup : MonoBehaviour
         {
             prop.SetActive(false);
 
-            Outline outline = prop.AddComponent<Outline>();
+            PropOutline outline = prop.AddComponent<PropOutline>();
             outline.player = __player;
             outline.outlineMaskMaterial = outlineMaskMaterial;
             outline.outlineFillMaterial = outlineFillMaterial;
