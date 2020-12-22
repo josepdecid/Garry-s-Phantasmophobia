@@ -326,13 +326,14 @@ GameObject:
   - component: {fileID: 1358984471609163306}
   - component: {fileID: 1358984471609163305}
   - component: {fileID: 1358984471609163304}
-  - component: {fileID: 1358984471609163308}
-  - component: {fileID: 1358984471609163309}
+  - component: {fileID: 1854303124964521249}
   - component: {fileID: 1358984471609163310}
-  - component: {fileID: 1358984471609163311}
+  - component: {fileID: 4356763634279109213}
+  - component: {fileID: 7826175191731698489}
+  - component: {fileID: 8488316315872735019}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Ghost
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,8 +346,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358984471609163303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 1}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1741000056468654010}
   - {fileID: 1231004905768472922}
@@ -464,68 +465,29 @@ MonoBehaviour:
   m_RigLayers:
   - rig: {fileID: 6969620190924255882}
     active: 1
-  m_Effectors: []
---- !u!114 &1358984471609163308
-MonoBehaviour:
+  m_Effectors:
+  - m_Transform: {fileID: 2632157125897342004}
+    m_Style:
+      shape: {fileID: 4300000, guid: c6793350c150f456688e39a81f97364a, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
+--- !u!136 &1854303124964521249
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358984471609163303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc0d697a0f3e4a8f83932fd6e6a888d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 20
-  lerpEase:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  yRot: 0
-  player: {fileID: 0}
---- !u!114 &1358984471609163309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358984471609163303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364b23ca6dd384902b04faa25d3bb941, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chestGhostMesh: {fileID: 5751345550456799324}
-  tailGhostMesh: {fileID: 7894385790318256309}
-  escaping: 0
-  stunned: 0
-  chestAnimator: {fileID: 1358984471609163307}
-  tailAnimator: {fileID: 3495507373073030865}
-  energy: 50
-  head: {fileID: 7510072310344478068}
-  normalColor: {r: 0.23693621, g: 1.3327662, b: 2.828426, a: 1}
-  flashColor: {r: 3.790982, g: 21.324274, b: 35.777393, a: 1}
+  m_Radius: 0.9
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!54 &1358984471609163310
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -542,19 +504,99 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &1358984471609163311
-SphereCollider:
+--- !u!114 &4356763634279109213
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358984471609163303}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a4ee03067bc2a48a8e51d0ccb297ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolSpeed: 1
+  fleeSpeed: 1
+  numSamples: 10
+  samplingRadius: 5
+  maxSamplingDistance: 2
+  searchTimeout: 10
+  hideTimeout: 10
+  modeDebug: 0
+  candidateGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+--- !u!195 &7826175191731698489
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358984471609163303}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0.79, z: 0}
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &8488316315872735019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358984471609163303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d79fcf268bc14e57849ed78fdead991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestGhostMesh: {fileID: 5751345550456799324}
+  tailGhostMesh: {fileID: 3495507373073030862}
+  escaping: 0
+  stunned: 0
+  chestAnimator: {fileID: 1358984471609163307}
+  tailAnimator: {fileID: 3495507373073030865}
+  energy: 100
+  head: {fileID: 7510072310344478068}
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  flashColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1428088936922721788
 GameObject:
   m_ObjectHideFlags: 0

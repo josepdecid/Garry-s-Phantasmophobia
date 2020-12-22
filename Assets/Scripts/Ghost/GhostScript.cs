@@ -7,7 +7,6 @@ public class GhostScript : MonoBehaviour
 {
     CaptureScript capture;
     Vector3 playerPos;
-    RandomRotation randomRot;
 
     [Header("Renderers")]
     public GameObject chestGhostMesh;
@@ -30,20 +29,17 @@ public class GhostScript : MonoBehaviour
 
     private void Start()
     {
-        randomRot = GetComponent<RandomRotation>();
         capture = FindObjectOfType<CaptureScript>();
     }
 
     public void Stun()
     {
-        Destroy(randomRot);
         chestGhostMesh.SetActive(false);
         tailGhostMesh.SetActive(true);
         transform.rotation = capture.transform.rotation;
         tailAnimator.SetTrigger("stunned");
         stunned = true;
         capture.ShakeScreen();
-
 
         StunShine();
     }
@@ -76,7 +72,7 @@ public class GhostScript : MonoBehaviour
     IEnumerator DestroyGhost()
     {
         yield return new WaitForSeconds(.52f);
-        FindObjectOfType<MovementInput>().enabled = true;
+        // FindObjectOfType<MovementInput>().enabled = true;
         capture.finishParticle.Play();
         capture.ShakeScreen();
         Destroy(gameObject);
@@ -96,7 +92,6 @@ public class GhostScript : MonoBehaviour
 
     private void Update()
     {
-        if (escaping)
-            CanvasManager.instance.UpdateText(head.position, ((int)energy).ToString());
+        // if (escaping) CanvasManager.instance.UpdateText(head.position, ((int)energy).ToString());
     }
 }

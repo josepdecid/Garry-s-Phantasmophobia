@@ -12,6 +12,13 @@ public class Setup : MonoBehaviour
 	private GameObject ghostPrefab = null;
     [SerializeField]
     private int numberOfGhosts = 1;
+
+    [Space]
+    [Header("Particle Systems")]
+    [SerializeField]
+    private ParticleSystem captureParticle;
+    [SerializeField]
+    private ParticleSystem finishParticle;
 	
 	[Header("Outline Materials")]
 	[SerializeField]
@@ -52,7 +59,8 @@ public class Setup : MonoBehaviour
             objectsToCombine[i].transform = meshFilter.transform.localToWorldMatrix;
             
             // Disable original single component
-            walkableSurfaces[i].gameObject.SetActive(false);
+            // walkableSurfaces[i].gameObject.SetActive(false);
+            walkableSurfaces[i].gameObject.GetComponent<MeshCollider>().enabled = false;
         }
 
         // New GameObject to merge the floors
@@ -77,6 +85,9 @@ public class Setup : MonoBehaviour
                 agentTypeID = id;
         }
 
+        floor.GetComponent<MeshRenderer>().enabled = false;
+    
+
         // Build dynamic NavMesh
         __navMeshSurface = floor.AddComponent<NavMeshSurface>();
         __navMeshSurface.agentTypeID = agentTypeID;
@@ -88,6 +99,13 @@ public class Setup : MonoBehaviour
         RandomNavMeshPoint navMeshSampler = gameObject.AddComponent<RandomNavMeshPoint>();
         Vector3 spawnPosition = navMeshSampler.GetRandomPointOnNavMesh();
         __player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        __player.SetActive(false);
+
+        CaptureScript capture = __player.GetComponent<CaptureScript>();
+        capture.captureParticle = captureParticle;
+        capture.finishParticle = finishParticle;
+
+        __player.SetActive(true);
     }
 
     private void SetupProps()

@@ -45,10 +45,10 @@ public class FiniteStateMachine : MonoBehaviour
     private string __clipName;
     private StateParams __params;
 
-    private State roamState;
-    private State hideState;
-    private State searchState;
-    private State fleeState;
+    private State __roamState;
+    private State __hideState;
+    private State __searchState;
+    private State __fleeState;
 
     void Awake()
     {
@@ -61,15 +61,15 @@ public class FiniteStateMachine : MonoBehaviour
             fleeSpeed, numSamples, samplingRadius, maxSamplingDistance,
             modeDebug, candidateGradient
         );
+
+        __roamState = new RoamState(__player, __ghost, __params);
+        __fleeState = new FleeState(__player, __ghost, __params);
+        __searchState = new SearchState(__player, __ghost, __params);
+        __hideState = new HideState(__player, __ghost, __params);
     }
 
     void Start()
     {   
-        roamState = new RoamState(__player, __ghost, __params);
-        fleeState = new FleeState(__player, __ghost, __params);
-        searchState = new SearchState(__player, __ghost, __params);
-        hideState = new HideState(__player, __ghost, __params);
-
         __currentStateType = StateType.Roam;
         __currentState = GetStateInstance();
         __currentState.Enter();
@@ -105,16 +105,16 @@ public class FiniteStateMachine : MonoBehaviour
         switch (__currentStateType)
         {
             case StateType.Roam:
-                return roamState; 
+                return __roamState; 
 
             case StateType.Flee:
-                return fleeState; 
+                return __fleeState; 
 
             case StateType.Search:
-                return searchState;
+                return __searchState;
 
             case StateType.Hide:
-                return hideState;
+                return __hideState;
                 
             default:
                 return null;

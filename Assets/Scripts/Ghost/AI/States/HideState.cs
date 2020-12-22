@@ -5,15 +5,15 @@ using UnityEngine;
 public class HideState : State
 {
     private float __timeout;
-    private MeshRenderer __renderer;
-    private BoxCollider __collider;
+    private SkinnedMeshRenderer __renderer;
+    private CapsuleCollider __collider;
 
     public HideState(GameObject player, GameObject ghost, StateParams parameters)
         : base(player, ghost, parameters)
         { 
             __timeout = parameters.hideTimeout;
-            __renderer = ghost.GetComponent<MeshRenderer>();
-            __collider = ghost.GetComponent<BoxCollider>();
+            __renderer = ghost.GetComponentInChildren<SkinnedMeshRenderer>();
+            __collider = ghost.GetComponent<CapsuleCollider>();
         }
 
     public override void Enter()
