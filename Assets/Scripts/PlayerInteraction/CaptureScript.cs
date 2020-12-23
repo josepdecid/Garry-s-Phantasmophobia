@@ -57,6 +57,11 @@ public class CaptureScript : MonoBehaviour
         // lightRenderer.material.SetFloat("Opacity", .3f);
         // randomRot = GetComponent<RandomRotation>();
         anim = GetComponent<Animator>();
+        captureParticle = GameObject.Find("CaptureParticles").GetComponent<ParticleSystem>();
+        finishParticle = GameObject.Find("FinishParticles").GetComponent<ParticleSystem>();
+
+        captureParticle.Stop();
+        finishParticle.Stop();
 
         __playerCamera = gameObject.GetComponentInChildren<Camera>();
 
@@ -68,14 +73,17 @@ public class CaptureScript : MonoBehaviour
         GameObject targetGhost = Utils.GetGhostInFront(__playerCamera.gameObject, captureDistance);
         if (targetGhost != null) currentGhost = targetGhost.GetComponent<GhostScript>();
         else currentGhost = null;
-
         if (currentGhost != null)
         {
-            bool isCapturing = Input.GetKey(KeyCode.E);
+            bool isCapturing = Input.GetMouseButton(0);
+            Debug.Log($"Capturing: {__capturing}");
             if (isCapturing != __capturing) SetCaptureState(isCapturing);
-
+            
             if (__capturing)
             {
+
+                Debug.Log("Capturing the ghost!");
+                
                 /*else
                 {
                     if (currentGhost.energy > 0)
@@ -92,6 +100,10 @@ public class CaptureScript : MonoBehaviour
                 }*/
             }
         }
+        else
+        {
+            SetCaptureState(false);
+        }
     }
 
     private void Capture()
@@ -103,10 +115,18 @@ public class CaptureScript : MonoBehaviour
 
     public void SetCaptureState(bool state)
     {
-        Debug.Log(state);
+        
         __capturing = state;
 
-        if (__capturing) captureParticle.Play();
-        else captureParticle.Stop();
+        if (__capturing)
+        {
+            if (!captureParticle.isPlaying)
+            {
+                Debug.Log("Play particle");
+                captureParticle.Play();
+            }
+            
+        }
+        else  captureParticle.Stop();
     }
 }

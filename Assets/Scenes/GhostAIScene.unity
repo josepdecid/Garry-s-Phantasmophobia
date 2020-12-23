@@ -869,7 +869,7 @@ PrefabInstance:
     - target: {fileID: 451038935818722622, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
@@ -948,20 +948,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8216160203888642178, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
-      propertyPath: tornado
-      value: 
-      objectReference: {fileID: 2513558564856558611, guid: 14b7e02c004cb464ea4722130cb3e510,
-        type: 3}
-    - target: {fileID: 8216160203888642178, guid: e719e36ba584739b6bcc77304705c7d2,
-        type: 3}
-      propertyPath: finishParticle
-      value: 
-      objectReference: {fileID: 1458189799}
-    - target: {fileID: 8216160203888642178, guid: e719e36ba584739b6bcc77304705c7d2,
-        type: 3}
       propertyPath: captureParticle
       value: 
-      objectReference: {fileID: 1346614519}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216160203888642178, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: captureDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8235018525248679781, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
       propertyPath: m_fontAsset

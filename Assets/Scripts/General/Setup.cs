@@ -99,13 +99,6 @@ public class Setup : MonoBehaviour
         RandomNavMeshPoint navMeshSampler = gameObject.AddComponent<RandomNavMeshPoint>();
         Vector3 spawnPosition = navMeshSampler.GetRandomPointOnNavMesh();
         __player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
-        __player.SetActive(false);
-
-        CaptureScript capture = __player.GetComponent<CaptureScript>();
-        capture.captureParticle = captureParticle;
-        capture.finishParticle = finishParticle;
-
-        __player.SetActive(true);
     }
 
     private void SetupProps()

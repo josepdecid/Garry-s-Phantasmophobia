@@ -5170,8 +5170,8 @@ MonoBehaviour:
   captureDistance: 5
   dragSpeed: 3
   captureParticle: {fileID: 0}
-  finishParticle: {fileID: 0}
-  tornado: {fileID: 919132149155446097, guid: 4867fc935ecbe4948964c2fc2ae96ede, type: 3}
+  finishParticle: {fileID: 1852038661355564512}
+  tornado: {fileID: 2513558564856558611, guid: 14b7e02c004cb464ea4722130cb3e510, type: 3}
 --- !u!114 &2398889603572079818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10356,8 +10356,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 23
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10399,7 +10399,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -10408,7 +10408,7 @@ MonoBehaviour:
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
-  m_isOrthographic: 0
+  m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_ignoreRectMaskCulling: 0
   m_ignoreCulling: 1
@@ -10422,15 +10422,15 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 0}
-    characterCount: 0
+    textComponent: {fileID: 8235018525248679781}
+    characterCount: 2
     spriteCount: 0
     spaceCount: 0
-    wordCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
-    materialCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -10457,6 +10457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620335787721078715, guid: 545ee1a104f0b204f85dbac71217daf7,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5620335787721078716, guid: 545ee1a104f0b204f85dbac71217daf7,
         type: 3}
@@ -10565,6 +10570,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 545ee1a104f0b204f85dbac71217daf7, type: 3}
+--- !u!224 &3433848515521649730 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5620335787721078716, guid: 545ee1a104f0b204f85dbac71217daf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7086425657687419902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3433848516284580234 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5620335789105293940, guid: 545ee1a104f0b204f85dbac71217daf7,
@@ -10577,9 +10588,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &3433848515521649730 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5620335787721078716, guid: 545ee1a104f0b204f85dbac71217daf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7086425657687419902}
-  m_PrefabAsset: {fileID: 0}
