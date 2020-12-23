@@ -31,25 +31,7 @@ public class GhostScript : MonoBehaviour
     {
         capture = FindObjectOfType<CaptureScript>();
     }
-
-    public void Stun()
-    {
-        chestGhostMesh.SetActive(false);
-        tailGhostMesh.SetActive(true);
-        transform.rotation = capture.transform.rotation;
-        tailAnimator.SetTrigger("stunned");
-        stunned = true;
-        capture.ShakeScreen();
-
-        StunShine();
-    }
-
-    public void StunShine()
-    {
-        tailGhostMesh.GetComponent<Renderer>().material.DOColor(flashColor, "GColor", .08f).OnComplete(() =>
-        tailGhostMesh.GetComponent<Renderer>().material.DOColor(normalColor, "GColor", .25f));
-    }
-
+    
     public void ActivateEscapeRig()
     {
         transform.parent = capture.transform;
@@ -58,7 +40,7 @@ public class GhostScript : MonoBehaviour
         tailAnimator.SetTrigger("escape");
 
         escaping = true;
-        CanvasManager.instance.ShowText(true);
+        // CanvasManager.instance.ShowText(true);
     }
 
     public void Capture()
@@ -66,7 +48,7 @@ public class GhostScript : MonoBehaviour
         tailAnimator.SetTrigger("capture");
         StartCoroutine(DestroyGhost());
 
-        CanvasManager.instance.ShowText(false);
+        // CanvasManager.instance.ShowText(false);
     }
 
     IEnumerator DestroyGhost()
@@ -74,7 +56,7 @@ public class GhostScript : MonoBehaviour
         yield return new WaitForSeconds(.52f);
         // FindObjectOfType<MovementInput>().enabled = true;
         capture.finishParticle.Play();
-        capture.ShakeScreen();
+        // capture.ShakeScreen();
         Destroy(gameObject);
     }
             

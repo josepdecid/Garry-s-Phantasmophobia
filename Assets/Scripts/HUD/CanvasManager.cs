@@ -28,7 +28,4 @@ public class CanvasManager : MonoBehaviour
     {
         energyText.DOColor(state ? Color.white : Color.clear, .2f);
     }
-
-
-
 }
