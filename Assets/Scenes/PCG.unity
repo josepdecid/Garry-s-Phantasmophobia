@@ -598,8 +598,8 @@ MonoBehaviour:
   roomStubbornness: 30
   tileSize: 6
   heightSize: 4
-  maxX: 5
-  maxY: 5
+  maxX: 10
+  maxY: 10
   numSpawnRooms: 1
   numRoomsWithoutStair: 14
   numRoomsWithStair: 1
