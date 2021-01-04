@@ -38,6 +38,26 @@ public class Generator : MonoBehaviour
             canSpawnNextFloor = false;
             Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
         }
+
+        // Adjust size of the sky
+        AdjustAtmosphere();
+    }
+
+    private void AdjustAtmosphere()
+    {
+        int maxXY = maxX;
+        if (maxY > maxX) {
+            maxXY = maxY;
+        }
+        if (maxXY < 10) {
+            maxXY = 10;
+        } 
+
+        float scaleFactor = Mathf.Sqrt(maxXY) * tileSize * 2;
+        GameObject.Find("Atmosphere/ManorSky").transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        GameObject.Find("Atmosphere/FogParticles").transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        GameObject.Find("Atmosphere/Plane").transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        
     }
 
     private Floor Generate(GameObject iniRoomPrefab, Vector2Int iniPos, float iniOrientation, int height)
