@@ -5,6 +5,8 @@ using UnityEngine.Animations.Rigging;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using System;
+using TMPro;
 
 public class CaptureScript : MonoBehaviour
 {
@@ -111,6 +113,10 @@ public class CaptureScript : MonoBehaviour
         __capturing = false;
         currentGhost.Capture();
         SetCaptureState(false);
+
+        TMP_Text numGhosts = GameObject.Find("GhostCounter").GetComponent<TMP_Text>();
+        string count = numGhosts.text.Substring(2);
+        numGhosts.text = $"x {Int32.Parse(count) - 1}";
     }
 
     public void SetCaptureState(bool state)
@@ -120,6 +126,7 @@ public class CaptureScript : MonoBehaviour
 
         if (__capturing)
         {
+
             if (!captureParticle.isPlaying)
             {
                 Debug.Log("Play particle");

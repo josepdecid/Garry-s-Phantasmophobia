@@ -70,7 +70,7 @@ class Utils
 
         Debug.DrawRay(sourcePosition, direction * hit.distance, Color.green);     
 
-        if (isHitting && hit.collider.gameObject.tag == "NPC") return hit.collider.gameObject;
+        if (isHitting && hit.collider.gameObject.tag == "Ghost") return hit.collider.gameObject;
         else return null;
     }
 }

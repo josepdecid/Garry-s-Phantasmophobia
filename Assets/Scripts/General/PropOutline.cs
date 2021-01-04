@@ -71,11 +71,11 @@ public class PropOutline : MonoBehaviour {
 			else OnDisable();
 		}
 
-		if (canInteract && Input.GetKeyDown(KeyCode.E))
+		if (canInteract && Input.GetMouseButtonUp(0))
 		{
 			__ghostSpotMapping.UpdateInteracted(gameObject.name);
 		}
-		else if (Input.GetKeyUp(KeyCode.E) && __ghostSpotMapping.GetInteractedSpot() == gameObject.name)
+		else if (Input.GetMouseButtonDown(0) && __ghostSpotMapping.GetInteractedSpot() == gameObject.name)
 		{
 			__ghostSpotMapping.UpdateInteracted(null);
 		}

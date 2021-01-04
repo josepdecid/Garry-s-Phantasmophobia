@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class Setup : MonoBehaviour
 {
@@ -43,6 +45,7 @@ public class Setup : MonoBehaviour
         SetupPlayer();
         SetupProps();
         SetupNPCs();
+        SetupGUI();
     }
 
     private void SetupNavMeshSurfaces()
@@ -131,5 +134,11 @@ public class Setup : MonoBehaviour
             ghosts[i] = Instantiate(ghostPrefab, spawnPosition, Quaternion.identity);
             ghosts[i].name = $"Ghost {i}";
         }
+    }
+
+    private void SetupGUI()
+    {
+        TMP_Text numGhosts = GameObject.Find("GhostCounter").GetComponent<TMP_Text>();
+        numGhosts.text = $"x {numberOfGhosts}";
     }
 }
