@@ -2293,6 +2293,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1965363229286334703, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965363229286334703, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965363229286334703, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965363229286334703, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067854085259626540, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067854085259626540, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067854085259626540, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067854085259626540, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067854085259626540, guid: e719e36ba584739b6bcc77304705c7d2,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
       propertyPath: m_Name

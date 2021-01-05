@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -27,6 +28,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds = null;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound = null;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound = null;           // the sound played when character touches back on ground.
+        [SerializeField] private GameObject m_menuPanel = null;
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -41,6 +43,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private bool m_isMenuOpen;
 
         // Use this for initialization
         private void Start()
@@ -55,6 +58,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            m_isMenuOpen = false;
         }
 
 
@@ -81,6 +85,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (m_isMenuOpen) CloseMenu();
+                else OpenMenu();
+            }
         }
 
 
@@ -131,6 +141,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+        }
+
+        public void OpenMenu()
+        {
+            m_isMenuOpen = true;
+            m_menuPanel.SetActive(true);
+            Time.timeScale = 0;
+            
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        public void CloseMenu()
+        {
+            m_isMenuOpen = false;
+            m_menuPanel.SetActive(false);
+            Time.timeScale = 1;
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        public void GoToMainMenu()
+        {
+            SceneManager.LoadScene("Menu");
         }
 
 
@@ -236,7 +271,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            if (!m_isMenuOpen)
+                m_MouseLook.LookRotation (transform, m_Camera.transform);
         }
 
 
