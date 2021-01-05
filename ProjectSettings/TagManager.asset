@@ -12,6 +12,7 @@ TagManager:
   - LightweightObjects
   - Floor
   - NPC
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -44,7 +45,7 @@ TagManager:
   - Floor_Hall
   - Floor_Corridor
   - 
-  - 
+  - Obstacle
   m_SortingLayers:
   - name: Default
     uniqueID: 0

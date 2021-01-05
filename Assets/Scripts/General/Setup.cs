@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class Setup : MonoBehaviour
 {
@@ -12,6 +14,13 @@ public class Setup : MonoBehaviour
 	private GameObject ghostPrefab = null;
     [SerializeField]
     private int numberOfGhosts = 1;
+
+    [Space]
+    [Header("Particle Systems")]
+    [SerializeField]
+    private ParticleSystem captureParticle;
+    [SerializeField]
+    private ParticleSystem finishParticle;
 	
 	[Header("Outline Materials")]
 	[SerializeField]
@@ -36,6 +45,7 @@ public class Setup : MonoBehaviour
         SetupPlayer();
         SetupProps();
         SetupNPCs();
+        SetupGUI();
     }
 
     private void SetupNavMeshSurfaces()
@@ -52,7 +62,8 @@ public class Setup : MonoBehaviour
             objectsToCombine[i].transform = meshFilter.transform.localToWorldMatrix;
             
             // Disable original single component
-            walkableSurfaces[i].gameObject.SetActive(false);
+            // walkableSurfaces[i].gameObject.SetActive(false);
+            walkableSurfaces[i].gameObject.GetComponent<MeshCollider>().enabled = false;
         }
 
         // New GameObject to merge the floors
@@ -77,6 +88,9 @@ public class Setup : MonoBehaviour
                 agentTypeID = id;
         }
 
+        floor.GetComponent<MeshRenderer>().enabled = false;
+    
+
         // Build dynamic NavMesh
         __navMeshSurface = floor.AddComponent<NavMeshSurface>();
         __navMeshSurface.agentTypeID = agentTypeID;
@@ -97,7 +111,7 @@ public class Setup : MonoBehaviour
         {
             prop.SetActive(false);
 
-            Outline outline = prop.AddComponent<Outline>();
+            PropOutline outline = prop.AddComponent<PropOutline>();
             outline.player = __player;
             outline.outlineMaskMaterial = outlineMaskMaterial;
             outline.outlineFillMaterial = outlineFillMaterial;
@@ -120,5 +134,11 @@ public class Setup : MonoBehaviour
             ghosts[i] = Instantiate(ghostPrefab, spawnPosition, Quaternion.identity);
             ghosts[i].name = $"Ghost {i}";
         }
+    }
+
+    private void SetupGUI()
+    {
+        TMP_Text numGhosts = GameObject.Find("GhostCounter").GetComponent<TMP_Text>();
+        numGhosts.text = $"x {numberOfGhosts}";
     }
 }
