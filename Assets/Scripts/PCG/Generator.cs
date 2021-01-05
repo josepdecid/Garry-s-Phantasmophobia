@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Generator : MonoBehaviour
 {
@@ -38,6 +39,45 @@ public class Generator : MonoBehaviour
             canSpawnNextFloor = false;
             Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
         }
+
+        // Adjust size of the sky
+        AdjustAtmosphere();
+    }
+
+    private void AdjustAtmosphere()
+    {
+        int maxXY = maxX;
+        if (maxY > maxX) {
+            maxXY = maxY;
+        }
+
+        // Do not scale sky for smaller grid
+        if (maxXY < 10) {
+            maxXY = 10;
+        } 
+
+        float scaleFactor = Mathf.Sqrt(maxXY) * tileSize * 2;
+        GameObject.Find("Atmosphere/ManorSky").transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        GameObject.Find("Atmosphere/FogParticles").transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        GameObject.Find("Atmosphere/Plane").transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    }
+
+    private void MovePlayerToIniRoom(Vector2Int newIniPos)
+    {
+        // Disable CharacterController before moving player:
+        // https://forum.unity.com/threads/character-controller-ignores-transform-position.617107/
+        CharacterController c = FPSController.GetComponent<CharacterController>();
+        c.enabled = false;
+
+        // Set the position of player inside the ini room
+        FPSController.transform.position = new Vector3(
+            newIniPos.x * tileSize + 5, 
+            1,
+            newIniPos.y * tileSize + 5);
+
+        Debug.Log(newIniPos);
+
+        c.enabled = true;
     }
 
     private Floor Generate(GameObject iniRoomPrefab, Vector2Int iniPos, float iniOrientation, int height)
@@ -49,6 +89,11 @@ public class Generator : MonoBehaviour
         (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors, List<Window> iniRoomWindows) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
         iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors, iniRoomWindows);
         openDoors.UnionWith(new HashSet<Door>(iniRoom.GetDoors(), new DoorEqualsComparer()));
+
+        // Move player into the new room of the 1st floor
+        if(height == 0) {
+            MovePlayerToIniRoom(newIniPos);
+        }
 
         numRoomsSpawned = 1;
         while (numRoomsSpawned <= temptativeSize)

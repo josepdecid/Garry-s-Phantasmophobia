@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 6039556922809431902}
   - component: {fileID: 6813507320550097925}
   - component: {fileID: 3378889960711855169}
-  m_Layer: 29
+  m_Layer: 10
   m_Name: Plane_0_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 4175691276765883216}
   - component: {fileID: 5342236021712368606}
   - component: {fileID: 6767844771996196720}
-  m_Layer: 29
+  m_Layer: 10
   m_Name: Plane_0_3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 8303789797102888146}
   - component: {fileID: 421142043644010212}
   - component: {fileID: 228736622835954748}
-  m_Layer: 29
+  m_Layer: 10
   m_Name: Plane_0_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 10584477221435340}
   - component: {fileID: 2099955582113245373}
   - component: {fileID: 9198648347761419521}
-  m_Layer: 29
+  m_Layer: 10
   m_Name: Plane_0_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
