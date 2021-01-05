@@ -29,7 +29,6 @@ namespace SpeedTutorMainMenuSystem
         [SerializeField] private GameObject GeneralSettingsCanvas;
         [SerializeField] private GameObject graphicsMenu;
         [SerializeField] private GameObject soundMenu;
-        [SerializeField] private GameObject gameplayMenu;
         [SerializeField] private GameObject controlsMenu;
         [SerializeField] private GameObject confirmationMenu;
         [Space(10)]
@@ -48,6 +47,10 @@ namespace SpeedTutorMainMenuSystem
         [SerializeField] private Brightness brightnessEffect;
         [SerializeField] private Slider brightnessSlider;
         [SerializeField] private Text brightnessText;
+        [Space(10)]
+        [SerializeField] private int difficulty;
+        [SerializeField] private Slider difficultySlider;
+        [SerializeField] private Text difficultyText;
         [Space(10)]
         [SerializeField] private Text volumeText;
         [SerializeField] private Slider volumeSlider;
@@ -85,12 +88,6 @@ namespace SpeedTutorMainMenuSystem
                     GoBackToOptionsMenu();
                     ClickSound();
                 }
-
-                else if (menuNumber == 6) //CONTROLS MENU
-                {
-                    GoBackToGameplayMenu();
-                    ClickSound();
-                }
             }
         }
 
@@ -104,9 +101,9 @@ namespace SpeedTutorMainMenuSystem
         {
             if (buttonType == "Controls")
             {
-                gameplayMenu.SetActive(false);
+                menuDefaultCanvas.SetActive(false);
                 controlsMenu.SetActive(true);
-                menuNumber = 6;
+                menuNumber = 8;
             }
 
             if (buttonType == "Graphics")
@@ -121,13 +118,6 @@ namespace SpeedTutorMainMenuSystem
                 GeneralSettingsCanvas.SetActive(false);
                 soundMenu.SetActive(true);
                 menuNumber = 4;
-            }
-
-            if (buttonType == "Gameplay")
-            {
-                GeneralSettingsCanvas.SetActive(false);
-                gameplayMenu.SetActive(true);
-                menuNumber = 5;
             }
 
             if (buttonType == "Exit")
@@ -176,6 +166,12 @@ namespace SpeedTutorMainMenuSystem
         {
             brightnessEffect.brightness = brightness;
             brightnessText.text = brightness.ToString("0.0");
+        }
+
+        public void DifficultySlider()
+        {
+            this.difficulty = (int) difficultySlider.value;
+            difficultyText.text = this.difficulty.ToString();
         }
 
         public void BrightnessApply()
@@ -291,7 +287,6 @@ namespace SpeedTutorMainMenuSystem
             GeneralSettingsCanvas.SetActive(true);
             graphicsMenu.SetActive(false);
             soundMenu.SetActive(false);
-            gameplayMenu.SetActive(false);
 
             GameplayApply();
             BrightnessApply();
@@ -303,21 +298,14 @@ namespace SpeedTutorMainMenuSystem
         public void GoBackToMainMenu()
         {
             menuDefaultCanvas.SetActive(true);
+            controlsMenu.SetActive(false);
             newGameDialog.SetActive(false);
             loadGameDialog.SetActive(false);
             noSaveDialog.SetActive(false);
             GeneralSettingsCanvas.SetActive(false);
             graphicsMenu.SetActive(false);
             soundMenu.SetActive(false);
-            gameplayMenu.SetActive(false);
             menuNumber = 1;
-        }
-
-        public void GoBackToGameplayMenu()
-        {
-            controlsMenu.SetActive(false);
-            gameplayMenu.SetActive(true);
-            menuNumber = 5;
         }
 
         public void ClickQuitOptions()

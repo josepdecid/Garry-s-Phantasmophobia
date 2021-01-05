@@ -70,35 +70,6 @@ namespace SpeedTutorMainMenuSystem
                 {
                     menuController.ResetButton("Audio");
                 }
-
-                //CONTROLLER SENSITIVITY
-                if (PlayerPrefs.HasKey("masterSen"))
-                {
-                    float localSensitivity = PlayerPrefs.GetFloat("masterSen");
-
-                    controllerText.text = localSensitivity.ToString("0");
-                    controllerSlider.value = localSensitivity;
-                    menuController.controlSenFloat = localSensitivity;
-                }
-                else
-                {
-                    menuController.ResetButton("Graphics");
-                }
-
-                //INVERT Y
-                if (PlayerPrefs.HasKey("masterInvertY"))
-                {
-                    if (PlayerPrefs.GetInt("masterInvertY") == 1)
-                    {
-                        invertYToggle.isOn = true;
-
-                    }
-
-                    else
-                    {
-                        invertYToggle.isOn = false;
-                    }
-                }
             }
         }
     }
