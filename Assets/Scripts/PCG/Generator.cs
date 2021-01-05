@@ -28,10 +28,9 @@ public class Generator : MonoBehaviour
     private int numRoomsWithStair = 1;
     private int numRoomsSpawned;
     private bool canSpawnNextFloor = true;
-    public GameObject FPSController;
 
 
-    void Start()
+    public void GenerateMap()
     {
         (GameObject iniRoomPrefab, Room iniRoom) = GetPrefabRoom("0");
         Floor firstFloor = Generate(iniRoomPrefab, new Vector2Int(maxX/2,0), 0, 0);
@@ -66,6 +65,7 @@ public class Generator : MonoBehaviour
     {
         // Disable CharacterController before moving player:
         // https://forum.unity.com/threads/character-controller-ignores-transform-position.617107/
+        /*
         CharacterController c = FPSController.GetComponent<CharacterController>();
         c.enabled = false;
 
@@ -78,6 +78,7 @@ public class Generator : MonoBehaviour
         Debug.Log(newIniPos);
 
         c.enabled = true;
+        */
     }
 
     private Floor Generate(GameObject iniRoomPrefab, Vector2Int iniPos, float iniOrientation, int height)

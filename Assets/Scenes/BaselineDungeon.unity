@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6501,6 +6501,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f4b8ca4df1a873594e28ca9aa78f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashProbPerFrame: 0.005
+  flashIntensity: 3
+  flashLengthMinMilliSecs: 0.8
+  flashLengthMaxMilliSecs: 1.8
 --- !u!1 &528516629
 GameObject:
   m_ObjectHideFlags: 0
@@ -13901,6 +13905,8 @@ MonoBehaviour:
   ghostPrefab: {fileID: 7692504472720282418, guid: 0328723b0e7f47b8a9881aaa95577c13,
     type: 3}
   numberOfGhosts: 5
+  captureParticle: {fileID: 0}
+  finishParticle: {fileID: 0}
   outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
   outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   outlineColor: {r: 1, g: 0.7533744, b: 0, a: 1}
@@ -19324,6 +19330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f4b8ca4df1a873594e28ca9aa78f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashProbPerFrame: 0.005
+  flashIntensity: 3
+  flashLengthMinMilliSecs: 0.8
+  flashLengthMaxMilliSecs: 1.8
 --- !u!1001 &1788174529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21782,7 +21792,7 @@ PrefabInstance:
     - target: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3238705681435391085, guid: e719e36ba584739b6bcc77304705c7d2,
         type: 3}
@@ -24576,6 +24586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f4b8ca4df1a873594e28ca9aa78f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashProbPerFrame: 0.005
+  flashIntensity: 3
+  flashLengthMinMilliSecs: 0.8
+  flashLengthMaxMilliSecs: 1.8
 --- !u!1001 &2137208441
 PrefabInstance:
   m_ObjectHideFlags: 0

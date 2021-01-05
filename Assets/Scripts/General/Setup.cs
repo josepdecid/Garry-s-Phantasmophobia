@@ -9,6 +9,8 @@ using TMPro;
 public class Setup : MonoBehaviour
 {
     [SerializeField]
+    private Generator generator = null;
+    [SerializeField]
 	private GameObject playerPrefab = null;
     [SerializeField]
 	private GameObject ghostPrefab = null;
@@ -41,11 +43,17 @@ public class Setup : MonoBehaviour
 
     void Awake()
     {
+        SetupMapGeneration();
         SetupNavMeshSurfaces();
         SetupPlayer();
         SetupProps();
         SetupNPCs();
         SetupGUI();
+    }
+
+    private void SetupMapGeneration() 
+    {
+        generator.GenerateMap();
     }
 
     private void SetupNavMeshSurfaces()

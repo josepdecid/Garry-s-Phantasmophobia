@@ -26,7 +26,7 @@ public class KeyDoorController : MonoBehaviour
     public void PlayAnimation()
     {
         // Get key inventory from FPS controller
-        keyInventory = (KeyDoorInventory) GameObject.Find("FPSController/KeyInventory").GetComponent<KeyDoorInventory>();
+        keyInventory = (KeyDoorInventory) GameObject.Find("FPSController(Clone)/KeyInventory").GetComponent<KeyDoorInventory>();
 
         bool animateDoor = false;
 
