@@ -41,7 +41,7 @@ public class Floor : MonoBehaviour
         return room;
     }
 
-    public GameObject SpawnProp(GameObject prop){
+    public GameObject SpawnProp(GameObject prop, string name){
         List<Vector2Int> positions = new List<Vector2Int>();
         for(int x = 0; x < maxSize.x; ++x) {
             for(int y = 0; y < maxSize.y; ++y) {
@@ -54,6 +54,8 @@ public class Floor : MonoBehaviour
         int randIndex = UnityEngine.Random.Range(0, positions.Count);
         Vector3 spawnPos = GetRandomPositionInTile(positions[randIndex]);
         GameObject propInstance = Instantiate(prop, spawnPos, Quaternion.identity, world.transform);
+        propInstance.name = name;
+        
         return propInstance;
     }
 

@@ -223,9 +223,13 @@ public class Generator : MonoBehaviour
 
             float rand = UnityEngine.Random.Range(0.0f, 1.0f);
             if (rand < threshold) {
-                Key key = grid.SpawnProp(keyPrefab).GetComponent<Key>();
-                key.SetOutlineColor(keyDoorOutlineColors[numLockedRooms+(numFloor*maxLockedRooms)]);
+                int index = numLockedRooms + (numFloor * maxLockedRooms);
+                
+                Key key = grid.SpawnProp(keyPrefab, $"Key_{index}").GetComponent<Key>();
+                key.SetOutlineColor(keyDoorOutlineColors[index]);
+                
                 numLockedRooms += 1;
+                
                 return key;
             }
             else {
