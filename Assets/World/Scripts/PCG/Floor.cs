@@ -13,6 +13,7 @@ public class Floor : MonoBehaviour
     private Room[,] grid;
     private int floor;
     private GameObject world;
+    private int doorCount;
 
     public Floor(int tileSize, int heightSize, Vector2Int maxSize, int floor, GameObject world)
     {
@@ -24,6 +25,8 @@ public class Floor : MonoBehaviour
         AddRoomToGrid(null, new Tuple<Vector2Int, Vector2Int>(new Vector2Int(0, 0), new Vector2Int(maxSize.x-1, maxSize.y-1)));
         this.floor = floor;
         this.world = world;
+
+        doorCount = 0;
     }
 
     public Room SpawnRoom(GameObject roomPrefab, Room room, Vector2Int roomPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors, List<Window> windows)
@@ -55,7 +58,7 @@ public class Floor : MonoBehaviour
         Vector3 spawnPos = GetRandomPositionInTile(positions[randIndex]);
         GameObject propInstance = Instantiate(prop, spawnPos, Quaternion.identity, world.transform);
         propInstance.name = name;
-        
+
         return propInstance;
     }
 
@@ -378,6 +381,9 @@ public class Floor : MonoBehaviour
         (Vector3 pos, Quaternion rot, Vector2Int orient) = GetDoorExactPosition(door);
 
         GameObject prefabInstance = Instantiate(doorPrefab, pos, rot, world.transform);
+        prefabInstance.name = $"Door_{doorCount++}";
+        prefabInstance.transform.GetChild(0).name = $"Door_{doorCount++}";
+
         KeyDoorController keyDoor = prefabInstance.GetComponentInChildren<KeyDoorController>();
         keyDoor.SetUnlocked((key==null));
         if (key != null){
