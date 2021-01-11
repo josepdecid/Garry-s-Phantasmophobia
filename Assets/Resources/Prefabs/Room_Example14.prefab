@@ -253,7 +253,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ec8cc910d2d8dbd4ea0b4cecdf397a8b, type: 2}
+  - {fileID: 9065798296808367482, guid: 56240fadeb3dc5c4ab82bfdf291e74ee, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -548,7 +548,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ec8cc910d2d8dbd4ea0b4cecdf397a8b, type: 2}
+  - {fileID: 2100000, guid: 778776bd377eaee4f9ce38c726e6a34e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -807,7 +807,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+      objectReference: {fileID: 2100000, guid: b6fc883d422e3514f81ee1a7ccef9eb8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cb2e40b90dfeb07bdfd1a5e808a3e3, type: 3}
 --- !u!4 &1894848524836257620 stripped
@@ -1234,7 +1234,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+      objectReference: {fileID: 2100000, guid: b6fc883d422e3514f81ee1a7ccef9eb8, type: 2}
     - target: {fileID: 7085261525805539828, guid: 536992309f70e80468c8ac976711f63c,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -1319,7 +1319,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+      objectReference: {fileID: 2100000, guid: b6fc883d422e3514f81ee1a7ccef9eb8, type: 2}
     - target: {fileID: 8221544377239886491, guid: 536992309f70e80468c8ac976711f63c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1598,7 +1598,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+      objectReference: {fileID: 2100000, guid: b6fc883d422e3514f81ee1a7ccef9eb8, type: 2}
     - target: {fileID: 6162463580442852489, guid: 1443e353fb81c5343848c9c39939a1e0,
         type: 3}
       propertyPath: m_Name
