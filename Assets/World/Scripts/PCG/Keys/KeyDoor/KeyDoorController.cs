@@ -16,7 +16,7 @@ public class KeyDoorController : MonoBehaviour
     [Header("Key Inventory")]
     private bool doorOpen = false;
     [SerializeField] private bool doorUnlocked = false;
-    private KeyDoorInventory keyInventory = null;
+    private Color outlineColor = Color.clear;
 
     private void Awake()
     {
@@ -25,30 +25,13 @@ public class KeyDoorController : MonoBehaviour
 
     public void PlayAnimation()
     {
-        // // Get key inventory from FPS controller
-        // keyInventory = (KeyDoorInventory) GameObject.Find("FPSController(Clone)/KeyInventory").GetComponent<KeyDoorInventory>();
-
         bool animateDoor = false;
-
-        // // If door still locked, but player has a key
-        // if (keyInventory.hasSkeletonKey && !doorUnlocked)
-        // {
-        //     // Unlock the door
-        //     doorUnlocked = true;
-        //     // Use the key of the user
-        //     keyInventory.hasSkeletonKey = false;
-        //     // Show animation
-        //     animateDoor = true;
-        // }
-
-        // ...door already unlocked
         if (doorUnlocked)
         {
             // Show animation
             animateDoor = true;
         }
 
-        // .. door locked and no key
         else
         {
             StartCoroutine(ShowDoorLocked());
@@ -77,5 +60,18 @@ public class KeyDoorController : MonoBehaviour
 
     public void SetUnlocked(bool unlocked) {
         this.doorUnlocked = unlocked;
+    }
+
+    public void SetOutlineColor(Color outlineColor){
+        this.outlineColor = outlineColor;
+    }
+
+    public Color GetOutlineColor(){
+        return this.outlineColor;
+    }
+
+    public void RemoveOutline(){
+        PropOutline outlineScript = GetComponent<PropOutline>();
+        Destroy(outlineScript);
     }
 }

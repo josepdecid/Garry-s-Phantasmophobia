@@ -161,6 +161,11 @@ MonoBehaviour:
   numRoomsWithoutStair: 14
   numRoomsWithStair: 1
   maxLockedRooms: 2
+  keyDoorOutlineColors:
+  - {r: 1, g: 0.95914936, b: 0, a: 0}
+  - {r: 1, g: 0, b: 0.93526554, a: 0}
+  - {r: 1, g: 0, b: 0.06308365, a: 0}
+  - {r: 0, g: 0.30980182, b: 1, a: 0}
 --- !u!4 &44926300
 Transform:
   m_ObjectHideFlags: 0
@@ -10748,7 +10753,6 @@ MonoBehaviour:
   outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
   outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   outlineColor: {r: 0.1551745, g: 1, b: 0, a: 1}
-  keyOutlineColor: {r: 0.764151, g: 0.743912, b: 0, a: 1}
   outlineWidth: 20
   interactionDistance: 5
 --- !u!4 &2022250840

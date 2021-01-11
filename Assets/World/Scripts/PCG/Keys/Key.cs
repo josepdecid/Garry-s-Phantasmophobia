@@ -5,27 +5,30 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     protected List<KeyDoorController> doorsLocked;
+    private Color outlineColor;
 
     public Key() {
         doorsLocked = new List<KeyDoorController>();
     }
 
-    void OnCollisionEnter(Collision collide) {
-        Debug.Log(collide.collider.gameObject.name);
-        if (collide.collider.gameObject.name == "Capsule") {
-            UnlockAllDoors();
-            Destroy(gameObject);
-        }
-    }
-
     public void AddDoor(KeyDoorController d) {
         doorsLocked.Add(d);
+        d.SetOutlineColor(outlineColor);
     }
 
-    private void UnlockAllDoors() {
+    public Color GetOutlineColor(){
+        return outlineColor;
+    }
+
+    public void SetOutlineColor(Color outlineColor){
+        this.outlineColor = outlineColor;
+    }
+
+    public void UnlockAllDoors() {
         foreach (KeyDoorController d in this.doorsLocked)
         {
             d.SetUnlocked(true);
+            d.RemoveOutline();
         }
     }
 }

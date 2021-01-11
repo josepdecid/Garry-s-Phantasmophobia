@@ -28,6 +28,8 @@ public class Generator : MonoBehaviour
     private int numRoomsWithStair = 1;
     [SerializeField]
     private int maxLockedRooms = 2;
+    [SerializeField]
+    private List<Color> keyDoorOutlineColors;
     private GameObject keyPrefab;
     private int numRoomsSpawned;
     private int numLockedRooms;
@@ -135,10 +137,7 @@ public class Generator : MonoBehaviour
                     (validSpawn, roomCoordinatesOriginPos, roomBoundaries, rotation, doors, windows) = grid.CheckRoomSpawnValidity(targetRoom, doorToSpawnFrom, targetJoinDoor);
                     if (validSpawn)
                     {
-                        Key key = RandomSpawnKey(grid);
-                        if (key != null) {
-                            Debug.Log("SPAWN A KEY");
-                        }
+                        Key key = RandomSpawnKey(grid, height);
                         Room room = grid.SpawnRoom(targetRoomPrefab, targetRoom, roomCoordinatesOriginPos, roomBoundaries, rotation, doors, windows);
                         room.SetKey(key);
                         grid.FixDoorMatching(room, openDoors, key);
@@ -212,7 +211,7 @@ public class Generator : MonoBehaviour
         return doors[randIdx];
     }
 
-    private Key RandomSpawnKey(Floor grid){
+    private Key RandomSpawnKey(Floor grid, int numFloor){
         if (numLockedRooms >= maxLockedRooms){
             return null;
         }
@@ -222,8 +221,10 @@ public class Generator : MonoBehaviour
 
             float rand = UnityEngine.Random.Range(0.0f, 1.0f);
             if (rand < threshold) {
+                Key key = grid.SpawnProp(keyPrefab).GetComponent<Key>();
+                key.SetOutlineColor(keyDoorOutlineColors[numLockedRooms+(numFloor*maxLockedRooms)]);
                 numLockedRooms += 1;
-                return grid.SpawnProp(keyPrefab).GetComponent<Key>();
+                return key;
             }
             else {
                 return null;

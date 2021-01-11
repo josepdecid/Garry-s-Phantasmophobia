@@ -13,6 +13,7 @@ TagManager:
   - Floor
   - NPC
   - Ghost
+  - Door
   layers:
   - Default
   - TransparentFX

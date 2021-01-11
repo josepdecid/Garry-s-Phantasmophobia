@@ -33,8 +33,6 @@ public class Setup : MonoBehaviour
 	[Header("Visualization Parameters")]
 	[SerializeField]
 	private Color outlineColor = Color.white;
-    [SerializeField]
-    private Color keyOutlineColor = Color.white;
 	[SerializeField, Range(0f, 20f)]
 	private float outlineWidth = 1.0f;
 	[SerializeField]
@@ -116,36 +114,37 @@ public class Setup : MonoBehaviour
 
     private void SetupProps()
     {
-        GameObject[] props = GameObject.FindGameObjectsWithTag("Prop");
-        foreach (GameObject prop in props)
-        {
-            prop.SetActive(false);
+        string[] tagsToSetup = {"Prop", "Key", "InteractiveObject"};
+        foreach(string tag in tagsToSetup) {
+            GameObject[] props = GameObject.FindGameObjectsWithTag(tag);
+            foreach (GameObject prop in props)
+            {
+                prop.SetActive(false);
 
-            PropOutline outline = prop.AddComponent<PropOutline>();
-            outline.player = __player;
-            outline.outlineMaskMaterial = outlineMaskMaterial;
-            outline.outlineFillMaterial = outlineFillMaterial;
-            outline.outlineColor = outlineColor;
-            outline.outlineWidth = outlineWidth;
-            outline.interactionDistance = interactionDistance;
+                PropOutline outline = prop.AddComponent<PropOutline>();
+                outline.player = __player;
+                outline.outlineMaskMaterial = outlineMaskMaterial;
+                outline.outlineFillMaterial = outlineFillMaterial;
 
-            prop.SetActive(true);
-        }
+                if (tag == "Key"){
+                    outline.outlineColor = prop.GetComponent<Key>().GetOutlineColor();
+                    Debug.Log("Key");
+                    Debug.Log(outlineColor);
+                }
+                else if (tag == "InteractiveObject"){
+                    outline.outlineColor = prop.GetComponent<KeyDoorController>().GetOutlineColor();
+                    Debug.Log("Door");
+                    Debug.Log(outlineColor);
+                }
+                else {
+                    outline.outlineColor = outlineColor;
+                }
 
-        props = GameObject.FindGameObjectsWithTag("Key");
-        foreach (GameObject prop in props)
-        {
-            prop.SetActive(false);
+                outline.outlineWidth = outlineWidth;
+                outline.interactionDistance = interactionDistance;
 
-            PropOutline outline = prop.AddComponent<PropOutline>();
-            outline.player = __player;
-            outline.outlineMaskMaterial = outlineMaskMaterial;
-            outline.outlineFillMaterial = outlineFillMaterial;
-            outline.outlineColor = keyOutlineColor;
-            outline.outlineWidth = outlineWidth;
-            outline.interactionDistance = interactionDistance;
-
-            prop.SetActive(true);
+                prop.SetActive(true);
+            }
         }
     }
 

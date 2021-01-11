@@ -10,7 +10,6 @@ public class KeyDoorRaycast : MonoBehaviour
 
     private KeyDoorController raycasted_door;
     private GameObject raycastedKey;
-    // [SerializeField] private KeyDoorInventory keyInventory = null;
 
     [Header("Key Codes")]
     [SerializeField] private KeyCode openDoorKey = KeyCode.Mouse0;
@@ -63,14 +62,8 @@ public class KeyDoorRaycast : MonoBehaviour
 
                 if (Input.GetKeyDown(openDoorKey))
                 {
-                    // Get key inventory from FPS controller
-                    KeyDoorInventory keyInventory = (KeyDoorInventory) GameObject.Find("FPSController/KeyInventory").GetComponent<KeyDoorInventory>();
-
-                    // Collect a key if there is no key in inventory
-                    if (!keyInventory.hasSkeletonKey) {
-                        keyInventory.hasSkeletonKey = true;
-                        raycastedKey.SetActive(false);
-                    }
+                    raycastedKey.GetComponent<Key>().UnlockAllDoors();
+                    raycastedKey.SetActive(false);
                 }
             }
         }

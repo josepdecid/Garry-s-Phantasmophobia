@@ -56,7 +56,7 @@ public class Floor : MonoBehaviour
     }
 
     public Vector3 GetRandomPositionInTile(Vector2Int gridPos) {
-        return new Vector3(gridPos.x * tileSize + (tileSize/2), floor * heightSize + (heightSize/1.5f), gridPos.y * tileSize + (tileSize/2));
+        return new Vector3(gridPos.x * tileSize + (tileSize/2), floor * heightSize + (heightSize/3.5f), gridPos.y * tileSize + (tileSize/2));
     }
 
     public (bool, Vector2Int, Tuple<Vector2Int, Vector2Int>, float, List<Door>, List<Window>) CheckRoomSpawnValidity(Room targetRoom, Door doorToSpawnFrom, Door targetJoinDoor)
