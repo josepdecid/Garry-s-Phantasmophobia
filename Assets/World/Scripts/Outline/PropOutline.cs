@@ -19,6 +19,9 @@ public class PropOutline : MonoBehaviour {
 	private bool __needsUpdate;
 	private bool __canInteract;
 
+	private Material __outlineMaskMaterial;
+	private Material __outlineFillMaterial;
+
 	void Awake()
 	{
 		renderers = GetComponentsInChildren<Renderer>();
@@ -30,6 +33,9 @@ public class PropOutline : MonoBehaviour {
 
 		__needsUpdate = true;
 		__canInteract = true;
+
+		__outlineMaskMaterial = new Material(outlineMaskMaterial);
+		__outlineFillMaterial = new Material(outlineFillMaterial);
 	}
 
 	void OnEnable()
@@ -37,8 +43,9 @@ public class PropOutline : MonoBehaviour {
 		foreach (Renderer renderer in renderers)
 		{
 			List<Material> materials = renderer.sharedMaterials.ToList();
-			materials.Add(outlineMaskMaterial);
-			materials.Add(outlineFillMaterial);
+
+			materials.Add(__outlineMaskMaterial);
+			materials.Add(__outlineFillMaterial);
 			renderer.materials = materials.ToArray();
 		}
 	}
@@ -48,8 +55,8 @@ public class PropOutline : MonoBehaviour {
 		foreach (Renderer renderer in renderers)
 		{
 			List<Material> materials = renderer.sharedMaterials.ToList();
-			materials.Remove(outlineMaskMaterial);
-			materials.Remove(outlineFillMaterial);
+			materials.Remove(__outlineMaskMaterial);
+			materials.Remove(__outlineFillMaterial);
 			renderer.materials = materials.ToArray();
 		}
 	}
@@ -130,37 +137,9 @@ public class PropOutline : MonoBehaviour {
 
 	void UpdateMaterialProperties()
 	{
-		outlineFillMaterial.SetColor("_OutlineColor", outlineColor);
-		outlineMaskMaterial.SetFloat("_ZTest", (float) UnityEngine.Rendering.CompareFunction.Always);
-		outlineFillMaterial.SetFloat("_ZTest", (float) UnityEngine.Rendering.CompareFunction.LessEqual);
-		outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
+		__outlineFillMaterial.SetColor("_OutlineColor", outlineColor);
+		__outlineMaskMaterial.SetFloat("_ZTest", (float) UnityEngine.Rendering.CompareFunction.Always);
+		__outlineFillMaterial.SetFloat("_ZTest", (float) UnityEngine.Rendering.CompareFunction.LessEqual);
+		__outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
 	}
-	
-
-	// switch (outlineMode) {
-	// 	case Mode.OutlineAll:
-	// 	outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Always);
-	// 	outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Always);
-	// 	outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
-	// 	break;
-
-	// 	case Mode.OutlineHidden:
-	// 	outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Always);
-	// 	outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Greater);
-	// 	outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
-	// 	break;
-
-	// 	case Mode.OutlineAndSilhouette:
-	// 	outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.LessEqual);
-	// 	outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Always);
-	// 	outlineFillMaterial.SetFloat("_OutlineWidth", outlineWidth);
-	// 	break;
-
-	// 	case Mode.SilhouetteOnly:
-	// 	outlineMaskMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.LessEqual);
-	// 	outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Greater);
-	// 	outlineFillMaterial.SetFloat("_OutlineWidth", 0);
-	// 	break;
-	// }
-	// }
 }
