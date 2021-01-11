@@ -61,7 +61,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 3358005850063296056, guid: 1fe7da6131d576443b10fbfcfe6a64b6, type: 3}
   - {fileID: 2100000, guid: e1489ba25dfb7ab4585967216604488d, type: 2}
-  - {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,7 +156,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 3358005850063296056, guid: 1fe7da6131d576443b10fbfcfe6a64b6, type: 3}
   - {fileID: 2100000, guid: 1fe0bf56d0e15604689d9bae86d0c047, type: 2}
-  - {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,7 +251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 1fe0bf56d0e15604689d9bae86d0c047, type: 2}
   - {fileID: 3358005850063296056, guid: fcce61f5ef7b279458223be741bdf42a, type: 3}
   m_StaticBatchInfo:
@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 3334293252453254733}
   - component: {fileID: 7432351334452076715}
   - component: {fileID: 1116645249767925372}
+  - component: {fileID: 8005246909533967621}
   m_Layer: 11
   m_Name: Plane_0_0
   m_TagString: Untagged
@@ -407,6 +408,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8005246909533967621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410463854813750935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &2162499599369174311
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +485,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 3358005850063296056, guid: 1fe7da6131d576443b10fbfcfe6a64b6, type: 3}
   - {fileID: 2100000, guid: e1489ba25dfb7ab4585967216604488d, type: 2}
-  - {fileID: 2100000, guid: e3afd3f13bed53c448eaa979f23dbcb7, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -605,6 +622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 43169481340306835}
+  - component: {fileID: 2032870190132425687}
   m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
@@ -628,6 +646,22 @@ Transform:
   m_Father: {fileID: 8475962015431251068}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &2032870190132425687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8297913707677515207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8362538739532767811
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +935,7 @@ GameObject:
   - component: {fileID: 2839090626586336726}
   - component: {fileID: 108764004765126956}
   - component: {fileID: 2945932737194318224}
+  - component: {fileID: 2535019755641811184}
   m_Layer: 10
   m_Name: Plane_0_0 (1)
   m_TagString: Untagged
@@ -983,3 +1018,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2535019755641811184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026561869514162705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
