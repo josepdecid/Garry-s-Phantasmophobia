@@ -62,6 +62,7 @@ public class KeyDoorRaycast : MonoBehaviour
 
                 if (Input.GetKeyDown(openDoorKey))
                 {
+                    gameObject.GetComponent<Sounds>().PlayKeyPickup();
                     raycastedKey.GetComponent<Key>().UnlockAllDoors();
                     raycastedKey.SetActive(false);
                 }
