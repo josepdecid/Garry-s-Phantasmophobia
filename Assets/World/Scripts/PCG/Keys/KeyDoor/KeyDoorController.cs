@@ -16,7 +16,7 @@ public class KeyDoorController : MonoBehaviour
     [Header("Key Inventory")]
     private bool doorOpen = false;
     [SerializeField] private bool doorUnlocked = false;
-    private Color outlineColor = Color.clear;
+    private Color outlineColor;
 
     private void Awake()
     {
@@ -73,5 +73,9 @@ public class KeyDoorController : MonoBehaviour
     public void RemoveOutline(){
         PropOutline outlineScript = GetComponent<PropOutline>();
         Destroy(outlineScript);
+    }
+
+    public bool IsUnlocked() {
+        return doorUnlocked;
     }
 }

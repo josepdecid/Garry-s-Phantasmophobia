@@ -119,6 +119,10 @@ public class Setup : MonoBehaviour
             GameObject[] props = GameObject.FindGameObjectsWithTag(tag);
             foreach (GameObject prop in props)
             {
+                if (tag == "InteractiveObject" && prop.GetComponent<KeyDoorController>().IsUnlocked()){
+                    continue;
+                }
+
                 prop.SetActive(false);
 
                 PropOutline outline = prop.AddComponent<PropOutline>();
@@ -129,12 +133,12 @@ public class Setup : MonoBehaviour
                 if (tag == "Key"){
                     outline.outlineColor = prop.GetComponent<Key>().GetOutlineColor();
                     Debug.Log("Key");
-                    Debug.Log(outlineColor);
+                    Debug.Log(outline.outlineColor);
                 }
                 else if (tag == "InteractiveObject"){
                     outline.outlineColor = prop.GetComponent<KeyDoorController>().GetOutlineColor();
                     Debug.Log("Door");
-                    Debug.Log(outlineColor);
+                    Debug.Log(outline.outlineColor);
                 }
                 else {
                     outline.outlineColor = outlineColor;

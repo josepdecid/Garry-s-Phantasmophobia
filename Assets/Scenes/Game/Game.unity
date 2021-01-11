@@ -162,10 +162,10 @@ MonoBehaviour:
   numRoomsWithStair: 1
   maxLockedRooms: 2
   keyDoorOutlineColors:
-  - {r: 1, g: 0.95914936, b: 0, a: 0}
-  - {r: 1, g: 0, b: 0.93526554, a: 0}
-  - {r: 1, g: 0, b: 0.06308365, a: 0}
-  - {r: 0, g: 0.30980182, b: 1, a: 0}
+  - {r: 1, g: 0.95914936, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.93526554, a: 1}
+  - {r: 1, g: 0, b: 0.06308365, a: 1}
+  - {r: 0, g: 0.30980182, b: 1, a: 1}
 --- !u!4 &44926300
 Transform:
   m_ObjectHideFlags: 0
