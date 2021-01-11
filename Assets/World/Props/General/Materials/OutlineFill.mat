@@ -23,4 +23,4 @@ Material:
     - _OutlineWidth: 20
     - _ZTest: 4
     m_Colors:
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 0, b: 0.06308365, a: 1}

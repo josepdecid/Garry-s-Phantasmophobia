@@ -12,8 +12,9 @@ public class Floor : MonoBehaviour
     private List<Room> rooms;
     private Room[,] grid;
     private int floor;
+    private GameObject world;
 
-    public Floor(int tileSize, int heightSize, Vector2Int maxSize, int floor)
+    public Floor(int tileSize, int heightSize, Vector2Int maxSize, int floor, GameObject world)
     {
         this.tileSize = tileSize;
         this.heightSize = heightSize;
@@ -22,6 +23,7 @@ public class Floor : MonoBehaviour
         this.grid = new Room[maxSize.y, maxSize.x];
         AddRoomToGrid(null, new Tuple<Vector2Int, Vector2Int>(new Vector2Int(0, 0), new Vector2Int(maxSize.x-1, maxSize.y-1)));
         this.floor = floor;
+        this.world = world;
     }
 
     public Room SpawnRoom(GameObject roomPrefab, Room room, Vector2Int roomPos, Tuple<Vector2Int, Vector2Int> roomBoundaries, float rotation, List<Door> doors, List<Window> windows)
@@ -31,7 +33,7 @@ public class Floor : MonoBehaviour
         Vector3 finalPos = rotMatrix * origin;
         finalPos = finalPos - origin + new Vector3(roomPos.x * tileSize, floor * heightSize, roomPos.y * tileSize);
 
-        GameObject prefabInstance = Instantiate(roomPrefab, finalPos, rotMatrix);
+        GameObject prefabInstance = Instantiate(roomPrefab, finalPos, rotMatrix, world.transform);
         room = prefabInstance.GetComponent<Room>();
         room.UpdateRoom(roomPos, roomBoundaries, rotation, doors, windows);
         this.rooms.Add(room);
@@ -51,7 +53,7 @@ public class Floor : MonoBehaviour
 
         int randIndex = UnityEngine.Random.Range(0, positions.Count);
         Vector3 spawnPos = GetRandomPositionInTile(positions[randIndex]);
-        GameObject propInstance = Instantiate(prop, spawnPos, Quaternion.identity);
+        GameObject propInstance = Instantiate(prop, spawnPos, Quaternion.identity, world.transform);
         return propInstance;
     }
 
@@ -373,7 +375,7 @@ public class Floor : MonoBehaviour
 
         (Vector3 pos, Quaternion rot, Vector2Int orient) = GetDoorExactPosition(door);
 
-        GameObject prefabInstance = Instantiate(doorPrefab, pos, rot);
+        GameObject prefabInstance = Instantiate(doorPrefab, pos, rot, world.transform);
         KeyDoorController keyDoor = prefabInstance.GetComponentInChildren<KeyDoorController>();
         keyDoor.SetUnlocked((key==null));
         if (key != null){
@@ -390,7 +392,7 @@ public class Floor : MonoBehaviour
         float shiftZ = 0.22f * orient.y;
         pos = new Vector3(pos.x + shiftX, pos.y, pos.z + shiftZ);
 
-        GameObject prefabInstance = Instantiate(hidePrefab, pos, rot);
+        GameObject prefabInstance = Instantiate(hidePrefab, pos, rot, world.transform);
     }
 
     public void HideWindow(Window w, String r) {
@@ -402,7 +404,7 @@ public class Floor : MonoBehaviour
         float shiftZ = 0.22f * orient.y + 0.13f * orient.x;
         pos = new Vector3(pos.x + shiftX, pos.y + 1.3f, pos.z + shiftZ);
 
-        GameObject prefabInstance = Instantiate(hidePrefab, pos, rot);
+        GameObject prefabInstance = Instantiate(hidePrefab, pos, rot, world.transform);
     }
 
     private GameObject GetPrefabDoor(){

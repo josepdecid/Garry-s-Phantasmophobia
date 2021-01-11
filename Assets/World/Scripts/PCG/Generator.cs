@@ -30,6 +30,9 @@ public class Generator : MonoBehaviour
     private int maxLockedRooms = 2;
     [SerializeField]
     private List<Color> keyDoorOutlineColors;
+    [SerializeField]
+    private GameObject world;
+    [SerializeField]
     private GameObject keyPrefab;
     private int numRoomsSpawned;
     private int numLockedRooms;
@@ -38,7 +41,6 @@ public class Generator : MonoBehaviour
 
     public void GenerateMap()
     {
-        keyPrefab = (GameObject) Resources.Load("Prefabs/Key", typeof(GameObject));
         (GameObject iniRoomPrefab, Room iniRoom) = GetPrefabRoom("0");
         Floor firstFloor = Generate(iniRoomPrefab, new Vector2Int(maxX/2,0), 0, 0);
         if (stairsRoom != null) {
@@ -91,7 +93,7 @@ public class Generator : MonoBehaviour
     private Floor Generate(GameObject iniRoomPrefab, Vector2Int iniPos, float iniOrientation, int height)
     {
         HashSet<Door> openDoors = new HashSet<Door>(new DoorEqualsComparer());
-        Floor grid = new Floor(tileSize, heightSize, new Vector2Int(maxX, maxY), height);
+        Floor grid = new Floor(tileSize, heightSize, new Vector2Int(maxX, maxY), height, world);
         
         Room iniRoom = iniRoomPrefab.GetComponent<Room>();
         (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors, List<Window> iniRoomWindows) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
