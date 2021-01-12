@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyDoorController : MonoBehaviour
 {
@@ -10,19 +11,17 @@ public class KeyDoorController : MonoBehaviour
     [SerializeField] private string closeAnimationName = "DoorClose";
 
     [Header("Door Locked UI")]
-    [SerializeField] private int timeToShowUI = 1;
+    [SerializeField] private int timeToShowUI = 2;
 
     [Header("Key Inventory")]
     private bool doorOpen = false;
     [SerializeField] private bool doorUnlocked = false;
     private Color outlineColor;
-    private Messages messages;
+    private GameObject hintPanel;
 
     private void Awake()
     {
         doorAnim = gameObject.GetComponent<Animator>();
-        messages = Messages.Instance;
-        messages.SetHintPanel(GameObject.Find("Canvas/HintPanel"));
         // messages.HideText();
     }
 
@@ -57,9 +56,18 @@ public class KeyDoorController : MonoBehaviour
     IEnumerator ShowDoorLocked()
     {
         // messages.ShowText("This is a test");
+        ShowLockMessage(true);
         // TODO: MESSAGE DOOR LOCKED
         yield return new WaitForSeconds(timeToShowUI);
         // messages.HideText();
+        ShowLockMessage(false);
+    }
+
+    private void ShowLockMessage(bool display)
+    {
+        GameObject hintPanel = GameObject.Find("HintPanel");
+        hintPanel.GetComponent<Image>().enabled = display;
+        hintPanel.GetComponentInChildren<Text>().enabled = display;
     }
 
     public void SetUnlocked(bool unlocked) {
