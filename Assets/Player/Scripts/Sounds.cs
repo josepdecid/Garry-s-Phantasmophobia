@@ -7,6 +7,8 @@ public class Sounds : MonoBehaviour
     [Header("Keys")]
     [SerializeField]
     private AudioSource keyPickup;
+    [SerializeField]
+    private AudioSource lockedDoor;
     [Space]
 
     [Header("Capture")]
@@ -35,5 +37,10 @@ public class Sounds : MonoBehaviour
     public void PlayErrorCapture()
     {
         errorCapture.Play(0);
+    }
+
+    public void PlayLockedDoor()
+    {
+        lockedDoor.Play(0);
     }
 }

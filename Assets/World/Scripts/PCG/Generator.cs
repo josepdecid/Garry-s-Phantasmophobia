@@ -34,6 +34,7 @@ public class Generator : MonoBehaviour
     private GameObject world;
     [SerializeField]
     private GameObject keyPrefab;
+
     private int numRoomsSpawned;
     private int numLockedRooms;
     private bool canSpawnNextFloor = true;

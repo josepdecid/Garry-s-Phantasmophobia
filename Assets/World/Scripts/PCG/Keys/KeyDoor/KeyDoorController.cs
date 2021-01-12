@@ -11,16 +11,19 @@ public class KeyDoorController : MonoBehaviour
 
     [Header("Door Locked UI")]
     [SerializeField] private int timeToShowUI = 1;
-    [SerializeField] private GameObject showDoorLockedUI = null;
 
     [Header("Key Inventory")]
     private bool doorOpen = false;
     [SerializeField] private bool doorUnlocked = false;
     private Color outlineColor;
+    private Messages messages;
 
     private void Awake()
     {
         doorAnim = gameObject.GetComponent<Animator>();
+        messages = Messages.Instance;
+        messages.SetHintPanel(GameObject.Find("Canvas/HintPanel"));
+        // messages.HideText();
     }
 
     public void PlayAnimation()
@@ -53,10 +56,10 @@ public class KeyDoorController : MonoBehaviour
 
     IEnumerator ShowDoorLocked()
     {
-        showDoorLockedUI.SetActive(true);
+        // messages.ShowText("This is a test");
         // TODO: MESSAGE DOOR LOCKED
         yield return new WaitForSeconds(timeToShowUI);
-        showDoorLockedUI.SetActive(false);
+        // messages.HideText();
     }
 
     public void SetUnlocked(bool unlocked) {

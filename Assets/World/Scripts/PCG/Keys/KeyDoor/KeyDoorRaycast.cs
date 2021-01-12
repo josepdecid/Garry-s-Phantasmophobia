@@ -45,6 +45,7 @@ public class KeyDoorRaycast : MonoBehaviour
 
                 if (Input.GetKeyDown(openDoorKey))
                 {
+                    if (!raycasted_door.IsUnlocked()) gameObject.GetComponent<Sounds>().PlayLockedDoor();
                     raycasted_door.PlayAnimation();
                 }
              }

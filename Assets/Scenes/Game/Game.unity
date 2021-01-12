@@ -169,6 +169,7 @@ MonoBehaviour:
   world: {fileID: 2085873912}
   keyPrefab: {fileID: 5876333551795141048, guid: 1bd7f49e948932be69b69a1bbce058a9,
     type: 3}
+  hintPanel: {fileID: 0}
 --- !u!4 &44926300
 Transform:
   m_ObjectHideFlags: 0
