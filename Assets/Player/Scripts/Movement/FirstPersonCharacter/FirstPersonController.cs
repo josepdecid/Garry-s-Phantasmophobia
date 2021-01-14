@@ -86,7 +86,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Escape))
             {
                 if (m_isMenuOpen) CloseMenu();
                 else OpenMenu();
@@ -148,9 +148,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_isMenuOpen = true;
             m_menuPanel.SetActive(true);
             Time.timeScale = 0;
-            
+
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         public void CloseMenu()
@@ -160,7 +160,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Time.timeScale = 1;
 
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void GoToMainMenu()
