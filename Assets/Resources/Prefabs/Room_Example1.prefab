@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 6909181460076926576}
   m_Layer: 11
   m_Name: Plane_0_0 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 3641643313353772054}
   - component: {fileID: 1158155504682742636}
   - component: {fileID: 7209071817759581300}
-  - component: {fileID: 1958260980}
   m_Layer: 11
   m_Name: Plane_0_0
   m_TagString: Untagged
@@ -298,22 +297,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1958260980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569483272844463478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &1163153122579959564
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +340,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8618248732382283177}
-  - component: {fileID: 1958260981}
   m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
@@ -383,22 +365,6 @@ Transform:
   m_Father: {fileID: 2083615750202643768}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!114 &1958260981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459896087996583689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &2197113123310344816
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +377,6 @@ GameObject:
   - component: {fileID: 5061445379113603052}
   - component: {fileID: 1260103680876739764}
   - component: {fileID: 4479665984673690876}
-  - component: {fileID: 1958260977}
   m_Layer: 10
   m_Name: Plane_1_0 (1)
   m_TagString: Untagged
@@ -494,22 +459,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1958260977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2197113123310344816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &2714779033606577951
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +473,7 @@ GameObject:
   - component: {fileID: 4972356619316590745}
   m_Layer: 11
   m_Name: Plane_1_0 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -680,7 +629,7 @@ GameObject:
   - component: {fileID: 6587479537925252259}
   m_Layer: 11
   m_Name: Plane_0_0
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -903,7 +852,7 @@ GameObject:
   - component: {fileID: 8989155101355069838}
   m_Layer: 11
   m_Name: Plane_1_0
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1027,7 +976,6 @@ GameObject:
   - component: {fileID: 866258347803861597}
   - component: {fileID: 3014375485645201696}
   - component: {fileID: 3001983270538486403}
-  - component: {fileID: 1958260978}
   m_Layer: 10
   m_Name: Plane_0_0 (1)
   m_TagString: Untagged
@@ -1110,22 +1058,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1958260978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7281282090194336630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &9008039031971019610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1070,6 @@ GameObject:
   - component: {fileID: 4712125271719723306}
   - component: {fileID: 6026216802528970425}
   - component: {fileID: 657091122587374461}
-  - component: {fileID: 1958260979}
   m_Layer: 11
   m_Name: Plane_1_0
   m_TagString: Untagged
@@ -1221,22 +1152,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1958260979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9008039031971019610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1001 &537511333168289488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1898,15 +1813,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2efb098e46ba3e44cae4f1ba84005732, type: 3}
---- !u!1 &4072847914811342970 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 2efb098e46ba3e44cae4f1ba84005732,
-    type: 3}
-  m_PrefabInstance: {fileID: 4072847914811311834}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4072847914811186266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2efb098e46ba3e44cae4f1ba84005732,
+    type: 3}
+  m_PrefabInstance: {fileID: 4072847914811311834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4072847914811342970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 2efb098e46ba3e44cae4f1ba84005732,
     type: 3}
   m_PrefabInstance: {fileID: 4072847914811311834}
   m_PrefabAsset: {fileID: 0}

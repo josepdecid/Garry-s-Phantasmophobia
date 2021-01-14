@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6650950226776584566}
   m_Layer: 28
   m_Name: Plane_0_2 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 1080543332316879469}
   m_Layer: 28
   m_Name: Plane_1_0
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 1080543332441204004}
   m_Layer: 28
   m_Name: Plane_1_2
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 1080543332523212772}
   m_Layer: 28
   m_Name: Plane_1_1
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 1080543332814818804}
   m_Layer: 0
   m_Name: Room_Example0
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 1080543332971005437}
   m_Layer: 28
   m_Name: Plane_0_2
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 1080543333270757317}
   m_Layer: 28
   m_Name: Plane_0_1
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 1080543333752318410}
   m_Layer: 28
   m_Name: Plane_0_0
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1172,7 +1172,6 @@ GameObject:
   - component: {fileID: 3408614808367442336}
   - component: {fileID: 2045779112864460883}
   - component: {fileID: 6780111667510625384}
-  - component: {fileID: 1364783883}
   m_Layer: 10
   m_Name: Plane_1_0 (1)
   m_TagString: Untagged
@@ -1255,22 +1254,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423224837248192501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &1494568846192894486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1308,6 @@ GameObject:
   - component: {fileID: 9178186871324134399}
   - component: {fileID: 8014016500918933954}
   - component: {fileID: 3313832811935440145}
-  - component: {fileID: 1364783868}
   m_Layer: 28
   m_Name: Plane_0_0
   m_TagString: Untagged
@@ -1408,22 +1390,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256939877621375730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &2578719273159718529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1404,7 @@ GameObject:
   - component: {fileID: 4703505458468675145}
   m_Layer: 28
   m_Name: Plane_0_0 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1532,7 +1498,7 @@ GameObject:
   - component: {fileID: 5761312335601438015}
   m_Layer: 28
   m_Name: Plane_1_2 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1624,7 +1590,6 @@ GameObject:
   - component: {fileID: 1414410513600791577}
   - component: {fileID: 1519941530099512757}
   - component: {fileID: 5779162836816122856}
-  - component: {fileID: 1364783890}
   m_Layer: 28
   m_Name: Plane_0_2
   m_TagString: Untagged
@@ -1707,22 +1672,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3060727083543557677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &3143848770028322115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,7 +1684,6 @@ GameObject:
   - component: {fileID: 7379177452830515040}
   - component: {fileID: 5913447970744597549}
   - component: {fileID: 2009879884405094616}
-  - component: {fileID: 1364783882}
   m_Layer: 10
   m_Name: Plane_1_1 (1)
   m_TagString: Untagged
@@ -1818,22 +1766,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3143848770028322115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &4178173410434407491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,7 +1778,6 @@ GameObject:
   - component: {fileID: 5326483676738988820}
   - component: {fileID: 794448010935667885}
   - component: {fileID: 3380582096670267971}
-  - component: {fileID: 1364783889}
   m_Layer: 28
   m_Name: Plane_1_0
   m_TagString: Untagged
@@ -1929,22 +1860,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4178173410434407491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &4871440633769442954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +1872,6 @@ GameObject:
   - component: {fileID: 1798751847975539132}
   - component: {fileID: 4965912756169692639}
   - component: {fileID: 8274363726379776815}
-  - component: {fileID: 1364783891}
   m_Layer: 28
   m_Name: Plane_0_1
   m_TagString: Untagged
@@ -2040,22 +1954,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4871440633769442954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &5061900548370871476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +1966,6 @@ GameObject:
   - component: {fileID: 7675550849265513636}
   - component: {fileID: 6637661293620467281}
   - component: {fileID: 1953144000947728333}
-  - component: {fileID: 1364783888}
   m_Layer: 28
   m_Name: Plane_1_1
   m_TagString: Untagged
@@ -2151,22 +2048,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5061900548370871476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &5211653418758199907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2106,6 @@ GameObject:
   - component: {fileID: 8961161583253080905}
   - component: {fileID: 5586608260731975578}
   - component: {fileID: 3455741746258424699}
-  - component: {fileID: 1364783886}
   m_Layer: 10
   m_Name: Plane_0_0 (1)
   m_TagString: Untagged
@@ -2308,22 +2188,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5317771564179487040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &5755818362943996172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,7 +2202,7 @@ GameObject:
   - component: {fileID: 5222667530664528131}
   m_Layer: 28
   m_Name: Plane_0_1 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2430,7 +2294,6 @@ GameObject:
   - component: {fileID: 4275991099586162125}
   - component: {fileID: 4827824070895692640}
   - component: {fileID: 6809012738862111173}
-  - component: {fileID: 1364783887}
   m_Layer: 28
   m_Name: Plane_1_2
   m_TagString: Untagged
@@ -2513,22 +2376,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5921826632028561656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &6230161942756541271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,7 +2388,6 @@ GameObject:
   - component: {fileID: 8061035223432059268}
   - component: {fileID: 3070787213673392948}
   - component: {fileID: 6950119142110258554}
-  - component: {fileID: 1364783884}
   m_Layer: 10
   m_Name: Plane_0_2 (1)
   m_TagString: Untagged
@@ -2624,22 +2470,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6230161942756541271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &6793973253775301351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,7 +2528,6 @@ GameObject:
   - component: {fileID: 4121169402412560621}
   - component: {fileID: 789914359955928005}
   - component: {fileID: 8000646150766760284}
-  - component: {fileID: 1364783885}
   m_Layer: 10
   m_Name: Plane_0_1 (1)
   m_TagString: Untagged
@@ -2781,22 +2610,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7222283104466948813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &8222986253531861647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2811,7 +2624,7 @@ GameObject:
   - component: {fileID: 5932668040911083956}
   m_Layer: 28
   m_Name: Plane_1_0 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2905,7 +2718,7 @@ GameObject:
   - component: {fileID: 6481282754430841116}
   m_Layer: 28
   m_Name: Plane_1_1 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2997,7 +2810,6 @@ GameObject:
   - component: {fileID: 348480444375755866}
   - component: {fileID: 2819705196427432604}
   - component: {fileID: 8677038947592009368}
-  - component: {fileID: 1364783881}
   m_Layer: 10
   m_Name: Plane_1_2 (1)
   m_TagString: Untagged
@@ -3080,22 +2892,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1364783881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8332611097624344296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a786eef56952d7041ae6f7bac728b172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1001 &1080543332114907455
 PrefabInstance:
   m_ObjectHideFlags: 0

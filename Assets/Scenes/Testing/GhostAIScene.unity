@@ -2260,6 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b0cbf5fdc94e94ebeb8598da3445e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generator: {fileID: 0}
   playerPrefab: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
     type: 3}
   ghostPrefab: {fileID: 7839821606023755104, guid: 5b9c398b33b6a4ffa876708ef17fb777,
@@ -2520,7 +2521,7 @@ GameObject:
   - component: {fileID: 1918012791}
   m_Layer: 0
   m_Name: World
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 4258757296919171695}
   m_Layer: 11
   m_Name: Plane_0_0 (2)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 4258757297863901205}
   m_Layer: 11
   m_Name: Plane_0_0 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 5816454257290000828}
   m_Layer: 11
   m_Name: Plane_0_0
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 912160207952585517}
   m_Layer: 11
   m_Name: Plane_0_0 (4)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1252,7 +1252,7 @@ GameObject:
   - component: {fileID: 5740436347602845570}
   m_Layer: 11
   m_Name: Plane_0_0 (3)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1343,6 +1343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs_2
       objectReference: {fileID: 0}
+    - target: {fileID: 1058210814286184, guid: 3730624d7a1898441b246db63cde09ec, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 4587385141667668, guid: 3730624d7a1898441b246db63cde09ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -1422,6 +1426,10 @@ PrefabInstance:
     - target: {fileID: 1058210814286184, guid: 3730624d7a1898441b246db63cde09ec, type: 3}
       propertyPath: m_Name
       value: Stairs_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058210814286184, guid: 3730624d7a1898441b246db63cde09ec, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 4587385141667668, guid: 3730624d7a1898441b246db63cde09ec, type: 3}
       propertyPath: m_LocalPosition.x
