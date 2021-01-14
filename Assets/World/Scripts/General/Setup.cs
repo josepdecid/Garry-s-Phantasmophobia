@@ -108,8 +108,10 @@ public class Setup : MonoBehaviour
     private void SetupPlayer()
     {
         RandomNavMeshPoint navMeshSampler = gameObject.AddComponent<RandomNavMeshPoint>();
-        Vector3 spawnPosition = navMeshSampler.GetRandomPointOnNavMesh();
-        __player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        GameObject spawnPoint = GameObject.FindGameObjectWithTag("Spawn");
+        NavMeshHit hit;
+        NavMesh.SamplePosition(spawnPoint.transform.position, out hit, 0.5f, NavMesh.AllAreas);
+        __player = Instantiate(playerPrefab, hit.position, Quaternion.identity);
     }
 
     private void SetupProps()
