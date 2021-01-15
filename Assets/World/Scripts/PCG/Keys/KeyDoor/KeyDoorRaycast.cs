@@ -20,6 +20,8 @@ public class KeyDoorRaycast : MonoBehaviour
     private bool doOnce;
 
     private const string interactableTagKey = "Key";
+
+    private const string interactableTagPowerUp = "PowerUp";
     private const string interactableTagDoor = "InteractiveObject";
 
     private void Update()
@@ -65,6 +67,26 @@ public class KeyDoorRaycast : MonoBehaviour
                 {
                     gameObject.GetComponent<Sounds>().PlayKeyPickup();
                     raycastedKey.GetComponent<Key>().UnlockAllDoors();
+                    raycastedKey.SetActive(false);
+                }
+            }
+
+            else if (hit.collider.CompareTag(interactableTagPowerUp))
+            {
+                if (!doOnce)
+                {
+                    CrosshairChange(true);
+                    raycastedKey = hit.collider.gameObject;
+                }
+
+                isCrosshairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(openDoorKey))
+                {
+                    //TODO: add powerup pickup sounds
+                    //gameObject.GetComponent<Sounds>().PlayKeyPickup();
+                    raycastedKey.GetComponent<PowerUp>().Apply();
                     raycastedKey.SetActive(false);
                 }
             }

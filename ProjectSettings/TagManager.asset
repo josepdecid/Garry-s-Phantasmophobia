@@ -16,6 +16,7 @@ TagManager:
   - Door
   - Spawn
   - Spawn Room
+  - PowerUp
   layers:
   - Default
   - TransparentFX

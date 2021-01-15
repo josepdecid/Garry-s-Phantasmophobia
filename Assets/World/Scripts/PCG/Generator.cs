@@ -34,6 +34,8 @@ public class Generator : MonoBehaviour
     private GameObject world;
     [SerializeField]
     private GameObject keyPrefab;
+    [SerializeField]
+    private GameObject powerUpPrefab;
 
     private int numRoomsSpawned;
     private int numLockedRooms;
@@ -44,10 +46,15 @@ public class Generator : MonoBehaviour
     {
         (GameObject iniRoomPrefab, Room iniRoom) = GetPrefabRoom("0");
         Floor firstFloor = Generate(iniRoomPrefab, new Vector2Int(maxX/2,0), 0, 0);
+        Floor secondFloor = null;
+
         if (stairsRoom != null) {
             canSpawnNextFloor = false;
-            Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
+            secondFloor = Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
         }
+
+        // Add powerups
+        AddPowerUps(firstFloor, secondFloor);
 
         // Adjust size of the sky
         AdjustAtmosphere();
@@ -71,26 +78,6 @@ public class Generator : MonoBehaviour
         GameObject.Find("Atmosphere/Plane").transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
     }
 
-    private void MovePlayerToIniRoom(Vector2Int newIniPos)
-    {
-        // Disable CharacterController before moving player:
-        // https://forum.unity.com/threads/character-controller-ignores-transform-position.617107/
-        /*
-        CharacterController c = FPSController.GetComponent<CharacterController>();
-        c.enabled = false;
-
-        // Set the position of player inside the ini room
-        FPSController.transform.position = new Vector3(
-            newIniPos.x * tileSize + 5, 
-            1,
-            newIniPos.y * tileSize + 5);
-
-        Debug.Log(newIniPos);
-
-        c.enabled = true;
-        */
-    }
-
     private Floor Generate(GameObject iniRoomPrefab, Vector2Int iniPos, float iniOrientation, int height)
     {
         HashSet<Door> openDoors = new HashSet<Door>(new DoorEqualsComparer());
@@ -100,11 +87,6 @@ public class Generator : MonoBehaviour
         (Vector2Int newIniPos, Tuple<Vector2Int, Vector2Int> iniRoomBoundaries, List<Door> iniRoomDoors, List<Window> iniRoomWindows) = grid.GetIniRoomProperties(iniRoom, iniPos, iniOrientation);
         iniRoom = grid.SpawnRoom(iniRoomPrefab, iniRoom, newIniPos, iniRoomBoundaries, iniOrientation, iniRoomDoors, iniRoomWindows);
         openDoors.UnionWith(new HashSet<Door>(iniRoom.GetDoors(), new DoorEqualsComparer()));
-
-        // Move player into the new room of the 1st floor
-        if(height == 0) {
-            MovePlayerToIniRoom(newIniPos);
-        }
 
         numRoomsSpawned = 1;
         numLockedRooms = 0;
@@ -236,6 +218,13 @@ public class Generator : MonoBehaviour
             else {
                 return null;
             }
+        }
+    }
+
+    private void AddPowerUps(Floor first, Floor second) {
+        first.SpawnProp(powerUpPrefab, $"Power_1");
+        if (second != null) {
+            second.SpawnProp(powerUpPrefab, $"Power_2");
         }
     }
 }

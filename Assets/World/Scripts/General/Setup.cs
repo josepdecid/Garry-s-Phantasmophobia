@@ -26,6 +26,8 @@ public class Setup : MonoBehaviour
 	[Header("Visualization Parameters")]
 	[SerializeField]
 	private Color outlineColor = Color.white;
+    [SerializeField]
+	private Color outlineColorPowerUp = Color.white;
 	[SerializeField, Range(0f, 20f)]
 	private float outlineWidth = 1.0f;
 	[SerializeField]
@@ -131,7 +133,7 @@ public class Setup : MonoBehaviour
 
     private void SetupProps()
     {
-        string[] tagsToSetup = {"Prop", "Key", "InteractiveObject"};
+        string[] tagsToSetup = {"Prop", "Key", "InteractiveObject", "PowerUp"};
         foreach(string tag in tagsToSetup) {
             GameObject[] props = GameObject.FindGameObjectsWithTag(tag);
             foreach (GameObject prop in props)
@@ -149,14 +151,14 @@ public class Setup : MonoBehaviour
 
                 if (tag == "Key"){
                     outline.outlineColor = prop.GetComponent<Key>().GetOutlineColor();
-                    Debug.Log("Key");
-                    Debug.Log(outline.outlineColor);
                 }
                 else if (tag == "InteractiveObject"){
                     outline.outlineColor = prop.GetComponent<KeyDoorController>().GetOutlineColor();
-                    Debug.Log("Door");
-                    Debug.Log(outline.outlineColor);
                 }
+                else if (tag == "PowerUp") {
+                    outline.outlineColor = outlineColorPowerUp;
+                }
+
                 else {
                     outline.outlineColor = outlineColor;
                 }
