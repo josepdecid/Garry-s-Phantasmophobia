@@ -15,6 +15,7 @@ TagManager:
   - Ghost
   - Door
   - Spawn
+  - Spawn Room
   layers:
   - Default
   - TransparentFX

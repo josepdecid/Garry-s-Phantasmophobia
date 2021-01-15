@@ -48,8 +48,12 @@ public class Floor : MonoBehaviour
         List<Vector2Int> positions = new List<Vector2Int>();
         for(int x = 0; x < maxSize.x; ++x) {
             for(int y = 0; y < maxSize.y; ++y) {
-                if(GetGridRoom(x,y) != null){
-                    positions.Add(new Vector2Int(x,y));
+                Room room = GetGridRoom(x,y);                
+                if(room != null){
+                    string tag = room.gameObject.tag;
+                    if (tag != "Spawn Room") {
+                        positions.Add(new Vector2Int(x,y));
+                    }                    
                 }
             }
         }
@@ -63,6 +67,8 @@ public class Floor : MonoBehaviour
     }
 
     public Vector3 GetRandomPositionInTile(Vector2Int gridPos) {
+        float range = tileSize/5.0f;
+        Vector3 noise = new Vector3(UnityEngine.Random.Range(-range, range), 0, UnityEngine.Random.Range(-range, range));
         return new Vector3(gridPos.x * tileSize + (tileSize/2), floor * heightSize + (heightSize/4.5f), gridPos.y * tileSize + (tileSize/2));
     }
 
@@ -271,7 +277,7 @@ public class Floor : MonoBehaviour
 
         foreach (Door d in matching) {
             if (key == null) {
-                SpawnDoor(d, GetGridRoom(d.GetOuterPos()).GetKey());
+                SpawnDoor(d, GetGridRoom(d.GetInnerPos()).GetKey());
             }
             else {
                 SpawnDoor(d, key);

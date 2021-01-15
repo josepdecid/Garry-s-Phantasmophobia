@@ -215,15 +215,15 @@ public class Generator : MonoBehaviour
     }
 
     private Key RandomSpawnKey(Floor grid, int numFloor){
-        if (numLockedRooms >= maxLockedRooms){
+        if (numLockedRooms >= maxLockedRooms || numRoomsSpawned <= 1){
             return null;
         }
         else {
-            float roomsToSpawn = (float) (temptativeSize - numRoomsSpawned)/ ((float) temptativeSize);
-            float threshold = (maxLockedRooms - numLockedRooms) * (1 - roomsToSpawn);
+            float fractionRoomsToSpawn = (float) (temptativeSize - numRoomsSpawned)/ ((float) temptativeSize);
+            float probabilityLocked = (maxLockedRooms - numLockedRooms) * (1 - fractionRoomsToSpawn) * (1 - fractionRoomsToSpawn);
 
             float rand = UnityEngine.Random.Range(0.0f, 1.0f);
-            if (rand < threshold) {
+            if (rand < probabilityLocked) {
                 int index = numLockedRooms + (numFloor * maxLockedRooms);
                 
                 Key key = grid.SpawnProp(keyPrefab, $"Key_{index}").GetComponent<Key>();
