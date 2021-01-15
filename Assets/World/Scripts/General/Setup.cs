@@ -16,13 +16,6 @@ public class Setup : MonoBehaviour
 	private GameObject ghostPrefab = null;
     [SerializeField]
     private int numberOfGhosts = 1;
-
-    [Space]
-    [Header("Particle Systems")]
-    [SerializeField]
-    private ParticleSystem captureParticle;
-    [SerializeField]
-    private ParticleSystem finishParticle;
 	
 	[Header("Outline Materials")]
 	[SerializeField]

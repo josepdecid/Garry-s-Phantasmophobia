@@ -30,6 +30,8 @@ public class FiniteStateMachine : MonoBehaviour
 
     [Header("MISC")]
     [SerializeField]
+    private GameObject visualDebugElement = null;
+    [SerializeField]
     private bool modeDebug = false;
     [SerializeField]
     private Gradient candidateGradient = null;
@@ -98,7 +100,7 @@ public class FiniteStateMachine : MonoBehaviour
         if (modeDebug)
         {
             Color debugColor = GetStateColor();
-            __ghost.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
+            visualDebugElement.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
         }
 
         switch (__currentStateType)

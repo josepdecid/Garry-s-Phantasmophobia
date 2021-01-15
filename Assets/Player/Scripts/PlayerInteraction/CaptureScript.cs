@@ -14,6 +14,10 @@ public class CaptureScript : MonoBehaviour
     // CinemachineImpulseSource impulse;
 
     [SerializeField]
+    private Animator handsAnimator = null;
+    [SerializeField]
+    private Sounds sounds = null;
+    [SerializeField]
     private float captureDistance = 5f;
     [SerializeField]
     private float dragSpeed = 3f;
@@ -32,9 +36,6 @@ public class CaptureScript : MonoBehaviour
     // public Rig captureRig;
 
     private Vector3 axis;
-
-    public ParticleSystem captureParticle;
-    public ParticleSystem finishParticle;
     
     // public GameObject light;
     [SerializeField]
@@ -45,6 +46,7 @@ public class CaptureScript : MonoBehaviour
     // RandomRotation randomRot;
     private Renderer __tornadoRenderer;
     private Camera __playerCamera;
+    private LaserControl __laserControl;
     // Renderer lightRenderer;
 
     private bool __capturing;
@@ -59,25 +61,52 @@ public class CaptureScript : MonoBehaviour
         // lightRenderer.material.SetFloat("Opacity", .3f);
         // randomRot = GetComponent<RandomRotation>();
         anim = GetComponent<Animator>();
-        captureParticle = GameObject.Find("CaptureParticles").GetComponent<ParticleSystem>();
-        finishParticle = GameObject.Find("FinishParticles").GetComponent<ParticleSystem>();
-
-        captureParticle.Stop();
-        finishParticle.Stop();
 
         __playerCamera = gameObject.GetComponentInChildren<Camera>();
+        __laserControl = gameObject.GetComponentInChildren<LaserControl>();
 
         __capturing = false;
     }
 
     void Update()
     {
-        GameObject targetGhost = Utils.GetGhostInFront(__playerCamera.gameObject, captureDistance);
+        // TODO: Remove, just to test
+        if (Input.GetMouseButtonDown(0) && handsAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            handsAnimator.SetTrigger("Shoot");
+            sounds.PlayStartCapture();
+            __laserControl.EnableLaser();
+        }
+
+        if (Input.GetMouseButton(0) && handsAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting"))
+        {
+            Ray ray = __playerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+                print("I'm looking at " + hit.transform.name);
+            else
+                print("I'm looking at nothing!");
+            Debug.DrawRay(__playerCamera.transform.position, Vector3.forward, Color.green);
+            __laserControl.UpdateLaser(hit.transform.position);
+        }
+
+        else if (Input.GetMouseButtonUp(0) && handsAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting"))
+        {
+            handsAnimator.SetTrigger("Stop");
+            sounds.PlayEndCapture();
+            __laserControl.DisableLaser();
+        }
+
+        /*GameObject targetGhost = Utils.GetGhostInFront(__playerCamera.gameObject, captureDistance);
         if (targetGhost != null) currentGhost = targetGhost.GetComponent<GhostScript>();
         else currentGhost = null;
         if (currentGhost != null)
         {
             bool isCapturing = Input.GetMouseButton(0);
+            handsAnimator.SetTrigger("Shoot");
+            sounds.PlayStartCapture();
+
+
             Debug.Log($"Capturing: {__capturing}");
             if (isCapturing != __capturing) SetCaptureState(isCapturing);
             
@@ -86,26 +115,13 @@ public class CaptureScript : MonoBehaviour
 
                 Debug.Log("Capturing the ghost!");
                 
-                /*else
-                {
-                    if (currentGhost.energy > 0)
-                    {
-                        float x = Input.GetAxis("Horizontal");
-                        float z = Input.GetAxis("Vertical");
-
-                        axis = new Vector3(-x, 0, -z);
-                        float angle = Vector3.Angle(transform.forward, axis);
-
-                        currentGhost.Damage(angle, axis);
-                    }
-                    else Capture();
-                }*/
             }
         }
         else
         {
             SetCaptureState(false);
         }
+        */
     }
 
     private void Capture()
@@ -121,7 +137,7 @@ public class CaptureScript : MonoBehaviour
 
     public void SetCaptureState(bool state)
     {
-        
+        /*
         __capturing = state;
 
         if (__capturing)
@@ -135,5 +151,6 @@ public class CaptureScript : MonoBehaviour
             
         }
         else  captureParticle.Stop();
+        */
     }
 }

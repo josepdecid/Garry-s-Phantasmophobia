@@ -55,7 +55,7 @@ public class GhostScript : MonoBehaviour
     {
         yield return new WaitForSeconds(.52f);
         // FindObjectOfType<MovementInput>().enabled = true;
-        capture.finishParticle.Play();
+        //capture.finishParticle.Play();
         // capture.ShakeScreen();
         Destroy(gameObject);
     }
