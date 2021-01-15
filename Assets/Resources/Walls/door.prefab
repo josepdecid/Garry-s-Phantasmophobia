@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1269010322837156723}
   - component: {fileID: 6469290783558961977}
   m_Layer: 8
-  m_Name: door_material
+  m_Name: door
   m_TagString: InteractiveObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,6 @@ MonoBehaviour:
   openAnimationName: DoorOpen
   closeAnimationName: DoorClose
   timeToShowUI: 1
-  showDoorLockedUI: {fileID: 7827920234582799798}
   doorUnlocked: 1
 --- !u!1 &7827920234582799798
 GameObject:

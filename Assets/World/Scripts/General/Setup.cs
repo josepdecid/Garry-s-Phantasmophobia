@@ -58,30 +58,27 @@ public class Setup : MonoBehaviour
 
     private void SetupNavMeshSurfaces()
     {
-        
-        // Override NavMesh
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
         foreach(GameObject go in allObjects){
+            // Override NavMesh for no-floor gameobjects
             Component[] components = go.GetComponentsInChildren<Transform>().Where(r => r.tag == "Floor").ToArray();
-            if (go.tag != "Floor" && components.Length == 0){
+            if (go.tag != "Floor" && components.Length == 0 ){
                 NavMeshModifier navMeshModifier = go.AddComponent<NavMeshModifier>();
                 navMeshModifier.overrideArea = true;
                 navMeshModifier.area = 1;
             }
+            
+            // Disable door gameobjects
+            if (go.tag == "InteractiveObject") {
+                go.SetActive(false);
+            }
         }
 
-        GameObject[] floorSurfaces = GameObject.FindGameObjectsWithTag("Floor");
-        //GameObject[] doorSurfaces = GameObject.FindGameObjectsWithTag("InteractiveObject");
-        //GameObject[] walkableSurfaces = floorSurfaces.Union(doorSurfaces).ToArray();
-        GameObject[] walkableSurfaces = floorSurfaces;
-        Debug.Log("floorSurfaces len: " + floorSurfaces.Length);
-        //Debug.Log("doorSurfaces len: " + doorSurfaces.Length);
-        Debug.Log("union len: " + walkableSurfaces.Length);
+        GameObject[] walkableSurfaces = GameObject.FindGameObjectsWithTag("Floor");
         CombineInstance[] objectsToCombine = new CombineInstance[walkableSurfaces.Length];
 
         for (int i = 0; i < walkableSurfaces.Length; ++i)
         {
-            Debug.Log("I ENTER HERE");
             MeshFilter meshFilter = walkableSurfaces[i].GetComponent<MeshFilter>();
 
             // Extract mesh from each walkable surface (floor)
@@ -96,7 +93,6 @@ public class Setup : MonoBehaviour
         // New GameObject to merge the floors
         GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
 
-        Debug.Log("objectsToCombine: " + objectsToCombine.Length);
         // Combine all meshes and set as the new mesh filter
         floor.GetComponent<MeshFilter>().mesh = new Mesh();
         floor.GetComponent<MeshFilter>().mesh.CombineMeshes(objectsToCombine);
@@ -118,10 +114,17 @@ public class Setup : MonoBehaviour
 
         floor.GetComponent<MeshRenderer>().enabled = false;
 
+        for (int i = 0; i < walkableSurfaces.Length; ++i)
+
         // Build dynamic NavMesh
         __navMeshSurface = floor.AddComponent<NavMeshSurface>();
         __navMeshSurface.agentTypeID = agentTypeID;
         __navMeshSurface.BuildNavMesh();
+
+        // Enable again door gameobjects
+        foreach(GameObject go in allObjects.Where(r => r.tag == "InteractiveObject").ToArray()){
+            go.SetActive(true);
+        }
     }
 
     private void SetupPlayer()
