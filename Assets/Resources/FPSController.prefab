@@ -6715,7 +6715,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   exludeLayerName: Walls
-  openDoorKey: 323
+  openDoorKey: 101
   crosshair: {fileID: 3433848516284580234}
 --- !u!114 &1988602597
 MonoBehaviour:

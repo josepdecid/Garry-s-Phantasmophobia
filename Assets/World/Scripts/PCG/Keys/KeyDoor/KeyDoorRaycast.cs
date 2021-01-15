@@ -12,7 +12,7 @@ public class KeyDoorRaycast : MonoBehaviour
     private GameObject raycastedKey;
 
     [Header("Key Codes")]
-    [SerializeField] private KeyCode openDoorKey = KeyCode.Mouse0;
+    [SerializeField] private KeyCode openDoorKey = KeyCode.E;
 
     [Header("UI Parameters")]
     [SerializeField] private Image crosshair = null;
