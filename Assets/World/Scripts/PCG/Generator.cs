@@ -50,7 +50,7 @@ public class Generator : MonoBehaviour
 
         if (stairsRoom != null) {
             canSpawnNextFloor = false;
-            secondFloor = Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
+            //secondFloor = Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
         }
 
         // Add powerups
@@ -197,7 +197,7 @@ public class Generator : MonoBehaviour
     }
 
     private Key RandomSpawnKey(Floor grid, int numFloor){
-        if (numLockedRooms >= maxLockedRooms || numRoomsSpawned <= 1){
+        if (numLockedRooms >= maxLockedRooms || numRoomsSpawned <= 2){
             return null;
         }
         else {

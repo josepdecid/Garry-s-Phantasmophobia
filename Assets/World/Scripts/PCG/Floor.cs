@@ -57,7 +57,7 @@ public class Floor : MonoBehaviour
                 }
             }
         }
-
+        
         int randIndex = UnityEngine.Random.Range(0, positions.Count);
         Vector3 spawnPos = GetRandomPositionInTile(positions[randIndex]);
         GameObject propInstance = Instantiate(prop, spawnPos, prop.transform.rotation, world.transform);
