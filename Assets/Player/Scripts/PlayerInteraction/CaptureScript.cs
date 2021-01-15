@@ -83,11 +83,9 @@ public class CaptureScript : MonoBehaviour
             Ray ray = __playerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
-                print("I'm looking at " + hit.transform.name);
-            else
-                print("I'm looking at nothing!");
-            Debug.DrawRay(__playerCamera.transform.position, Vector3.forward, Color.green);
-            __laserControl.UpdateLaser(hit.transform.position);
+            {
+                __laserControl.UpdateLaser(hit.point);
+            }
         }
 
         else if (Input.GetMouseButtonUp(0) && handsAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting"))

@@ -6556,8 +6556,6 @@ MonoBehaviour:
   sounds: {fileID: 1856527440195246264}
   captureDistance: 10
   dragSpeed: 3
-  captureParticle: {fileID: 0}
-  finishParticle: {fileID: 0}
   tornado: {fileID: -927199367670048503, guid: 98d33d8f387ea8a4fa7d70a7522bb6df, type: 3}
 --- !u!114 &2398889603572079818
 MonoBehaviour:
@@ -6597,6 +6595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1885bd7c7d4b4e4d89f5c381f3f424f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraComponent: {fileID: 3238705681435027535}
   laserPrefab: {fileID: 763009941860770497, guid: e655f62e95c7e6e49bdd705657da3b8e,
     type: 3}
   firePoint: {fileID: 8328127870612074261}
