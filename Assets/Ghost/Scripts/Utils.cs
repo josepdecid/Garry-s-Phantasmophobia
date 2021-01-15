@@ -30,13 +30,14 @@ class Utils
             Vector3 dirToTarget = (targetPosition - playerPosition).normalized;
 
             float dstToTarget = Vector3.Distance(playerPosition, targetPosition);
-
-            RaycastHit hit;
-            LayerMask obstacleMask = LayerMask.NameToLayer("Obstacle");
-            bool isHitting = Physics.Raycast(playerPosition, dirToTarget, dstToTarget, obstacleMask);
-            // Debug.DrawRay(sourcePosition, direction * hit.distance, Color.yellow);
-
-            if (isHitting) return true;
+            
+            RaycastHit[] hits = Physics.RaycastAll(playerPosition, dirToTarget, dstToTarget);
+            foreach(RaycastHit hit in hits) {
+                if (hit.collider.tag == "Wall") {
+                    return false;
+                }
+            }
+            return true;
         }
 
         return false;

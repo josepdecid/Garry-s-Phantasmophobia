@@ -86,6 +86,8 @@ public class FiniteStateMachine : MonoBehaviour
             State newState = GetStateInstance();
             ChangeState(newState);
         }
+
+        Debug.Log(__currentStateType);
     }
 
     public void ChangeState(State newState)
@@ -100,7 +102,7 @@ public class FiniteStateMachine : MonoBehaviour
         if (modeDebug)
         {
             Color debugColor = GetStateColor();
-            visualDebugElement.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
+            //visualDebugElement.GetComponentInChildren<MeshRenderer>().material.color = debugColor;
         }
 
         switch (__currentStateType)

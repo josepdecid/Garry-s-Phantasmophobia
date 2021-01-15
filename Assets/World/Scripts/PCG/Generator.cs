@@ -50,7 +50,7 @@ public class Generator : MonoBehaviour
 
         if (stairsRoom != null) {
             canSpawnNextFloor = false;
-            //secondFloor = Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
+            secondFloor = Generate(stairsRoom.topRoomPrefab, stairsRoom.GetRoomPos(), stairsRoom.GetRotation(), 1);
         }
 
         // Add powerups

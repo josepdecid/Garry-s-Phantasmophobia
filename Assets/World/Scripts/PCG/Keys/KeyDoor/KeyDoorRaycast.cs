@@ -31,7 +31,6 @@ public class KeyDoorRaycast : MonoBehaviour
 
         int mask = 1 << LayerMask.NameToLayer(exludeLayerName) | layerMaskInteract.value;
 
-
         if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
         {
              if (hit.collider.CompareTag(interactableTagDoor))

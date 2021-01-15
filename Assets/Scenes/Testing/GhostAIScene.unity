@@ -2263,14 +2263,13 @@ MonoBehaviour:
   generator: {fileID: 0}
   playerPrefab: {fileID: 3238705681435027533, guid: e719e36ba584739b6bcc77304705c7d2,
     type: 3}
-  ghostPrefab: {fileID: 7839821606023755104, guid: 5b9c398b33b6a4ffa876708ef17fb777,
+  ghostPrefab: {fileID: 7692504472720282418, guid: 0328723b0e7f47b8a9881aaa95577c13,
     type: 3}
   numberOfGhosts: 1
-  captureParticle: {fileID: 0}
-  finishParticle: {fileID: 0}
   outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
   outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   outlineColor: {r: 0.1551745, g: 1, b: 0, a: 1}
+  outlineColorPowerUp: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 20
   interactionDistance: 5
 --- !u!4 &1588611661

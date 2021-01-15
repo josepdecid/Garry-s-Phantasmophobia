@@ -6997,7 +6997,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7839821606023755104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -7151,17 +7151,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolSpeed: 1
   fleeSpeed: 1
-  numSamples: 10
-  samplingRadius: 5
-  maxSamplingDistance: 2
+  numSamples: 60
+  samplingRadius: 8
+  maxSamplingDistance: 8
   searchTimeout: 10
   hideTimeout: 10
   visualDebugElement: {fileID: 5982545770686907243}
-  modeDebug: 0
+  modeDebug: 1
   candidateGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 0.963735, g: 1, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}

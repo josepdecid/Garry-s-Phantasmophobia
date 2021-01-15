@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 7692504472720282417}
   - component: {fileID: 7692504472720282416}
   - component: {fileID: 7692504472720282428}
-  - component: {fileID: 7692504472720282419}
   - component: {fileID: 7692504472720282429}
   - component: {fileID: 7692504472720282431}
   - component: {fileID: 7692504472720282426}
+  - component: {fileID: 7782636809129074512}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: NPC
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 7692504472720282418}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac6aa3587435ac64bb5d866066fb07ee, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -103,19 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &7692504472720282419
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7692504472720282418}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1, y: 2, z: 1.1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7692504472720282429
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,6 +160,7 @@ MonoBehaviour:
   maxSamplingDistance: 2
   searchTimeout: 10
   hideTimeout: 10
+  visualDebugElement: {fileID: 0}
   modeDebug: 1
   candidateGradient:
     serializedVersion: 2
@@ -203,3 +191,17 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
+--- !u!136 &7782636809129074512
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692504472720282418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

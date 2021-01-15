@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 3840291741802904796}
   m_Layer: 9
   m_Name: wall_-1_1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1702,7 +1702,7 @@ GameObject:
   - component: {fileID: 3840291742563467150}
   m_Layer: 9
   m_Name: wall_1_1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1994,7 +1994,7 @@ GameObject:
   - component: {fileID: 3840291742652146997}
   m_Layer: 9
   m_Name: wall_-1_2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2089,7 +2089,7 @@ GameObject:
   - component: {fileID: 3840291742670869264}
   m_Layer: 9
   m_Name: wall_1_2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2771,7 +2771,7 @@ GameObject:
   - component: {fileID: 3840291743337755350}
   m_Layer: 9
   m_Name: wall_1_0
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2866,7 +2866,7 @@ GameObject:
   - component: {fileID: 3840291743440690780}
   m_Layer: 9
   m_Name: wall_0_-1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3831,6 +3831,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_-1_0
       objectReference: {fileID: 0}
+    - target: {fileID: 5466893095179460196, guid: 86cb2e40b90dfeb07bdfd1a5e808a3e3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 5827290947584180145, guid: 86cb2e40b90dfeb07bdfd1a5e808a3e3,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -3916,6 +3921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: wall_0_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890711559988691964, guid: 0edcba9712bb0d63e9c6f710104a6506,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0edcba9712bb0d63e9c6f710104a6506, type: 3}
