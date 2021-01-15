@@ -55,11 +55,8 @@ public class KeyDoorController : MonoBehaviour
 
     IEnumerator ShowDoorLocked()
     {
-        // messages.ShowText("This is a test");
         ShowLockMessage(true);
-        // TODO: MESSAGE DOOR LOCKED
         yield return new WaitForSeconds(timeToShowUI);
-        // messages.HideText();
         ShowLockMessage(false);
     }
 

@@ -90,8 +90,11 @@ public class KeyDoorRaycast : MonoBehaviour
                     raycastedKey.SetActive(false);
                 }
             }
+            else {
+                CrosshairChange(false);
+                doOnce = false;
+            }
         }
-
         else
         {
             if (isCrosshairActive)
