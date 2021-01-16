@@ -9,5 +9,12 @@ public class IncreasePowerUp : PowerUp
         FirstPersonController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
         playerController.m_WalkSpeed *= 1.25f;
         playerController.m_RunSpeed *= 1.25f;
+
+        PlaySound();
+    }
+
+    protected override void PlaySound()
+    {
+        _sounds.PlayPillPickup();
     }
 }

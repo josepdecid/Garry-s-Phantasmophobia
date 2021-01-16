@@ -5,23 +5,26 @@ using UnityEngine;
 public class Sounds : MonoBehaviour
 {   
     [Header("Keys")]
-    [SerializeField]
-    private AudioSource keyPickup;
-    [SerializeField]
-    private AudioSource lockedDoor;
+    [SerializeField] private AudioSource keyPickup;
+    [SerializeField] private AudioSource lockedDoor;
     [Space]
 
+    [Header("Powerups")]
+    [SerializeField] private AudioSource pillPickup;
+
     [Header("Capture")]
-    [SerializeField]
-    private AudioSource startCapture;
-    [SerializeField]
-    private AudioSource endCapture;
-    [SerializeField]
-    private AudioSource errorCapture;
+    [SerializeField] private AudioSource startCapture;
+    [SerializeField] private AudioSource endCapture;
+    [SerializeField] private AudioSource errorCapture;
 
     public void PlayKeyPickup()
     {
         keyPickup.Play(0);
+    }
+
+    public void PlayPillPickup()
+    {
+        pillPickup.Play(0);
     }
 
     public void PlayStartCapture()
