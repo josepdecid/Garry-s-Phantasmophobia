@@ -62,23 +62,39 @@ class Utils
     }
 
     public static GameObject GetGhostInFront(GameObject playerCamera, float fieldOfView, float distance)
-    {
+    {        
         Vector3 sourcePosition = playerCamera.transform.position;
         GameObject[] ghosts = GameObject.FindGameObjectsWithTag("Ghost");
 
         for (int i = 0; i < ghosts.Length; ++i)
         {
-            Vector3 direction = ghosts[i].transform.position - sourcePosition;
-            float angle = Vector3.Angle(direction, playerCamera.transform.forward);
+            Vector3 targetPosition = ghosts[i].transform.position;
+            Vector3 dirToTarget = (targetPosition - sourcePosition).normalized;
+            float dstToTarget = Vector3.Distance(sourcePosition, targetPosition);
+            float angle = Vector3.Angle(dirToTarget, playerCamera.transform.forward);
             
+            Debug.Log("dstToTarget: " + dstToTarget);
+            Debug.Log("distance: " + distance);
+
             if (Math.Abs(angle) <= fieldOfView / 2)
             {
-                RaycastHit hit;
-                bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
+                RaycastHit[] hits = Physics.RaycastAll(sourcePosition, dirToTarget, distance);
 
-                Debug.DrawRay(sourcePosition, direction * hit.distance, Color.yellow);
-
-                if (isHitting && hit.collider.gameObject.name == ghosts[i].name)
+                bool isGhost = false;
+                float distToGhost = -1;
+                float minDistToWall = Mathf.Infinity;
+                foreach(RaycastHit hit in hits) {
+                    if (hit.collider.tag == "Ghost"){
+                        isGhost = true;
+                        distToGhost = hit.distance;
+                    }
+                    else if (hit.collider.tag == "Wall") {
+                        if (hit.distance < minDistToWall) {
+                            minDistToWall = hit.distance;
+                        }
+                    }
+                }
+                if (isGhost && distToGhost < minDistToWall) 
                     return ghosts[i];
             }
         }

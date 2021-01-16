@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using System;
 using TMPro;
+using UnityEngine.AI;
 
 public class CaptureScript : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class CaptureScript : MonoBehaviour
     private LaserControl __laserControl;
 
     private bool __capturing;
+    private bool __shooting;
 
     void Start()
     {
@@ -32,9 +34,10 @@ public class CaptureScript : MonoBehaviour
         __laserControl = gameObject.GetComponentInChildren<LaserControl>();
 
         __capturing = false;
+        __shooting = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         GameObject targetGhost = Utils.GetGhostInFront(__playerCamera.gameObject, __playerCamera.fieldOfView, captureDistance);
         if (targetGhost != null) currentGhost = targetGhost.GetComponent<GhostScript>();
@@ -45,29 +48,38 @@ public class CaptureScript : MonoBehaviour
         // If we have a Ghost in front
         if (currentGhost != null)
         {
-            if (Input.GetMouseButtonDown(0) && animState.IsName("Idle"))
+            if (Input.GetMouseButtonDown(0) && !__shooting)
             {
+                __shooting = true;
                 handsAnimator.SetTrigger("Shoot");
                 sounds.PlayStartCapture();
                 __laserControl.EnableLaser(targetGhost.transform.position);
+                targetGhost.GetComponent<NavMeshAgent>().speed = 0.1f;
             }
 
-            if (Input.GetMouseButton(0) && animState.IsName("Shooting"))
+            else if (Input.GetMouseButton(0) && __shooting)
             {
                 __laserControl.UpdateLaser(targetGhost.transform.position);
             }
 
-            else if (Input.GetMouseButtonUp(0) && animState.IsName("Shooting"))
+            else if (Input.GetMouseButtonUp(0) && __shooting)
             {
+                __shooting = false;
                 handsAnimator.SetTrigger("Stop");
                 sounds.PlayEndCapture();
+                __laserControl.DisableLaser();
+            }
+
+            else {
+                __shooting = false;
                 __laserControl.DisableLaser();
             }
         }
 
         // If we do not have Ghost in front and it was shooting -> Stop the animation
-        else if (animState.IsName("Shooting"))
+        else if (__shooting)
         {
+            __shooting = false;
             handsAnimator.SetTrigger("Stop");
             sounds.PlayEndCapture();
             __laserControl.DisableLaser();
@@ -77,6 +89,11 @@ public class CaptureScript : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             sounds.PlayErrorCapture(false);
+        }
+
+        else {
+            __shooting = false;
+            __laserControl.DisableLaser();
         }
     }
 

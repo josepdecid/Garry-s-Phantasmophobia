@@ -86,8 +86,6 @@ public class FiniteStateMachine : MonoBehaviour
             State newState = GetStateInstance();
             ChangeState(newState);
         }
-
-        Debug.Log(__currentStateType);
     }
 
     public void ChangeState(State newState)

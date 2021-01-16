@@ -24,7 +24,6 @@ public class SearchState : State
             __isNearSpot = !_agent.pathPending || minDist < 2.0f;
             if (__isNearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, spot.name);
         }
-        Debug.Log(_ghostSpotMapping.GetSpot(_ghost.name));
         
         __timeout -= Time.deltaTime;
 

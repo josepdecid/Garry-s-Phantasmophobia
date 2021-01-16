@@ -376,7 +376,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3238705681435391087}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!108 &7947501668963241092
 Light:
@@ -6302,7 +6302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 10
+  m_WalkSpeed: 4
   m_RunSpeed: 4
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 6
@@ -6597,7 +6597,7 @@ MonoBehaviour:
   cameraComponent: {fileID: 3238705681435027535}
   laserPrefab: {fileID: 763009941860770497, guid: e655f62e95c7e6e49bdd705657da3b8e,
     type: 3}
-  firePoint: {fileID: 8328127870612074261}
+  firePoint: {fileID: 8381306759163327472}
 --- !u!1 &3238705681435027535
 GameObject:
   m_ObjectHideFlags: 0
@@ -6631,6 +6631,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5940282422589981831}
   - {fileID: 3775066118581995538}
   - {fileID: 6948601614044114898}
   - {fileID: 8237261974285303790}
@@ -7356,7 +7357,7 @@ Transform:
   - {fileID: 7313753611183923045}
   - {fileID: 2110630320844496997}
   m_Father: {fileID: 3238705681435391087}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2214210255833703036
 Animator:
@@ -7732,7 +7733,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3238705681435391087}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8255872342119964523
 MonoBehaviour:
@@ -8518,7 +8519,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3238705681435391087}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &1852038661355564512
 ParticleSystem:
@@ -13635,6 +13636,36 @@ Transform:
   - {fileID: 8978541120801742545}
   m_Father: {fileID: 2110630320844496997}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8381306759163327472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5940282422589981831}
+  m_Layer: 0
+  m_Name: LaserPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5940282422589981831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381306759163327472}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.0000001872535}
+  m_LocalPosition: {x: 0.168, y: -0.418, z: 1.722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3238705681435391087}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8590445149619213515
 GameObject:
