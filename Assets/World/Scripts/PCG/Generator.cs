@@ -21,6 +21,8 @@ public class Generator : MonoBehaviour
     private int maxY = 40;
     private Room stairsRoom = null;
     [SerializeField]
+    private bool multiFloor = true;
+    [SerializeField]
     private int numSpawnRooms = 1;
     [SerializeField]
     private int numRoomsWithoutStair = 14;
@@ -28,6 +30,8 @@ public class Generator : MonoBehaviour
     private int numRoomsWithStair = 1;
     [SerializeField]
     private int maxLockedRooms = 2;
+    [SerializeField]
+    private int numPowerUps = 2;
     [SerializeField]
     private List<Color> keyDoorOutlineColors;
     [SerializeField]
@@ -45,6 +49,7 @@ public class Generator : MonoBehaviour
     public void GenerateMap()
     {
         (GameObject iniRoomPrefab, Room iniRoom) = GetPrefabRoom("0");
+        canSpawnNextFloor = multiFloor;
         Floor firstFloor = Generate(iniRoomPrefab, new Vector2Int(maxX/2,0), 0, 0);
         Floor secondFloor = null;
 
@@ -206,7 +211,7 @@ public class Generator : MonoBehaviour
 
             float rand = UnityEngine.Random.Range(0.0f, 1.0f);
             if (rand < probabilityLocked) {
-                int index = numLockedRooms + (numFloor * maxLockedRooms);
+                int index = (numLockedRooms + (numFloor * maxLockedRooms)) % keyDoorOutlineColors.Count;
                 
                 Key key = grid.SpawnProp(keyPrefab, $"Key_{index}").GetComponent<Key>();
                 key.SetOutlineColor(keyDoorOutlineColors[index]);
@@ -222,9 +227,13 @@ public class Generator : MonoBehaviour
     }
 
     private void AddPowerUps(Floor first, Floor second) {
-        first.SpawnProp(powerUpPrefab, $"Power_1");
-        if (second != null) {
-            second.SpawnProp(powerUpPrefab, $"Power_2");
+        for (int i = 0; i < numPowerUps; ++i) {
+            if (i % 2 == 0 || second == null) {
+                first.SpawnProp(powerUpPrefab, $"Power_{i}");
+            }
+            else {
+                second.SpawnProp(powerUpPrefab, $"Power_{i}");
+            } 
         }
     }
 }

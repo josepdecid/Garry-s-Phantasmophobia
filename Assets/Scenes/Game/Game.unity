@@ -157,15 +157,23 @@ MonoBehaviour:
   heightSize: 4
   maxX: 10
   maxY: 10
+  multiFloor: 1
   numSpawnRooms: 1
   numRoomsWithoutStair: 14
   numRoomsWithStair: 1
   maxLockedRooms: 2
+  numPowerUps: 2
   keyDoorOutlineColors:
   - {r: 1, g: 0.95914936, b: 0, a: 1}
   - {r: 1, g: 0, b: 0.93526554, a: 1}
   - {r: 1, g: 0, b: 0.06308365, a: 1}
   - {r: 0, g: 0.30980182, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0.9897845, a: 1}
+  - {r: 0.3921822, g: 0, b: 0.5283019, a: 1}
+  - {r: 1, g: 0.5322244, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.509706, a: 1}
+  - {r: 1, g: 0.23346765, b: 0, a: 1}
+  - {r: 0, g: 0.048180494, b: 0.26415092, a: 1}
   world: {fileID: 2085873912}
   keyPrefab: {fileID: 5876333551795141048, guid: 1bd7f49e948932be69b69a1bbce058a9,
     type: 3}
