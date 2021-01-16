@@ -8,52 +8,22 @@ public class GhostScript : MonoBehaviour
     CaptureScript capture;
     Vector3 playerPos;
 
-    [Header("Renderers")]
-    public GameObject chestGhostMesh;
-    public GameObject tailGhostMesh;
-
-    [Space]
-    [Header("Public")]
-    public bool escaping;
-    public bool stunned;
-    public Animator chestAnimator;
-    public Animator tailAnimator;
-    public float energy = 100;
-    public Transform head;
-
-    [Space]
-    [Header("Colors")]
-
-    [ColorUsage(true,true)]
-    public Color normalColor, flashColor;
+    private float energy;
 
     private void Start()
     {
         capture = FindObjectOfType<CaptureScript>();
     }
-    
-    public void ActivateEscapeRig()
-    {
-        transform.parent = capture.transform;
-        transform.DOLocalRotate(Vector3.zero, .3f);
-        transform.DOLocalMove(capture.transform.GetChild(0).localPosition, .2f);
-        tailAnimator.SetTrigger("escape");
-
-        escaping = true;
-        // CanvasManager.instance.ShowText(true);
-    }
 
     public void Capture()
     {
-        tailAnimator.SetTrigger("capture");
+        // tailAnimator.SetTrigger("capture");
         StartCoroutine(DestroyGhost());
-
-        // CanvasManager.instance.ShowText(false);
     }
 
     IEnumerator DestroyGhost()
     {
-        yield return new WaitForSeconds(.52f);
+        yield return new WaitForSeconds(1f);
         // FindObjectOfType<MovementInput>().enabled = true;
         //capture.finishParticle.Play();
         // capture.ShakeScreen();
