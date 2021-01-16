@@ -45,6 +45,11 @@ public class Generator : MonoBehaviour
     private int numLockedRooms;
     private bool canSpawnNextFloor = true;
 
+    public void SetupGenerator(int temptativeSize, int maxLockedRooms, bool multiFloor) {
+        this.temptativeSize = temptativeSize;
+        this.maxLockedRooms = maxLockedRooms;
+        this.multiFloor = multiFloor;
+    }
 
     public void GenerateMap()
     {

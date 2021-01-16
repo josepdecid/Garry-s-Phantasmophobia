@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -155,8 +155,8 @@ MonoBehaviour:
   roomStubbornness: 30
   tileSize: 6
   heightSize: 4
-  maxX: 10
-  maxY: 10
+  maxX: 60
+  maxY: 60
   multiFloor: 1
   numSpawnRooms: 1
   numRoomsWithoutStair: 14
@@ -220,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124421790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 39.22, y: 0, z: 8.38}
+  m_LocalPosition: {x: 45.1, y: 0, z: 6.3600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 243577765}
@@ -424,7 +424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429627426}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 41, y: 5, z: 8}
+  m_LocalPosition: {x: 46.879997, y: 5, z: 5.9800005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 243577765}
@@ -5653,7 +5653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801138512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39, y: -0.9, z: 8}
+  m_LocalPosition: {x: 44.879997, y: -0.9, z: 5.9800005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 243577765}
@@ -5854,7 +5854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948192302}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 38.99, y: -0.15, z: 8.32}
+  m_LocalPosition: {x: 44.87, y: -0.15, z: 6.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 243577765}
@@ -10606,7 +10606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182462054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.34, y: -0.85, z: 7.99}
+  m_LocalPosition: {x: 46.219997, y: -0.85, z: 5.9700003}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 548036869}
@@ -10648,7 +10648,6 @@ MonoBehaviour:
     type: 3}
   ghostPrefab: {fileID: 7839821606023755104, guid: 5b9c398b33b6a4ffa876708ef17fb777,
     type: 3}
-  numberOfGhosts: 1
   outlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
   outlineFillMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   outlineColor: {r: 0.1551745, g: 1, b: 0, a: 1}

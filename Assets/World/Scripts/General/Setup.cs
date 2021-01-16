@@ -14,8 +14,6 @@ public class Setup : MonoBehaviour
 	private GameObject playerPrefab = null;
     [SerializeField]
 	private GameObject ghostPrefab = null;
-    [SerializeField]
-    private int numberOfGhosts = 1;
 	
 	[Header("Outline Materials")]
 	[SerializeField]
@@ -36,9 +34,12 @@ public class Setup : MonoBehaviour
     private GameObject __player;
     private NavMeshSurface __navMeshSurface;
 
+    private int __numberOfGhosts, __temptativeSize, __maxLockedRooms;
+    private bool __multiFloor;
+
     void Awake()
     {
-        Debug.Log(GameDifficulty.Difficulty);
+        SetupDifficulty();
         SetupMapGeneration();
         SetupNavMeshSurfaces();
         SetupPlayer();
@@ -49,6 +50,7 @@ public class Setup : MonoBehaviour
 
     private void SetupMapGeneration() 
     {
+        generator.SetupGenerator(__temptativeSize, __maxLockedRooms, __multiFloor);
         generator.GenerateMap();
     }
 
@@ -109,8 +111,6 @@ public class Setup : MonoBehaviour
         }
 
         floor.GetComponent<MeshRenderer>().enabled = false;
-
-        for (int i = 0; i < walkableSurfaces.Length; ++i)
 
         // Build dynamic NavMesh
         __navMeshSurface = floor.AddComponent<NavMeshSurface>();
@@ -175,9 +175,9 @@ public class Setup : MonoBehaviour
     private void SetupNPCs()
     {
         RandomNavMeshPoint navMeshSampler = gameObject.AddComponent<RandomNavMeshPoint>();
-        GameObject[] ghosts = new GameObject[numberOfGhosts];
+        GameObject[] ghosts = new GameObject[__numberOfGhosts];
 
-        for (int i = 0; i < numberOfGhosts; ++i)
+        for (int i = 0; i < __numberOfGhosts; ++i)
         {
             Vector3 spawnPosition = navMeshSampler.GetRandomPointOnNavMesh();
             ghosts[i] = Instantiate(ghostPrefab, spawnPosition, Quaternion.identity);
@@ -188,6 +188,30 @@ public class Setup : MonoBehaviour
     private void SetupGUI()
     {
         TMP_Text numGhosts = GameObject.Find("GhostCounter").GetComponent<TMP_Text>();
-        numGhosts.text = $"x {numberOfGhosts}";
+        numGhosts.text = $"x {__numberOfGhosts}";
+    }
+
+    private void SetupDifficulty()
+    {
+        __multiFloor = GameDifficulty.Difficulty >= 5;
+        __numberOfGhosts = GetValueByDifficulty(3, 15);
+        __temptativeSize = GetValueByDifficulty(8, 60);
+        __maxLockedRooms = GetValueByDifficulty(0, 16);
+        if (__multiFloor) {
+            __temptativeSize = (int) __temptativeSize/2;
+            __maxLockedRooms = (int) __maxLockedRooms/2;
+        }
+        Debug.Log("Multifloor: " + __multiFloor);
+        Debug.Log("Ghosts: " + __numberOfGhosts);
+        Debug.Log("Size: " + __temptativeSize);
+        Debug.Log("Locked: " + __maxLockedRooms);
+    }
+
+    private int GetValueByDifficulty(int min, int max) {
+        int minDiff = 1;
+        int maxDiff = 10;
+        int diff = GameDifficulty.Difficulty;
+
+        return (int) min + (max - min) * (diff-minDiff)/(maxDiff-minDiff);
     }
 }
