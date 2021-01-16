@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Sounds : MonoBehaviour
 {   
-    [Header("Keys")]
+    [Header("Keys & Doors")]
     [SerializeField] private AudioSource keyPickup;
     [SerializeField] private AudioSource lockedDoor;
+    [SerializeField] private AudioSource openDoor;
+    [SerializeField] private AudioSource closeDoor;
     [Space]
 
     [Header("Powerups")]
     [SerializeField] private AudioSource pillPickup;
+    [Space]
 
     [Header("Capture")]
     [SerializeField] private AudioSource startCapture;
@@ -20,6 +23,16 @@ public class Sounds : MonoBehaviour
     public void PlayKeyPickup()
     {
         keyPickup.Play(0);
+    }
+
+    public void PlayOpenDoor()
+    {
+        openDoor.Play(0);
+    }
+
+    public void PlayCloseDoor()
+    {
+        closeDoor.Play(0);
     }
 
     public void PlayPillPickup()

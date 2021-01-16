@@ -19,14 +19,20 @@ public class KeyDoorController : MonoBehaviour
     private Color outlineColor;
     private GameObject hintPanel;
 
+    private Sounds __sounds;
+
     private void Awake()
     {
         doorAnim = gameObject.GetComponent<Animator>();
-        // messages.HideText();
     }
 
     public void PlayAnimation()
     {
+        if (__sounds == null)
+        {
+            __sounds = GameObject.Find("MainCamera").GetComponent<Sounds>();
+        }
+
         bool animateDoor = false;
         if (doorUnlocked)
         {
@@ -44,10 +50,12 @@ public class KeyDoorController : MonoBehaviour
         {
             if (!doorOpen) {
                 doorAnim.Play(openAnimationName, 0, 0.0f);
+                __sounds.PlayOpenDoor();
                 doorOpen = true;
             }
             else {
                 doorAnim.Play(closeAnimationName, 0, 0.0f);
+                __sounds.PlayCloseDoor();
                 doorOpen = false;
             }
         }
