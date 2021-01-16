@@ -143,17 +143,17 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.7696705, b: 1, a: 1}
-      key1: {r: 0.8308211, g: 0.2300641, b: 0.8867924, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.8308211, g: 0.2300641, b: 0.8867924, a: 1}
+      key1: {r: 0, g: 0.7696705, b: 1, a: 1}
+      key2: {r: 0.8308211, g: 0.2300641, b: 0.8867924, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
+      ctime0: 10486
       ctime1: 55898
-      ctime2: 0
+      ctime2: 56861
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -204,7 +204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763009942032887214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.518, y: -0.438, z: -4.228}
+  m_LocalPosition: {x: -0.553, y: -0.515, z: -4.129}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 763009941860770499}
@@ -225,7 +225,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
