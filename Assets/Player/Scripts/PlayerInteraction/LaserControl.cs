@@ -13,7 +13,7 @@ public class LaserControl : MonoBehaviour
 
     private GameObject spawnedLaser;
 
-    private Vector3 fireOffset = new Vector3(0.4f, 0.4f, 1.2f);
+    private Vector3 fireOffset = new Vector3(0.1f, 0f, 1f);
     private Vector3 ghostOffset = new Vector3(0, 1, 0);
 
     void Start()
