@@ -7150,10 +7150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolSpeed: 1
-  fleeSpeed: 1
-  numSamples: 60
-  samplingRadius: 8
-  maxSamplingDistance: 8
+  fleeSpeed: 2.5
+  numSamples: 50
+  samplingRadius: 5
+  maxSamplingDistance: 2
   searchTimeout: 10
   hideTimeout: 10
   visualDebugElement: {fileID: 5982545770686907243}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SearchState : State
 {
@@ -16,12 +17,15 @@ public class SearchState : State
 
     public override StateType StateUpdate()
     {
-        GameObject spot = GetNearestAvailableSpot();
-        _agent.SetDestination(spot.transform.position);
+        (GameObject spot, float minDist, Vector3 sampledPos) = GetNearestAvailableSpot();
+        if (spot != null) {
+            _agent.SetDestination(sampledPos);
 
-        __isNearSpot = !_agent.pathPending && _agent.remainingDistance < 2.0f;
-        if (__isNearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, spot.name);
-
+            __isNearSpot = !_agent.pathPending || minDist < 2.0f;
+            if (__isNearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, spot.name);
+        }
+        Debug.Log(_ghostSpotMapping.GetSpot(_ghost.name));
+        
         __timeout -= Time.deltaTime;
 
         return NextState();
@@ -52,7 +56,7 @@ public class SearchState : State
         __timeout = _parameters.searchTimeout;
     }
 
-    private GameObject GetNearestAvailableSpot()
+    private (GameObject, float, Vector3) GetNearestAvailableSpot()
     {
         // Get navigation distance instead of euclidean distance
         GameObject[] spots = GameObject.FindGameObjectsWithTag("Prop");
@@ -60,19 +64,35 @@ public class SearchState : State
         
         float minDist = Mathf.Infinity;
         int minIdx = -1;
-
+        Vector3 minSampledPos = new Vector3();
+        _agent.isStopped = true;
         for (int i = 0; i < spots.GetLength(0); ++i)
         {
-            float dist = Vector3.Distance(spots[i].transform.position, _ghost.transform.position);
-            bool spotFree = _ghostSpotMapping.GetGhost(spots[i].name) == null;
-            if (dist < minDist && spotFree)
-            {
-                minIdx = i;
-                minDist = dist;
+            //if (Mathf.Abs(spots[i].transform.position.y - _ghost.transform.position.y) > 1.0f) continue;
+            NavMeshPath path = new NavMeshPath();
+            NavMeshHit hit;
+            NavMesh.SamplePosition(spots[i].transform.position, out hit, 2f, NavMesh.AllAreas);
+            if (NavMesh.CalculatePath(_ghost.transform.position, hit.position, NavMesh.AllAreas, path)){
+                _agent.SetPath(path);
+                float dist = _agent.remainingDistance;
+                bool spotFree = _ghostSpotMapping.GetGhost(spots[i].name) == null;
+                if (dist < minDist && spotFree)
+                {
+                    minIdx = i;
+                    minDist = dist;
+                    minSampledPos = hit.position;
+                }
             }
         }
+        _agent.isStopped = false;
 
-        return spots[minIdx];
+        if (minIdx != -1) {
+            return (spots[minIdx], minDist, minSampledPos);
+        }
+        else {
+            return (null, minDist, minSampledPos);
+        }
+        
     }
 
     protected override void DrawDebugInfo()
