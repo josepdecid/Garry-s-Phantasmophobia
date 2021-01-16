@@ -20,10 +20,16 @@ public class KeyDoorController : MonoBehaviour
     private GameObject hintPanel;
 
     private Sounds __sounds;
+    private float animTimeNorm = 0.0f;
 
     private void Awake()
     {
         doorAnim = gameObject.GetComponent<Animator>();
+    }
+
+    void Update() 
+    {
+        animTimeNorm = doorAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
     public void PlayAnimation()
@@ -46,7 +52,7 @@ public class KeyDoorController : MonoBehaviour
         }
 
         // Play animation for opening / closing an unlocked door
-        if (animateDoor) 
+        if (animateDoor && animTimeNorm >= 1.0f) 
         {
             if (!doorOpen) {
                 doorAnim.Play(openAnimationName, 0, 0.0f);
