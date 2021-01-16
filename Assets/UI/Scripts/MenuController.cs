@@ -108,7 +108,15 @@ namespace SpeedTutorMainMenuSystem
 
             if (buttonType == "Exit")
             {
-                Debug.Log("YES QUIT!");
+
+                // save any game data here
+                #if UNITY_EDITOR
+                    
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+
                 Application.Quit();
             }
 
@@ -185,7 +193,9 @@ namespace SpeedTutorMainMenuSystem
         {
             if (ButtonType == "Yes")
             {
-                SceneManager.LoadScene(_newGameButtonLevel);
+                GameDifficulty.Difficulty = this.difficulty;
+                //SceneManager.LoadScene(_newGameButtonLevel);
+                StartCoroutine(LoadYourAsyncScene());
             }
 
             if (ButtonType == "No")
@@ -193,6 +203,32 @@ namespace SpeedTutorMainMenuSystem
                 GoBackToMainMenu();
             }
         }
+
+        IEnumerator LoadYourAsyncScene()
+        {
+            // The Application loads the Scene in the background as the current Scene runs.
+            // This is particularly good for creating loading screens.
+            // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
+            // a sceneBuildIndex of 1 as shown in Build Settings.
+            yield return null;
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_newGameButtonLevel);
+            asyncLoad.allowSceneActivation = false;
+            Debug.Log("Pro :" + asyncLoad.progress);
+            // Wait until the asynchronous scene fully loads
+            while (!asyncLoad.isDone)
+            {
+                Debug.Log("Loading progress: " + (asyncLoad.progress * 100) + "%");
+                // Check if the load has finished
+                if (asyncLoad.progress >= 0.9f)
+                {
+                    //Activate the Scene
+                    asyncLoad.allowSceneActivation = true;
+                }
+                yield return null;
+
+            }
+        }
+
 
         public void ClickLoadGameDialog(string ButtonType)
         {

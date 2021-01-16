@@ -38,6 +38,7 @@ public class Setup : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log(GameDifficulty.Difficulty);
         SetupMapGeneration();
         SetupNavMeshSurfaces();
         SetupPlayer();

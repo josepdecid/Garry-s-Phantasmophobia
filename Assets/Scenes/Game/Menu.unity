@@ -1547,18 +1547,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &891008643 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114414691622253428, guid: ed022c6eaaa372f498c83d69665e2adc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1070112996}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &919541731
 GameObject:
   m_ObjectHideFlags: 0
@@ -6394,6 +6382,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 4285107157682636013, guid: ed022c6eaaa372f498c83d69665e2adc,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed022c6eaaa372f498c83d69665e2adc, type: 3}
 --- !u!1001 &1100987976
@@ -6444,12 +6437,12 @@ PrefabInstance:
         type: 3}
       propertyPath: brightnessText
       value: 
-      objectReference: {fileID: 1429916463}
+      objectReference: {fileID: 0}
     - target: {fileID: 114325646035853880, guid: cc18238686906234bb678b403db8d8fd,
         type: 3}
       propertyPath: brightnessSlider
       value: 
-      objectReference: {fileID: 891008643}
+      objectReference: {fileID: 0}
     - target: {fileID: 114325646035853880, guid: cc18238686906234bb678b403db8d8fd,
         type: 3}
       propertyPath: volumeText
@@ -11236,18 +11229,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1429916463 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114954420297510558, guid: ed022c6eaaa372f498c83d69665e2adc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1070112996}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1551499863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114662438807354912, guid: ed022c6eaaa372f498c83d69665e2adc,
