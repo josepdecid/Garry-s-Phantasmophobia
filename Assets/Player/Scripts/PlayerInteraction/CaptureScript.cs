@@ -10,9 +10,6 @@ using TMPro;
 
 public class CaptureScript : MonoBehaviour
 {
-    // public CinemachineVirtualCamera gameCamera;
-    // CinemachineImpulseSource impulse;
-
     [SerializeField]
     private Animator handsAnimator = null;
     [SerializeField]
@@ -21,47 +18,16 @@ public class CaptureScript : MonoBehaviour
     private float captureDistance = 5f;
     [SerializeField]
     private float dragSpeed = 3f;
-    // [SerializeField]
-    // private CharacterController c;
 
-    // [Header("Ghost")]
     private GhostScript currentGhost;
-
-    // [Space]
-    // [Header("Booleans")]
-
-    // [Space]
-    // [Header("Rigs")]
-    // public Rig flashRig;
-    // public Rig captureRig;
-
     private Vector3 axis;
-    
-    // public GameObject light;
-    [SerializeField]
-    private GameObject tornado;
-    // public Transform controller;
-
-    Animator anim;
-    // RandomRotation randomRot;
-    private Renderer __tornadoRenderer;
     private Camera __playerCamera;
     private LaserControl __laserControl;
-    // Renderer lightRenderer;
 
     private bool __capturing;
 
     void Start()
     {
-        // c = GetComponent<CharacterController>();
-        // impulse = gameCamera.GetComponent<CinemachineImpulseSource>();
-        __tornadoRenderer = tornado.GetComponent<Renderer>();
-        // lightRenderer = light.GetComponent<Renderer>();
-        // __tornadoRenderer.material.SetFloat("Opacity", 0);
-        // lightRenderer.material.SetFloat("Opacity", .3f);
-        // randomRot = GetComponent<RandomRotation>();
-        anim = GetComponent<Animator>();
-
         __playerCamera = gameObject.GetComponentInChildren<Camera>();
         __laserControl = gameObject.GetComponentInChildren<LaserControl>();
 
@@ -70,56 +36,48 @@ public class CaptureScript : MonoBehaviour
 
     void Update()
     {
-        // TODO: Remove, just to test
-        if (Input.GetMouseButtonDown(0) && handsAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            handsAnimator.SetTrigger("Shoot");
-            sounds.PlayStartCapture();
-            __laserControl.EnableLaser();
-        }
+        GameObject targetGhost = Utils.GetGhostInFront(__playerCamera.gameObject, __playerCamera.fieldOfView, captureDistance);
+        if (targetGhost != null) currentGhost = targetGhost.GetComponent<GhostScript>();
+        else currentGhost = null;
 
-        if (Input.GetMouseButton(0) && handsAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting"))
+        AnimatorStateInfo animState = handsAnimator.GetCurrentAnimatorStateInfo(0);
+
+        // If we have a Ghost in front
+        if (currentGhost != null)
         {
-            Ray ray = __playerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0) && animState.IsName("Idle"))
             {
-                __laserControl.UpdateLaser(hit.point);
+                handsAnimator.SetTrigger("Shoot");
+                sounds.PlayStartCapture();
+                __laserControl.EnableLaser(targetGhost.transform.position);
+            }
+
+            if (Input.GetMouseButton(0) && animState.IsName("Shooting"))
+            {
+                __laserControl.UpdateLaser(targetGhost.transform.position);
+            }
+
+            else if (Input.GetMouseButtonUp(0) && animState.IsName("Shooting"))
+            {
+                handsAnimator.SetTrigger("Stop");
+                sounds.PlayEndCapture();
+                __laserControl.DisableLaser();
             }
         }
 
-        else if (Input.GetMouseButtonUp(0) && handsAnimator.GetCurrentAnimatorStateInfo(0).IsName("Shooting"))
+        // If we do not have Ghost in front and it was shooting -> Stop the animation
+        else if (animState.IsName("Shooting"))
         {
             handsAnimator.SetTrigger("Stop");
             sounds.PlayEndCapture();
             __laserControl.DisableLaser();
         }
 
-        /*GameObject targetGhost = Utils.GetGhostInFront(__playerCamera.gameObject, captureDistance);
-        if (targetGhost != null) currentGhost = targetGhost.GetComponent<GhostScript>();
-        else currentGhost = null;
-        if (currentGhost != null)
+        // If we do not have Ghost in front and it was shooting -> Error sound
+        else if (Input.GetMouseButtonDown(0))
         {
-            bool isCapturing = Input.GetMouseButton(0);
-            handsAnimator.SetTrigger("Shoot");
-            sounds.PlayStartCapture();
-
-
-            Debug.Log($"Capturing: {__capturing}");
-            if (isCapturing != __capturing) SetCaptureState(isCapturing);
-            
-            if (__capturing)
-            {
-
-                Debug.Log("Capturing the ghost!");
-                
-            }
+            sounds.PlayErrorCapture(false);
         }
-        else
-        {
-            SetCaptureState(false);
-        }
-        */
     }
 
     private void Capture()

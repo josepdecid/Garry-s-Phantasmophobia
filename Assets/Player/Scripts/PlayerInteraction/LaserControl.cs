@@ -13,6 +13,9 @@ public class LaserControl : MonoBehaviour
 
     private GameObject spawnedLaser;
 
+    private Vector3 fireOffset = new Vector3(0.4f, 0.4f, 1.2f);
+    private Vector3 ghostOffset = new Vector3(0, 1, 0);
+
     void Start()
     {
         spawnedLaser = Instantiate(laserPrefab, firePoint.transform.position, Quaternion.Euler(0, 180, 0));
@@ -24,21 +27,21 @@ public class LaserControl : MonoBehaviour
         particles = spawnedLaser.GetComponentInChildren<ParticleSystem>();
 
         // Set spawn particles with manual offset to be in front of the gun
-        particles.transform.position = firePoint.transform.position;
-        particles.transform.position += new Vector3(0.4f, 0.4f, 1.2f);
+        particles.transform.position = firePoint.transform.position + fireOffset;
 
         DisableLaser();
     }
 
-    public void EnableLaser()
-    {
+    public void EnableLaser(Vector3 targetPoint)
+    {   
+        UpdateLaser(targetPoint);
         spawnedLaser.SetActive(true);
     }
 
     public void UpdateLaser(Vector3 targetPoint)
     {
         line.SetPosition(0, firePoint.transform.position);
-        line.SetPosition(1, targetPoint);
+        line.SetPosition(1, targetPoint + ghostOffset);
     }
     
     public void DisableLaser()

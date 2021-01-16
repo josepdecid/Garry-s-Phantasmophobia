@@ -34,9 +34,10 @@ public class Sounds : MonoBehaviour
         endCapture.Play(0);
     }
 
-    public void PlayErrorCapture()
+    public void PlayErrorCapture(bool overlap)
     {
-        errorCapture.Play(0);
+        if (overlap || !errorCapture.isPlaying)
+            errorCapture.Play(0);
     }
 
     public void PlayLockedDoor()

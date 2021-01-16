@@ -6302,7 +6302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 4
+  m_WalkSpeed: 10
   m_RunSpeed: 4
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 6
@@ -6556,7 +6556,6 @@ MonoBehaviour:
   sounds: {fileID: 1856527440195246264}
   captureDistance: 10
   dragSpeed: 3
-  tornado: {fileID: -927199367670048503, guid: 98d33d8f387ea8a4fa7d70a7522bb6df, type: 3}
 --- !u!114 &2398889603572079818
 MonoBehaviour:
   m_ObjectHideFlags: 0

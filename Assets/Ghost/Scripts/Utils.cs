@@ -61,17 +61,28 @@ class Utils
         return false;
     }
 
-    public static GameObject GetGhostInFront(GameObject playerCamera, float distance)
+    public static GameObject GetGhostInFront(GameObject playerCamera, float fieldOfView, float distance)
     {
         Vector3 sourcePosition = playerCamera.transform.position;
-        Vector3 direction = playerCamera.transform.forward;
+        GameObject[] ghosts = GameObject.FindGameObjectsWithTag("Ghost");
 
-        RaycastHit hit;
-        bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
+        for (int i = 0; i < ghosts.Length; ++i)
+        {
+            Vector3 direction = ghosts[i].transform.position - sourcePosition;
+            float angle = Vector3.Angle(direction, playerCamera.transform.forward);
+            
+            if (Math.Abs(angle) <= fieldOfView / 2)
+            {
+                RaycastHit hit;
+                bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
 
-        Debug.DrawRay(sourcePosition, direction * hit.distance, Color.green);     
+                Debug.DrawRay(sourcePosition, direction * hit.distance, Color.yellow);
 
-        if (isHitting && hit.collider.gameObject.tag == "Ghost") return hit.collider.gameObject;
-        else return null;
+                if (isHitting && hit.collider.gameObject.name == ghosts[i].name)
+                    return ghosts[i];
+            }
+        }
+
+        return null;
     }
 }
