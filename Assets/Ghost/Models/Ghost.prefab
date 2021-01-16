@@ -6997,7 +6997,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7839821606023755104}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -7151,7 +7151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolSpeed: 1
   fleeSpeed: 2.5
-  numSamples: 50
+  numSamples: 30
   samplingRadius: 5
   maxSamplingDistance: 2
   searchTimeout: 10
