@@ -67,9 +67,9 @@ public class Floor : MonoBehaviour
     }
 
     public Vector3 GetRandomPositionInTile(Vector2Int gridPos) {
-        float range = tileSize/5.0f;
+        float range = tileSize/6.0f;
         Vector3 noise = new Vector3(UnityEngine.Random.Range(-range, range), 0, UnityEngine.Random.Range(-range, range));
-        return new Vector3(gridPos.x * tileSize + (tileSize/2), floor * heightSize + (heightSize/4.5f), gridPos.y * tileSize + (tileSize/2));
+        return new Vector3(gridPos.x * tileSize + (tileSize/2), floor * heightSize + (heightSize/4.5f), gridPos.y * tileSize + (tileSize/2)) + noise;
     }
 
     public (bool, Vector2Int, Tuple<Vector2Int, Vector2Int>, float, List<Door>, List<Window>) CheckRoomSpawnValidity(Room targetRoom, Door doorToSpawnFrom, Door targetJoinDoor)
