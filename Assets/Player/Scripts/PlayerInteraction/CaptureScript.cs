@@ -19,7 +19,8 @@ public class CaptureScript : MonoBehaviour
     private float captureDistance = 5f;
     [SerializeField]
     private float dragSpeed = 3f;
-
+    [SerializeField]
+    private float captureTime = 2f;
     private GhostScript currentGhost;
     private Vector3 axis;
     private Camera __playerCamera;
@@ -27,6 +28,8 @@ public class CaptureScript : MonoBehaviour
 
     private bool __capturing;
     private bool __shooting;
+    private float __currentTime;
+    
 
     void Start()
     {
@@ -48,20 +51,31 @@ public class CaptureScript : MonoBehaviour
         // If we have a Ghost in front
         if (currentGhost != null)
         {
+            // Start Shooting
             if (Input.GetMouseButtonDown(0) && !__shooting)
             {
                 __shooting = true;
                 handsAnimator.SetTrigger("Shoot");
                 sounds.PlayStartCapture();
                 __laserControl.EnableLaser(targetGhost.transform.position);
-                targetGhost.GetComponent<NavMeshAgent>().speed = 0.1f;
+                __currentTime = 0f;
             }
 
-            else if (Input.GetMouseButton(0) && __shooting)
+            // While shooting
+            else if (Input.GetMouseButton(0) && __shooting && __currentTime < captureTime)
             {
                 __laserControl.UpdateLaser(targetGhost.transform.position);
+                __currentTime += Time.deltaTime;
             }
 
+            // Ghost captured
+            else if (Input.GetMouseButton(0) && __shooting && __currentTime >= captureTime) {
+                __shooting = false;
+                Capture();
+                __laserControl.DisableLaser();
+            }
+
+            // Stopped shooting
             else if (Input.GetMouseButtonUp(0) && __shooting)
             {
                 __shooting = false;

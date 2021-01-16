@@ -1399,7 +1399,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 0.8398378, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 2.1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6998,7 +6998,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7839821606023755104}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -7126,7 +7126,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -7151,12 +7151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolSpeed: 1
-  fleeSpeed: 2.5
+  fleeSpeed: 15
   numSamples: 30
   samplingRadius: 5
   maxSamplingDistance: 2
-  searchTimeout: 10
-  hideTimeout: 10
+  searchTimeout: 15
+  hideTimeout: 45
   visualDebugElement: {fileID: 5982545770686907243}
   modeDebug: 0
   candidateGradient:

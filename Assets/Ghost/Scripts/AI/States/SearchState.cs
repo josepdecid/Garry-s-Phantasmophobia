@@ -67,11 +67,10 @@ public class SearchState : State
         _agent.isStopped = true;
         for (int i = 0; i < spots.GetLength(0); ++i)
         {
-            //if (Mathf.Abs(spots[i].transform.position.y - _ghost.transform.position.y) > 1.0f) continue;
             NavMeshPath path = new NavMeshPath();
             NavMeshHit hit;
             NavMesh.SamplePosition(spots[i].transform.position, out hit, 2f, NavMesh.AllAreas);
-            if (NavMesh.CalculatePath(_ghost.transform.position, hit.position, NavMesh.AllAreas, path)){
+            if (hit.position.x != Mathf.Infinity && NavMesh.CalculatePath(_ghost.transform.position, hit.position, NavMesh.AllAreas, path)){
                 _agent.SetPath(path);
                 float dist = _agent.remainingDistance;
                 bool spotFree = _ghostSpotMapping.GetGhost(spots[i].name) == null;

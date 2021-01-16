@@ -6554,8 +6554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handsAnimator: {fileID: 2214210255833703036}
   sounds: {fileID: 1856527440195246264}
-  captureDistance: 10
+  captureDistance: 5
   dragSpeed: 3
+  captureTime: 0.7
 --- !u!114 &2398889603572079818
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -84,7 +84,7 @@ class Utils
                 float distToGhost = -1;
                 float minDistToWall = Mathf.Infinity;
                 foreach(RaycastHit hit in hits) {
-                    if (hit.collider.tag == "Ghost"){
+                    if (hit.collider.name == ghosts[i].name){
                         isGhost = true;
                         distToGhost = hit.distance;
                     }

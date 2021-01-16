@@ -17,19 +17,8 @@ public class GhostScript : MonoBehaviour
 
     public void Capture()
     {
-        // tailAnimator.SetTrigger("capture");
-        StartCoroutine(DestroyGhost());
-    }
-
-    IEnumerator DestroyGhost()
-    {
-        yield return new WaitForSeconds(1f);
-        // FindObjectOfType<MovementInput>().enabled = true;
-        //capture.finishParticle.Play();
-        // capture.ShakeScreen();
         Destroy(gameObject);
-    }
-            
+    }            
 
     public void Damage(float angle, Vector3 axis)
     {
