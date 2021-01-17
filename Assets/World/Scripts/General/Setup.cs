@@ -194,7 +194,7 @@ public class Setup : MonoBehaviour
     private void SetupDifficulty()
     {
         __multiFloor = GameDifficulty.Difficulty >= 5;
-        __numberOfGhosts = GetValueByDifficulty(3, 15);
+        __numberOfGhosts = GetValueByDifficulty(3, 10);
         __temptativeSize = GetValueByDifficulty(8, 60);
         __maxLockedRooms = GetValueByDifficulty(0, 16);
         if (__multiFloor) {

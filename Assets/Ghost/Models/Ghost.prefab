@@ -7137,7 +7137,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &7830175535201023759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7150,9 +7150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a4ee03067bc2a48a8e51d0ccb297ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 1
-  fleeSpeed: 15
-  numSamples: 30
+  patrolSpeed: 6
+  fleeSpeed: 10
+  numSamples: 20
   samplingRadius: 5
   maxSamplingDistance: 2
   searchTimeout: 15

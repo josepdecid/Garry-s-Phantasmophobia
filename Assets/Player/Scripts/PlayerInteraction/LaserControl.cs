@@ -40,8 +40,6 @@ public class LaserControl : MonoBehaviour
 
     public void UpdateLaser(Vector3 targetPoint)
     {
-        Debug.Log("firepoint " + firePoint.transform.position);
-        Debug.Log("targetPoint " + (targetPoint + ghostOffset));
         line.SetPosition(0, firePoint.transform.position);
         line.SetPosition(1, targetPoint + ghostOffset);
     }

@@ -15,8 +15,6 @@ public class Messages : Singleton<Messages>
     public void ShowText(string message)
     {   
         hintPanel.SetActive(true);
-        Debug.Log("Ghost message!");
-        Debug.Log(message);
     }
 
     public void HideText()

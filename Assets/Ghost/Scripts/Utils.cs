@@ -73,8 +73,6 @@ class Utils
             float dstToTarget = Vector3.Distance(sourcePosition, targetPosition);
             float angle = Vector3.Angle(dirToTarget, playerCamera.transform.forward);
             
-            Debug.Log("dstToTarget: " + dstToTarget);
-            Debug.Log("distance: " + distance);
 
             if (Math.Abs(angle) <= fieldOfView / 2)
             {

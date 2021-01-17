@@ -165,6 +165,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void GoToMainMenu()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("Menu");
         }
 

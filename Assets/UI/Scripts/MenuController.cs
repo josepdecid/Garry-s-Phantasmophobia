@@ -152,7 +152,6 @@ namespace SpeedTutorMainMenuSystem
         public void VolumeApply()
         {
             PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
-            Debug.Log(PlayerPrefs.GetFloat("masterVolume"));
             GoBackToOptionsMenu();
 
         }
@@ -236,7 +235,6 @@ namespace SpeedTutorMainMenuSystem
             {
                 if (PlayerPrefs.HasKey("SavedLevel"))
                 {
-                    Debug.Log("I WANT TO LOAD THE SAVED GAME");
                     //LOAD LAST SAVED SCENE
                     levelToLoad = PlayerPrefs.GetString("SavedLevel");
                     SceneManager.LoadScene(levelToLoad);
@@ -244,7 +242,6 @@ namespace SpeedTutorMainMenuSystem
 
                 else
                 {
-                    Debug.Log("Load Game Dialog");
                     menuDefaultCanvas.SetActive(false);
                     loadGameDialog.SetActive(false);
                     noSaveDialog.SetActive(true);
