@@ -2164,6 +2164,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rack_3_bath
       objectReference: {fileID: 0}
+    - target: {fileID: 3899559059157229601, guid: 50f137d7a0991231fadb541a59610380,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3899559059157597185, guid: 50f137d7a0991231fadb541a59610380,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2700,6 +2705,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 398008aaa9b8a2e4ebd3860a13db4038, type: 3}
       propertyPath: m_Name
       value: kitchen_table_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 398008aaa9b8a2e4ebd3860a13db4038, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 398008aaa9b8a2e4ebd3860a13db4038, type: 3}
       propertyPath: m_LocalPosition.x

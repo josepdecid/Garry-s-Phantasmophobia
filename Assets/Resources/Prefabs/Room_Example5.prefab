@@ -721,6 +721,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: cabinet_3
       objectReference: {fileID: 0}
+    - target: {fileID: 8813170831438038219, guid: 663d281ac1de657128e510f887d427d1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813170831438038219, guid: 663d281ac1de657128e510f887d427d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8813170831438207211, guid: 663d281ac1de657128e510f887d427d1,
         type: 3}
       propertyPath: m_LocalPosition.x
