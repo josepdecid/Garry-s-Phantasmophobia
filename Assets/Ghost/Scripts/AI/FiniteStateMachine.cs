@@ -51,6 +51,8 @@ public class FiniteStateMachine : MonoBehaviour
     private State __searchState;
     private State __fleeState;
 
+    private GhostScript __ghostScript;
+
     void Awake()
     {
         __player = GameObject.FindWithTag("Player");
@@ -74,6 +76,7 @@ public class FiniteStateMachine : MonoBehaviour
         __currentStateType = StateType.Roam;
         __currentState = GetStateInstance();
         __currentState.Enter();
+        __ghostScript = gameObject.GetComponent<GhostScript>();
     }
 
     void Update()
@@ -94,6 +97,8 @@ public class FiniteStateMachine : MonoBehaviour
 
         __currentState = newState;
         __currentState.Enter();
+
+        __ghostScript.PlayRandomSound();
     }
 
     private State GetStateInstance() {
