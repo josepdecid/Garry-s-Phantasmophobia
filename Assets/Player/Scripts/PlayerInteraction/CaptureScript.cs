@@ -119,5 +119,11 @@ public class CaptureScript : MonoBehaviour
         TMP_Text numGhosts = GameObject.Find("GhostCounter").GetComponent<TMP_Text>();
         string count = numGhosts.text.Substring(2);
         numGhosts.text = $"x {Int32.Parse(count) - 1}";
+
+        if(count=="1"){
+            //LoadSceneParameters parameters = ...; // Set end = true
+            SceneManager.LoadScene("Menu");
+            SceneManager.UnloadSceneAsync("Game");
+        }
     }
 }
