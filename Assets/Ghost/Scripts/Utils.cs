@@ -4,7 +4,7 @@ using TMPro;
 
 class Utils
 {
-    public static bool IsTargetFocused(GameObject playerCamera, string targetName, float distance)
+    public static bool IsTargetFocused(GameObject playerCamera, string targetId, float distance)
     {
         Vector3 sourcePosition = playerCamera.transform.position;
         Vector3 direction = playerCamera.transform.forward;
@@ -15,7 +15,7 @@ class Utils
 
         Debug.DrawRay(sourcePosition, direction * hit.distance, Color.red);     
 
-        if (isHitting && hit.collider.gameObject.name == targetName) return true;
+        if (isHitting && hit.collider.gameObject.GetInstanceID().ToString() == targetId) return true;
         else return false;
     }
 

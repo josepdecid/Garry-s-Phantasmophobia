@@ -21,8 +21,8 @@ public class SearchState : State
         if (spot != null) {
             _agent.SetDestination(sampledPos);
 
-            __isNearSpot = !_agent.pathPending || minDist < 2.0f;
-            if (__isNearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, spot.name);
+            __isNearSpot = !_agent.pathPending || minDist <= 2.0f;
+            if (__isNearSpot) _ghostSpotMapping.UpdateSpot(_ghost.name, spot.GetInstanceID().ToString());
         }
         
         __timeout -= Time.deltaTime;
@@ -57,7 +57,6 @@ public class SearchState : State
 
     private (GameObject, float, Vector3) GetNearestAvailableSpot()
     {
-        // Get navigation distance instead of euclidean distance
         GameObject[] spots = GameObject.FindGameObjectsWithTag("Prop");
         if (spots.GetLength(0) == 0) Debug.LogWarning("There are no hiding spots!");
         
@@ -69,11 +68,17 @@ public class SearchState : State
         {
             NavMeshPath path = new NavMeshPath();
             NavMeshHit hit;
-            NavMesh.SamplePosition(spots[i].transform.position, out hit, 2f, NavMesh.AllAreas);
+            float yAxisPosition = spots[i].transform.position.y;
+            Vector3 spotPosition;
+            if (yAxisPosition < 4.0f)
+                spotPosition = new Vector3(spots[i].transform.position.x, 0, spots[i].transform.position.z);
+            else
+                spotPosition = new Vector3(spots[i].transform.position.x, 4.0f, spots[i].transform.position.z);
+            NavMesh.SamplePosition(spotPosition, out hit, 2.0f, NavMesh.AllAreas);
             if (hit.position.x != Mathf.Infinity && NavMesh.CalculatePath(_ghost.transform.position, hit.position, NavMesh.AllAreas, path)){
                 _agent.SetPath(path);
                 float dist = _agent.remainingDistance;
-                bool spotFree = _ghostSpotMapping.GetGhost(spots[i].name) == null;
+                bool spotFree = _ghostSpotMapping.GetGhost(spots[i].GetInstanceID().ToString()) == null;
                 if (dist < minDist && spotFree)
                 {
                     minIdx = i;

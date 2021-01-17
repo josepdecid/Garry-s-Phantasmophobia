@@ -69,7 +69,7 @@ public class PropOutline : MonoBehaviour {
 			UpdateMaterialProperties();
 		}
 
-		bool canInteract = Utils.IsTargetFocused(__playerCamera.gameObject, gameObject.name, interactionDistance);
+		bool canInteract = Utils.IsTargetFocused(__playerCamera.gameObject, gameObject.GetInstanceID().ToString(), interactionDistance);
 		
 		if (canInteract != __canInteract)
 		{
@@ -80,9 +80,9 @@ public class PropOutline : MonoBehaviour {
 
 		if (canInteract && Input.GetMouseButtonUp(0))
 		{
-			__ghostSpotMapping.UpdateInteracted(gameObject.name);
+			__ghostSpotMapping.UpdateInteracted(gameObject.GetInstanceID().ToString());
 		}
-		else if (Input.GetMouseButtonDown(0) && __ghostSpotMapping.GetInteractedSpot() == gameObject.name)
+		else if (Input.GetMouseButtonDown(0) && __ghostSpotMapping.GetInteractedSpot() == gameObject.GetInstanceID().ToString())
 		{
 			__ghostSpotMapping.UpdateInteracted(null);
 		}
