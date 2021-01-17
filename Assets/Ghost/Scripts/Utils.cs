@@ -9,7 +9,8 @@ class Utils
         Vector3 direction = playerCamera.transform.forward;
 
         RaycastHit hit;
-        bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance);
+        LayerMask layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+        bool isHitting = Physics.Raycast(sourcePosition, direction, out hit, distance, layerMask);
 
         Debug.DrawRay(sourcePosition, direction * hit.distance, Color.red);     
 

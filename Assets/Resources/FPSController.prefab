@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 513460300068907182}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_ring_0_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2224321730130449522}
   - component: {fileID: 2862631284689303466}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Pills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 8184133792446936820}
   - component: {fileID: 4394879054219489201}
   - component: {fileID: 1720730888136667646}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: HintPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2869273906389827646}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_collar_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 3319836446267679758}
   - component: {fileID: 8880532831368035728}
   - component: {fileID: 5851360810587309715}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: ExitNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193969045952277527}
   - component: {fileID: 5116530552033230288}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: DoorOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 3968258609601039456}
   - component: {fileID: 3912799168741544397}
   - component: {fileID: 42457871285049996}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3775066118581995538}
   - component: {fileID: 7947501668963241092}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 341551586230479698}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: NumGhosts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1994913875746957318}
   - component: {fileID: 4843249511052049525}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Captured
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3065393319525013555}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_thumb_2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313753611183923045}
   - component: {fileID: 6536995673485806959}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: v_medigun_medic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,7 +1022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9088905289983848084}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_pinky_0_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1053,7 +1053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2480994730626759480}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_middle_2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7285944147491407068}
   - component: {fileID: 5872475909873716145}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: NoTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1212,7 @@ GameObject:
   - component: {fileID: 2652098176510816838}
   - component: {fileID: 2085198854897275897}
   - component: {fileID: 6739117940485161147}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: FinishParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6022,7 +6022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2258516628253735620}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_pinky_0_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6053,7 +6053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 710974875932816609}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_thumb_1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6084,7 +6084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7133480814817776546}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_upperArm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6115,7 +6115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6284678425057781207}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_collar_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6146,7 +6146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1155875078648952695}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_ring_1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6177,7 +6177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2800866499576410111}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_index_2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6209,7 +6209,7 @@ GameObject:
   - component: {fileID: 1037549835558703995}
   - component: {fileID: 2379193385209661558}
   - component: {fileID: 3067854085259626540}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: GhostCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6363,7 +6363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6635344280353497527}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6394,7 +6394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3310632774075579087}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_lowerArm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6427,7 +6427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6908698036263570868}
   - component: {fileID: 3758538132748451986}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6553,7 +6553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5142619874477872590}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_thumb_2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6583,7 +6583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8495185620808721815}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_index_0_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6614,7 +6614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6647094114302618537}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Vaccum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6657,7 +6657,7 @@ GameObject:
   - component: {fileID: 2398889603572079818}
   - component: {fileID: 888718094408709055}
   - component: {fileID: 369125568923170257}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: FPSController
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -7027,7 +7027,7 @@ GameObject:
   - component: {fileID: 3238705681337182564}
   - component: {fileID: 1988602597}
   - component: {fileID: 1856527440195246264}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -7192,7 +7192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1238264692231213580}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_middle_1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7225,7 +7225,7 @@ GameObject:
   - component: {fileID: 8341666535925061279}
   - component: {fileID: 977815722876781722}
   - component: {fileID: 1965363229286334703}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: GhostEnergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7383,7 +7383,7 @@ GameObject:
   - component: {fileID: 3433848515271902689}
   - component: {fileID: 3433848515271902703}
   - component: {fileID: 3433848515271902702}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7450,7 +7450,7 @@ GameObject:
   - component: {fileID: 3433848515521649733}
   - component: {fileID: 3433848515521649732}
   - component: {fileID: 3433848515521649735}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7553,7 +7553,7 @@ GameObject:
   - component: {fileID: 3433848516284580237}
   - component: {fileID: 3433848516284580235}
   - component: {fileID: 3433848516284580234}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7625,7 +7625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4696651144354963093}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_thumb_0_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7656,7 +7656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6696209062909953288}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7691,7 +7691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8336100623758795329}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: weapon_bone_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7721,7 +7721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5278223171477280206}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7756,7 +7756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3977188986347127088}
   - component: {fileID: 2214210255833703036}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: hands_gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7809,7 +7809,7 @@ GameObject:
   - component: {fileID: 3674665575620970268}
   - component: {fileID: 332185525417163064}
   - component: {fileID: 3291563631531235943}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: TopText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7885,7 +7885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5751677478853493588}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_pinky_2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7916,7 +7916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5575826553869799881}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_pinky_2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7946,7 +7946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3799594707649294917}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_middle_2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7976,7 +7976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2899833267884260331}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_index_1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8010,7 +8010,7 @@ GameObject:
   - component: {fileID: 2904802640946145822}
   - component: {fileID: 8269193054568095171}
   - component: {fileID: 3730287553468112504}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8101,7 +8101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6121244856452129316}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8134,7 +8134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8237261974285303790}
   - component: {fileID: 8255872342119964523}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8181,7 +8181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8970304665685334061}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_upperArm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8212,7 +8212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5479017752353267400}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_index_1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8243,7 +8243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3855892924003885935}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_ring_2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8273,7 +8273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 989654256501264607}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_ring_1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8304,7 +8304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2444537139082157807}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: AudioSources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8338,7 +8338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2075776662110857095}
   - component: {fileID: 1647092777865994197}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: LockedDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8464,7 +8464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3455612248513951275}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8495,7 +8495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7986243604719168069}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_thumb_0_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8528,7 +8528,7 @@ GameObject:
   - component: {fileID: 2076224394420098482}
   - component: {fileID: 3378689133076141096}
   - component: {fileID: 5131530318894241653}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8597,7 +8597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3814685503694814922}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8636,7 +8636,7 @@ GameObject:
   - component: {fileID: 4971720812537597314}
   - component: {fileID: 7793833454132493967}
   - component: {fileID: 8486267593596868171}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: ExitYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8766,7 +8766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4121452754727355254}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_pinky_1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8797,7 +8797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5603134849154394884}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_middle_0_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8828,7 +8828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2513387725193296071}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_pinky_1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8859,7 +8859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7086425658236040068}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: KeyInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8889,7 +8889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8978541120801742545}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: joint_lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8921,7 +8921,7 @@ GameObject:
   - component: {fileID: 6948601614044114898}
   - component: {fileID: 1852038661355564512}
   - component: {fileID: 845698173995812888}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: FinishParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13731,7 +13731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6639195046972584812}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_index_2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13762,7 +13762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8767960046969613108}
   - component: {fileID: 5221365722092162114}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: DoorClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13890,7 +13890,7 @@ GameObject:
   - component: {fileID: 6899527070526623800}
   - component: {fileID: 2191288357831825034}
   - component: {fileID: 4835814351532106052}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: TMP SubMeshUI [Space Comics Atlas Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13961,7 +13961,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 711115981726005317}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_thumb_1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13992,7 +13992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2110630320844496997}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: v_medigun_medic.qc_skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14026,7 +14026,7 @@ GameObject:
   - component: {fileID: 9054143525067979675}
   - component: {fileID: 319281404318943476}
   - component: {fileID: 1477267372133197681}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: TopText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14102,7 +14102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844706907100810450}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_ring_2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14132,7 +14132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8554074736761577083}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_ring_0_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14163,7 +14163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5910143700348718151}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: weapon_bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14194,7 +14194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5940282422589981831}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: LaserPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14224,7 +14224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1533673833121942231}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_middle_0_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14255,7 +14255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8669691551312566787}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_lowerArm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14286,7 +14286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6976253228234643782}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_index_0_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14317,7 +14317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7585636107697051456}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bip_middle_1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14349,7 +14349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8807892532265163666}
   - component: {fileID: 7073326272077977067}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14476,7 +14476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5033782507237601911}
   - component: {fileID: 2359862669877758652}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: KeyPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
