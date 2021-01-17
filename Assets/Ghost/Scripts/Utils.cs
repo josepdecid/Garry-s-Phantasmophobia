@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 class Utils
 {
@@ -72,10 +73,11 @@ class Utils
             Vector3 targetPosition = ghosts[i].transform.position;
             Vector3 dirToTarget = (targetPosition - sourcePosition).normalized;
             float dstToTarget = Vector3.Distance(sourcePosition, targetPosition);
-            float angle = Vector3.Angle(dirToTarget, playerCamera.transform.forward);
             
+            float angle = Vector3.Angle(dirToTarget, playerCamera.transform.forward);
+            float maxAngle = Mathf.Lerp(fieldOfView / 2f, fieldOfView, Mathf.InverseLerp(0f, dstToTarget, distance));
 
-            if (Math.Abs(angle) <= fieldOfView / 2)
+            if (Math.Abs(angle) <= maxAngle)
             {
                 RaycastHit[] hits = Physics.RaycastAll(sourcePosition, dirToTarget, distance);
 
