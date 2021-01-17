@@ -19,6 +19,7 @@ public class Sounds : MonoBehaviour
     [SerializeField] private AudioSource startCapture;
     [SerializeField] private AudioSource endCapture;
     [SerializeField] private AudioSource errorCapture;
+    [SerializeField] private AudioSource capturedSound;
 
     public void PlayKeyPickup()
     {
@@ -28,6 +29,11 @@ public class Sounds : MonoBehaviour
     public void PlayOpenDoor()
     {
         openDoor.Play(0);
+    }
+
+    public void PlayCapturedSound()
+    {
+        capturedSound.Play(0);
     }
 
     public void PlayCloseDoor()

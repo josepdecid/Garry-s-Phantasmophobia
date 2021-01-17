@@ -7200,6 +7200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d79fcf268bc14e57849ed78fdead991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  captureParticles: {fileID: 3961003340597393741, guid: dd65428aa0fc21049bc40ba54bb0fda9,
+    type: 3}
 --- !u!136 &-4902435216506878163
 CapsuleCollider:
   m_ObjectHideFlags: 0

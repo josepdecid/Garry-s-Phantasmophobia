@@ -115,29 +115,9 @@ public class CaptureScript : MonoBehaviour
     {
         __capturing = false;
         currentGhost.Capture();
-        SetCaptureState(false);
 
         TMP_Text numGhosts = GameObject.Find("GhostCounter").GetComponent<TMP_Text>();
         string count = numGhosts.text.Substring(2);
         numGhosts.text = $"x {Int32.Parse(count) - 1}";
-    }
-
-    public void SetCaptureState(bool state)
-    {
-        /*
-        __capturing = state;
-
-        if (__capturing)
-        {
-
-            if (!captureParticle.isPlaying)
-            {
-                Debug.Log("Play particle");
-                captureParticle.Play();
-            }
-            
-        }
-        else  captureParticle.Stop();
-        */
     }
 }
