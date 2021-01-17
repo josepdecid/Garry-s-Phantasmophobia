@@ -67,6 +67,7 @@ class Utils
     {        
         Vector3 sourcePosition = playerCamera.transform.position;
         GameObject[] ghosts = GameObject.FindGameObjectsWithTag("Ghost");
+        LayerMask layerMask = ~(1 << LayerMask.NameToLayer("Player"));
 
         for (int i = 0; i < ghosts.Length; ++i)
         {
@@ -79,22 +80,26 @@ class Utils
 
             if (Math.Abs(angle) <= maxAngle)
             {
-                RaycastHit[] hits = Physics.RaycastAll(sourcePosition, dirToTarget, distance);
+                RaycastHit[] hits = Physics.RaycastAll(sourcePosition, dirToTarget, distance, layerMask);
 
                 bool isGhost = false;
                 float distToGhost = -1;
                 float minDistToWall = Mathf.Infinity;
                 foreach(RaycastHit hit in hits) {
-                    if (hit.collider.name == ghosts[i].name){
+                    if (hit.collider.name == ghosts[i].name)
+                    {
                         isGhost = true;
                         distToGhost = hit.distance;
                     }
-                    else if (hit.collider.tag == "Wall") {
-                        if (hit.distance < minDistToWall) {
+                    else if (hit.collider.tag == "Wall")
+                    {
+                        if (hit.distance < minDistToWall)
+                        {
                             minDistToWall = hit.distance;
                         }
                     }
                 }
+                
                 if (isGhost && distToGhost < minDistToWall) 
                     return ghosts[i];
             }
